@@ -1,0 +1,14 @@
+{
+  "name": "kotlin-react-dom",
+  "version": "18.2.0-pre.354",
+  "main": "kotlin-react-dom.js",
+  "devDependencies": {
+    "dukat": "0.5.8-rc.4"
+  },
+  "dependencies": {
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}

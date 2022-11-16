@@ -1,0 +1,11 @@
+{
+  "name": "kotlin-js",
+  "version": "1.0.0-pre.354",
+  "customFields": {},
+  "main": "kotlin-js.js",
+  "devDependencies": {},
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}

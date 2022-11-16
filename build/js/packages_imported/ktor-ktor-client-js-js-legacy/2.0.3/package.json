@@ -1,0 +1,11 @@
+{
+  "name": "ktor-ktor-client-js-js-legacy",
+  "version": "2.0.3",
+  "customFields": {},
+  "main": "ktor-ktor-client-js-js-legacy.js",
+  "devDependencies": {},
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}

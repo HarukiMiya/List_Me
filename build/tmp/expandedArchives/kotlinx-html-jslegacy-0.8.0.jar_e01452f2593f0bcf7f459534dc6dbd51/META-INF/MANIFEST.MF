@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Build-Jdk: 11.0.15
+Built-By: teamcity
+Created-By: Gradle 7.4.1
+Implementation-Vendor: JetBrains s.r.o.
+Implementation-Version: 0.8.0
+

@@ -1,0 +1,16 @@
+{
+  "name": "kotlin-emotion",
+  "version": "11.9.3-pre.354",
+  "main": "kotlin-emotion.js",
+  "devDependencies": {
+    "dukat": "0.5.8-rc.4"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.9.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}

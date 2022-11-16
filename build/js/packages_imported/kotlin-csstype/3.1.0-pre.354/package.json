@@ -1,0 +1,13 @@
+{
+  "name": "kotlin-csstype",
+  "version": "3.1.0-pre.354",
+  "main": "kotlin-csstype.js",
+  "devDependencies": {
+    "csstype": "^3.1.0",
+    "dukat": "0.5.8-rc.4"
+  },
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}
