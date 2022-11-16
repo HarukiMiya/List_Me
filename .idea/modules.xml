@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.commonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.commonTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.jsMain.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.jsMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.jsTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.jsTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.jvmMain.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.jvmMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.jvmTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.jvmTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shoppinglist.test.iml" filepath="$PROJECT_DIR$/.idea/modules/shoppinglist.test.iml" />
+    </modules>
+  </component>
+</project>

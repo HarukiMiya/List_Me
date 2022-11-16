@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-js:1.7.20-Beta" type="kotlin.js">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-js/1.7.20-Beta/1bfe087b32f3664a313f5e0240ef6a3efa095678/kotlin-stdlib-js-1.7.20-Beta.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-js/1.7.20-Beta/db9531f927e263bf9511b6fccf06179ce83cf945/kotlin-stdlib-js-1.7.20-Beta-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

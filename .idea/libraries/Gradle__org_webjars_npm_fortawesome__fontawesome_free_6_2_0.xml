@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.webjars.npm:fortawesome__fontawesome-free:6.2.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.npm/fortawesome__fontawesome-free/6.2.0/1c921c26a661c40bfd0f7f57e80e606a38616c32/fortawesome__fontawesome-free-6.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.npm/fortawesome__fontawesome-free/6.2.0/b04f3ee8f5e43fa3b162981b50bb72fe1acabb33/fortawesome__fontawesome-free-6.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

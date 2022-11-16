@@ -17,7 +17,7 @@ private val scope = MainScope()
 
 //val LoginContainer = document.getElementById("login-root") ?: error("Couldn't find container!")
 val Login = FC<Props> {
-    var user by useState(emptyList<User>())
+//    var user by useState(emptyList<User>())
 
     div {
         h1 {
