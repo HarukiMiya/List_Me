@@ -4,13 +4,13 @@ import kotlinx.datetime.*
 @Serializable
 data class ShoppingListItem(val desc: String, val priority: Int) {
     val id: Int = desc.hashCode()
-    val  DateTime: String = getCurrentTime()
+    val  DateTime: String = getCurrentDateTime()
     companion object {
         const val path = "/shoppingList"
     }
 }
 
-public fun getCurrentTime(): String {
+public fun getCurrentDateTime(): String {
     // return something like 2022-11-17T11:56:34.311Z
     val currentMoment: Instant = Clock.System.now()
     // return year-day-month
@@ -19,12 +19,11 @@ public fun getCurrentTime(): String {
     val day: String = currentDate.dayOfMonth.toString()
     val month: String = currentDate.monthNumber.toString()
     val year: String = currentDate.year.toString()
-    // taking hours and min, excluding seconds and nanoseconds
     // 24 hour format
-    val currentTime: String = currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).time.toString().take(5)
+    val currentTime: String = currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).time.toString().take(8)
 
 
-    return "$day.$month.$year $currentTime"
+    return "$day/$month/$year $currentTime"
     //return currentMoment
 }
 
