@@ -1,5 +1,6 @@
 import csstype.*
 import csstype.Font.Companion.icon
+import csstype.FontSize.Companion.smaller
 import emotion.react.css
 import kotlinx.browser.document
 import react.*
@@ -21,7 +22,9 @@ import org.w3c.dom.HTMLInputElement
 import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.ReactHTML.body
+import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.i
+import react.dom.html.ReactHTML.small
 import react.dom.html.ReactHTML.style
 
 @JsName("$")
@@ -90,10 +93,16 @@ val App = FC<Props> {
                         console.log("${item.id}")
                     }
                 }
+
                 p {
                     id = "${item.id}"
-                    +"[${item.priority}] ${item.desc}"
+                    +"[${item.priority}] ${item.desc} || "
+                    ReactHTML.small{
+                        +" DateTime: ${item.DateTime}"
+                    }
+
                 }
+
                 div {
                     className = ClassName("${item.id}")
                     editComponent {
