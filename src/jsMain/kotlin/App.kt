@@ -88,20 +88,6 @@ val App = FC<Props> {
                         }
                     }
                 }
-                else {
-                    i {
-                        className = ClassName("fa fa-floppy-o")
-                    }
-//                    onClick = {
-//                        onSubmit = { input ->
-//                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' })
-//                            scope.launch {
-//                                addShoppingListItem(cartItem)
-//                                shoppingList = getShoppingList()
-//                            }
-//                        }
-//                    }
-                }
 
                 key = item.toString()
                 if(item==selectedEditItem) {

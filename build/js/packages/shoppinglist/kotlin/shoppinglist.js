@@ -111,6 +111,7 @@
   var wrapFunction = Kotlin.wrapFunction;
   var Comparator = Kotlin.kotlin.Comparator;
   var InputType$text = (/*union*/{button: 'button', checkbox: 'checkbox', color: 'color', date: 'date', datetimeLocal: 'datetime-local', email: 'email', file: 'file', hidden: 'hidden', image: 'image', month: 'month', number: 'number', password: 'password', radio: 'radio', range: 'range', reset: 'reset', search: 'search', submit: 'submit', tel: 'tel', text: 'text', time: 'time', url: 'url', week: 'week'}/*union*/).text;
+  var ButtonType$submit = (/*union*/{submit: 'submit', reset: 'reset', button: 'button'}/*union*/).submit;
   var css = $module$kotlin_emotion.$$importsForInline$$['@emotion/css'].css;
   var InputType$password = (/*union*/{button: 'button', checkbox: 'checkbox', color: 'color', date: 'date', datetimeLocal: 'datetime-local', email: 'email', file: 'file', hidden: 'hidden', image: 'image', month: 'month', number: 'number', password: 'password', radio: 'radio', range: 'range', reset: 'reset', search: 'search', submit: 'submit', tel: 'tel', text: 'text', time: 'time', url: 'url', week: 'week'}/*union*/).password;
   var InputType$submit = (/*union*/{button: 'button', checkbox: 'checkbox', color: 'color', date: 'date', datetimeLocal: 'datetime-local', email: 'email', file: 'file', hidden: 'hidden', image: 'image', month: 'month', number: 'number', password: 'password', radio: 'radio', range: 'range', reset: 'reset', search: 'search', submit: 'submit', tel: 'tel', text: 'text', time: 'time', url: 'url', week: 'week'}/*union*/).submit;
@@ -1116,10 +1117,6 @@
       return Unit;
     };
   }
-  function App$lambda$lambda$lambda$lambda$lambda_1($receiver) {
-    $receiver.className = 'fa fa-floppy-o';
-    return Unit;
-  }
   function Coroutine$App$lambda$lambda$lambda$lambda$lambda$lambda$lambda_0(closure$item_0, closure$cartItem_0, closure$shoppingList_0, $receiver_0, controller, continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.$controller = controller;
@@ -1199,13 +1196,13 @@
       return Unit;
     };
   }
-  function App$lambda$lambda$lambda$lambda$lambda_2(closure$item, closure$shoppingList, closure$selectedEditItem) {
+  function App$lambda$lambda$lambda$lambda$lambda_1(closure$item, closure$shoppingList, closure$selectedEditItem) {
     return function ($receiver) {
       $receiver.onSubmit = App$lambda$lambda$lambda$lambda$lambda$lambda_3(closure$item, closure$shoppingList, closure$selectedEditItem);
       return Unit;
     };
   }
-  function App$lambda$lambda$lambda$lambda$lambda_3(closure$item) {
+  function App$lambda$lambda$lambda$lambda$lambda_2(closure$item) {
     return function ($receiver) {
       $receiver.className = 'font-small';
       $receiver.unaryPlus_pdl1vz$(' DateTime: ' + closure$item.DateTime);
@@ -1217,15 +1214,13 @@
       if (!equals(closure$item, closure$selectedEditItem[0])) {
         $receiver.invoke_gax9jq$(html.ReactHTML.p, App$lambda$lambda$lambda$lambda$lambda(closure$item, closure$shoppingList));
         $receiver.invoke_gax9jq$(html.ReactHTML.p, App$lambda$lambda$lambda$lambda$lambda_0(closure$item, closure$selectedEditItem));
-      } else {
-        $receiver.invoke_gax9jq$(html.ReactHTML.i, App$lambda$lambda$lambda$lambda$lambda_1);
       }
       $receiver.key = closure$item.toString();
       if (equals(closure$item, closure$selectedEditItem[0])) {
-        $receiver.invoke_gax9jq$(editComponent, App$lambda$lambda$lambda$lambda$lambda_2(closure$item, closure$shoppingList, closure$selectedEditItem));
+        $receiver.invoke_gax9jq$(editComponent, App$lambda$lambda$lambda$lambda$lambda_1(closure$item, closure$shoppingList, closure$selectedEditItem));
       } else {
         $receiver.unaryPlus_pdl1vz$('[' + closure$item.priority + '] ' + closure$item.desc + '  || ');
-        $receiver.invoke_gax9jq$(html.ReactHTML.p, App$lambda$lambda$lambda$lambda$lambda_3(closure$item));
+        $receiver.invoke_gax9jq$(html.ReactHTML.p, App$lambda$lambda$lambda$lambda$lambda_2(closure$item));
       }
       return Unit;
     };
@@ -1312,7 +1307,16 @@
       return Unit;
     };
   }
-  function editComponent$lambda$lambda$lambda(closure$changeHandler, closure$text) {
+  function editComponent$lambda$lambda$lambda$lambda($receiver) {
+    $receiver.className = 'fa fa-floppy-o';
+    return Unit;
+  }
+  function editComponent$lambda$lambda$lambda($receiver) {
+    $receiver.type = ButtonType$submit;
+    $receiver.invoke_gax9jq$(html.ReactHTML.i, editComponent$lambda$lambda$lambda$lambda);
+    return Unit;
+  }
+  function editComponent$lambda$lambda$lambda_0(closure$changeHandler, closure$text) {
     return function ($receiver) {
       $receiver.type = InputType$text;
       $receiver.onChange = closure$changeHandler;
@@ -1324,7 +1328,8 @@
     return function ($receiver) {
       $receiver.id = 'edit-form';
       $receiver.onSubmit = closure$submitHandler;
-      $receiver.invoke_gax9jq$(html.ReactHTML.input, editComponent$lambda$lambda$lambda(closure$changeHandler, closure$text));
+      $receiver.invoke_gax9jq$(html.ReactHTML.button, editComponent$lambda$lambda$lambda);
+      $receiver.invoke_gax9jq$(html.ReactHTML.input, editComponent$lambda$lambda$lambda_0(closure$changeHandler, closure$text));
       return Unit;
     };
   }
