@@ -1,0 +1,82 @@
+
+import org.w3c.dom.HTMLFormElement
+import react.*
+import org.w3c.dom.HTMLInputElement
+import react.dom.aria.ariaLabel
+import react.dom.events.ChangeEventHandler
+import react.dom.events.FormEventHandler
+import react.dom.html.AutoComplete
+import react.dom.html.InputType
+import react.dom.html.ReactHTML.form
+import react.dom.html.ReactHTML.h2
+import react.dom.html.ReactHTML.input
+import react.dom.html.ReactHTML.label
+
+external interface LoginProps : Props {
+    var onSubmit: (String,String) -> Unit
+
+//    var user: (String) -> Unit
+}
+
+val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a string
+    val (username, setUsername) = useState("")
+    val (pass, setPass) = useState("")
+    val submitHandler: FormEventHandler<HTMLFormElement> = { // on submit do this
+        it.preventDefault() // prevents autosubmit or something
+        setPass("") // clear text
+        setUsername("")
+//        username=text
+        props.onSubmit(username, pass)
+    }
+
+    val changeHandler: ChangeEventHandler<HTMLInputElement> = {
+        setUsername(it.target.value)
+    }
+    val changeHandle: ChangeEventHandler<HTMLInputElement> = {
+        setPass(it.target.value)
+    }
+
+    h2 {
+        +"login"
+    }
+    form {
+        onSubmit = submitHandler
+        //        label{
+//            htmlFor="email"
+//            +"Email:"
+//            input{
+//                type=InputType.email
+//                onChange=changeHandler
+//                name="email"
+//
+//            }
+//        }
+        label {
+            htmlFor = "name"
+            +"Name:"
+            input {
+                type = InputType.text
+                onChange = changeHandler
+                name = "name"
+                value = username
+            }
+        }
+        label {
+            htmlFor = "password"
+            +"Password:"
+            input {
+                type = InputType.password
+                onChange = changeHandle
+                name = "password"
+                value = pass
+
+            }
+        }
+        input {
+            type = InputType.submit
+            value = "LOGIN"
+        }
+
+
+    }
+}
