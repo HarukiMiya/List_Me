@@ -48,25 +48,6 @@ val Login = FC<Props> {
             }
         }
 
-//        form {
-//            label {
-//                +"Username"
-//                input {
-//                    type = InputType.text
-//                }
-//            }
-//            label {
-//                +"Password"
-//                input {
-//                    type = InputType.password
-//                }
-//            }
-//            button {
-//                input {
-//                    type = InputType.submit
-//                }
-//            }
-
 
 
     }

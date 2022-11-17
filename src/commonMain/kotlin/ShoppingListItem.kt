@@ -10,6 +10,15 @@ data class ShoppingListItem(val desc: String, val priority: Int) {
     }
 }
 
+@Serializable
+data class User(val username: String, val password: String) {
+    val userId: Int = username.hashCode()
+
+    companion object {
+        const val path = "/user"
+    }
+}
+
 public fun getCurrentDateTime(): String {
     // return something like 2022-11-17T11:56:34.311Z
     val currentMoment: Instant = Clock.System.now()

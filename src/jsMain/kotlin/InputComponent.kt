@@ -6,7 +6,9 @@ import react.*
 import org.w3c.dom.HTMLInputElement
 import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
+import react.dom.html.ButtonType
 import react.dom.html.InputType
+import react.dom.html.ReactHTML
 import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.input
 
@@ -57,30 +59,6 @@ val editComponent = FC<InputProps> { props ->
             type = InputType.text
             onChange = changeHandler
             value = text
-        }
-    }
-}
-
-val userComponent = FC<InputProps> { props ->
-    val (text, setText) = useState("")
-
-    val submitHandler: FormEventHandler<HTMLFormElement> = {
-        it.preventDefault()
-        setText("")
-        props.onSubmit(text)
-    }
-
-    val changeHandler: ChangeEventHandler<HTMLInputElement> = {
-        setText(it.target.value)
-    }
-
-    form {
-        onSubmit = submitHandler
-        input {
-            type = InputType.text
-            onChange = changeHandler
-            value = text
-            placeholder = "Username"
         }
     }
 }

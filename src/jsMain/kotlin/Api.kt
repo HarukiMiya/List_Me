@@ -19,14 +19,6 @@ suspend fun getShoppingList(): List<ShoppingListItem> {
     return jsonClient.get(endpoint + ShoppingListItem.path).body()
 }
 
-//suspend fun editShoppingListItem(shoppingListItem: ShoppingListItem)  {
-//    jsonClient.delete(endpoint + ShoppingListItem.path + "/${shoppingListItem.id}")
-//    jsonClient.post(endpoint + ShoppingListItem.path) {
-//        contentType(ContentType.Application.Json)
-//        setBody(shoppingListItem)
-//    }
-//}
-
 suspend fun addShoppingListItem(shoppingListItem: ShoppingListItem) {
     jsonClient.post(endpoint + ShoppingListItem.path) {
         contentType(ContentType.Application.Json)
@@ -38,14 +30,24 @@ suspend fun deleteShoppingListItem(shoppingListItem: ShoppingListItem) {
     jsonClient.delete(endpoint + ShoppingListItem.path + "/${shoppingListItem.id}")
 }
 
+suspend fun editShoppingListItem(shoppingListItem: ShoppingListItem, updatedItem: ShoppingListItem) {
 
-//suspend fun getUserList(): List<User> {
-//    return jsonClient.get(endpoint + User.path).body()
-//}
-//
-//suspend fun addUserItem(user: User) {
-//    jsonClient.post(endpoint + User.path) {
-//        contentType(ContentType.Application.Json)
-////        setBody(User)
-//    }
-//}
+    jsonClient.put(endpoint + ShoppingListItem.path+ "/${shoppingListItem.id}")
+    {
+        contentType(ContentType.Application.Json)
+        setBody(updatedItem)
+    }
+
+}
+
+
+suspend fun getUserList(): List<User> {
+    return jsonClient.get(endpoint + User.path).body()
+}
+
+suspend fun addUserItem(user: User) {
+    jsonClient.post(endpoint + User.path) {
+        contentType(ContentType.Application.Json)
+//        setBody(User)
+    }
+}

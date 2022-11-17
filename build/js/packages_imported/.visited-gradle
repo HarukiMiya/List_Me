@@ -158,6 +158,10 @@
     "123e35a447be67002500ce2a679bb3cc": {
       "src": "/Users/harukimiyazaki/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-emotion/11.9.3-pre.354/74c1cba8cf21500b4cc0933fcbb284201ae1a04f/kotlin-emotion-11.9.3-pre.354.jar",
       "target": "kotlin-emotion/11.9.3-pre.354"
+    },
+    "34013da8301abe7be3287869643e736a": {
+      "src": "/Users/harukimiyazaki/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-datetime-js/0.4.0/e8d336823a9d73c2a7edb7782a9fc5d74438ad8a/kotlinx-datetime-jslegacy-0.4.0.jar",
+      "target": "Kotlin-DateTime-library-kotlinx-datetime-js-legacy/0.4.0"
     }
   }
 }

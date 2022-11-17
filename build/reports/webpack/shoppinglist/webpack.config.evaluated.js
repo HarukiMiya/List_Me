@@ -2,7 +2,7 @@
   mode: 'development',
   resolve: {
     modules: [
-      '/Users/harukimiyazaki/IdeaProjects/jvm-js-fullstack/build/js/packages/shoppinglist/kotlin-dce-dev',
+      '/Users/harukimiyazaki/Site/CS178_2022/build/js/packages/shoppinglist/kotlin-dce-dev',
       'node_modules'
     ]
   },
@@ -33,11 +33,11 @@
   },
   entry: {
     main: [
-      '/Users/harukimiyazaki/IdeaProjects/jvm-js-fullstack/build/js/packages/shoppinglist/kotlin-dce-dev/shoppinglist.js'
+      '/Users/harukimiyazaki/Site/CS178_2022/build/js/packages/shoppinglist/kotlin-dce-dev/shoppinglist.js'
     ]
   },
   output: {
-    path: '/Users/harukimiyazaki/IdeaProjects/jvm-js-fullstack/build/distributions',
+    path: '/Users/harukimiyazaki/Site/CS178_2022/build/distributions',
     filename: [Function: filename],
     library: 'shoppinglist',
     libraryTarget: 'umd',

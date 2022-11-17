@@ -19,6 +19,7 @@
     "packages_imported/ktor-ktor-serialization-js-legacy/2.0.3",
     "packages_imported/ktor-ktor-websockets-js-legacy/2.0.3",
     "packages_imported/kotlinx-html-js/0.8.0",
+    "packages_imported/Kotlin-DateTime-library-kotlinx-datetime-js-legacy/0.4.0",
     "packages_imported/ktor-ktor-client-js-js-legacy/2.0.3",
     "packages_imported/ktor-ktor-client-content-negotiation-js-legacy/2.0.3",
     "packages_imported/ktor-ktor-serialization-kotlinx-json-js-legacy/2.0.3",
