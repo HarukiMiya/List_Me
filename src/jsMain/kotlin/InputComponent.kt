@@ -50,7 +50,7 @@ val editComponent = FC<InputProps> { props ->
         setText("")
         props.onSubmit(text)
     }
-
+//    console.log("${}")
     val changeHandler: ChangeEventHandler<HTMLInputElement> = {
         setText(it.target.value)
     }

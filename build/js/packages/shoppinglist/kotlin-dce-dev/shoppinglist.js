@@ -1,8 +1,8 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd)
-    define(['exports', 'kotlin', 'kotlinx-serialization-kotlinx-serialization-core-js-legacy', 'Kotlin-DateTime-library-kotlinx-datetime-js-legacy', 'ktor-ktor-client-content-negotiation-js-legacy', 'ktor-ktor-serialization-kotlinx-json-js-legacy', 'ktor-ktor-client-core-js-legacy', 'ktor-ktor-http-js-legacy', 'kotlinx-coroutines-core', 'react', 'kotlin-react-core', 'kotlin-react-dom', 'kotlin-csstype', 'kotlin-react', 'kotlin-emotion', 'react-router', 'kotlin-react-router-dom', 'react-router-dom', 'react-dom/client'], factory);
+    define(['exports', 'kotlin', 'kotlinx-serialization-kotlinx-serialization-core-js-legacy', 'Kotlin-DateTime-library-kotlinx-datetime-js-legacy', 'ktor-ktor-client-content-negotiation-js-legacy', 'ktor-ktor-serialization-kotlinx-json-js-legacy', 'ktor-ktor-client-core-js-legacy', 'ktor-ktor-http-js-legacy', 'kotlinx-coroutines-core', 'react', 'kotlin-react-core', 'kotlin-react-dom', 'kotlin-csstype', 'kotlin-react', 'kotlin-emotion', 'react-router-dom', 'react-router', 'react-dom/client'], factory);
   else if (typeof exports === 'object')
-    factory(module.exports, require('kotlin'), require('kotlinx-serialization-kotlinx-serialization-core-js-legacy'), require('Kotlin-DateTime-library-kotlinx-datetime-js-legacy'), require('ktor-ktor-client-content-negotiation-js-legacy'), require('ktor-ktor-serialization-kotlinx-json-js-legacy'), require('ktor-ktor-client-core-js-legacy'), require('ktor-ktor-http-js-legacy'), require('kotlinx-coroutines-core'), require('react'), require('kotlin-react-core'), require('kotlin-react-dom'), require('kotlin-csstype'), require('kotlin-react'), require('kotlin-emotion'), require('react-router'), require('kotlin-react-router-dom'), require('react-router-dom'), require('react-dom/client'));
+    factory(module.exports, require('kotlin'), require('kotlinx-serialization-kotlinx-serialization-core-js-legacy'), require('Kotlin-DateTime-library-kotlinx-datetime-js-legacy'), require('ktor-ktor-client-content-negotiation-js-legacy'), require('ktor-ktor-serialization-kotlinx-json-js-legacy'), require('ktor-ktor-client-core-js-legacy'), require('ktor-ktor-http-js-legacy'), require('kotlinx-coroutines-core'), require('react'), require('kotlin-react-core'), require('kotlin-react-dom'), require('kotlin-csstype'), require('kotlin-react'), require('kotlin-emotion'), require('react-router-dom'), require('react-router'), require('react-dom/client'));
   else {
     if (typeof kotlin === 'undefined') {
       throw new Error("Error loading module 'shoppinglist'. Its dependency 'kotlin' was not found. Please, check whether 'kotlin' is loaded prior to 'shoppinglist'.");
@@ -46,21 +46,18 @@
     if (typeof this['kotlin-emotion'] === 'undefined') {
       throw new Error("Error loading module 'shoppinglist'. Its dependency 'kotlin-emotion' was not found. Please, check whether 'kotlin-emotion' is loaded prior to 'shoppinglist'.");
     }
-    if (typeof this['react-router'] === 'undefined') {
-      throw new Error("Error loading module 'shoppinglist'. Its dependency 'react-router' was not found. Please, check whether 'react-router' is loaded prior to 'shoppinglist'.");
-    }
-    if (typeof this['kotlin-react-router-dom'] === 'undefined') {
-      throw new Error("Error loading module 'shoppinglist'. Its dependency 'kotlin-react-router-dom' was not found. Please, check whether 'kotlin-react-router-dom' is loaded prior to 'shoppinglist'.");
-    }
     if (typeof this['react-router-dom'] === 'undefined') {
       throw new Error("Error loading module 'shoppinglist'. Its dependency 'react-router-dom' was not found. Please, check whether 'react-router-dom' is loaded prior to 'shoppinglist'.");
+    }
+    if (typeof this['react-router'] === 'undefined') {
+      throw new Error("Error loading module 'shoppinglist'. Its dependency 'react-router' was not found. Please, check whether 'react-router' is loaded prior to 'shoppinglist'.");
     }
     if (typeof this['react-dom/client'] === 'undefined') {
       throw new Error("Error loading module 'shoppinglist'. Its dependency 'react-dom/client' was not found. Please, check whether 'react-dom/client' is loaded prior to 'shoppinglist'.");
     }
-    root.shoppinglist = factory(typeof shoppinglist === 'undefined' ? {} : shoppinglist, kotlin, this['kotlinx-serialization-kotlinx-serialization-core-js-legacy'], this['Kotlin-DateTime-library-kotlinx-datetime-js-legacy'], this['ktor-ktor-client-content-negotiation-js-legacy'], this['ktor-ktor-serialization-kotlinx-json-js-legacy'], this['ktor-ktor-client-core-js-legacy'], this['ktor-ktor-http-js-legacy'], this['kotlinx-coroutines-core'], react, this['kotlin-react-core'], this['kotlin-react-dom'], this['kotlin-csstype'], this['kotlin-react'], this['kotlin-emotion'], this['react-router'], this['kotlin-react-router-dom'], this['react-router-dom'], this['react-dom/client']);
+    root.shoppinglist = factory(typeof shoppinglist === 'undefined' ? {} : shoppinglist, kotlin, this['kotlinx-serialization-kotlinx-serialization-core-js-legacy'], this['Kotlin-DateTime-library-kotlinx-datetime-js-legacy'], this['ktor-ktor-client-content-negotiation-js-legacy'], this['ktor-ktor-serialization-kotlinx-json-js-legacy'], this['ktor-ktor-client-core-js-legacy'], this['ktor-ktor-http-js-legacy'], this['kotlinx-coroutines-core'], react, this['kotlin-react-core'], this['kotlin-react-dom'], this['kotlin-csstype'], this['kotlin-react'], this['kotlin-emotion'], this['react-router-dom'], this['react-router'], this['react-dom/client']);
   }
-}(this, function (_, Kotlin, $module$kotlinx_serialization_kotlinx_serialization_core_js_legacy, $module$Kotlin_DateTime_library_kotlinx_datetime_js_legacy, $module$ktor_ktor_client_content_negotiation_js_legacy, $module$ktor_ktor_serialization_kotlinx_json_js_legacy, $module$ktor_ktor_client_core_js_legacy, $module$ktor_ktor_http_js_legacy, $module$kotlinx_coroutines_core, $module$react, $module$kotlin_react_core, $module$kotlin_react_dom, $module$kotlin_csstype, $module$kotlin_react, $module$kotlin_emotion, $module$react_router, $module$kotlin_react_router_dom, $module$react_router_dom, $module$react_dom_client) {
+}(this, function (_, Kotlin, $module$kotlinx_serialization_kotlinx_serialization_core_js_legacy, $module$Kotlin_DateTime_library_kotlinx_datetime_js_legacy, $module$ktor_ktor_client_content_negotiation_js_legacy, $module$ktor_ktor_serialization_kotlinx_json_js_legacy, $module$ktor_ktor_client_core_js_legacy, $module$ktor_ktor_http_js_legacy, $module$kotlinx_coroutines_core, $module$react, $module$kotlin_react_core, $module$kotlin_react_dom, $module$kotlin_csstype, $module$kotlin_react, $module$kotlin_emotion, $module$react_router_dom, $module$react_router, $module$react_dom_client) {
   'use strict';
   var $$importsForInline$$ = _.$$importsForInline$$ || (_.$$importsForInline$$ = {});
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
@@ -116,7 +113,6 @@
   var InputType$text = (/*union*/{button: 'button', checkbox: 'checkbox', color: 'color', date: 'date', datetimeLocal: 'datetime-local', email: 'email', file: 'file', hidden: 'hidden', image: 'image', month: 'month', number: 'number', password: 'password', radio: 'radio', range: 'range', reset: 'reset', search: 'search', submit: 'submit', tel: 'tel', text: 'text', time: 'time', url: 'url', week: 'week'}/*union*/).text;
   var ButtonType$submit = (/*union*/{submit: 'submit', reset: 'reset', button: 'button'}/*union*/).submit;
   var css = $module$kotlin_emotion.$$importsForInline$$['@emotion/css'].css;
-  var useNavigate = $module$react_router.useNavigate;
   var InputType$password = (/*union*/{button: 'button', checkbox: 'checkbox', color: 'color', date: 'date', datetimeLocal: 'datetime-local', email: 'email', file: 'file', hidden: 'hidden', image: 'image', month: 'month', number: 'number', password: 'password', radio: 'radio', range: 'range', reset: 'reset', search: 'search', submit: 'submit', tel: 'tel', text: 'text', time: 'time', url: 'url', week: 'week'}/*union*/).password;
   var InputType$submit = (/*union*/{button: 'button', checkbox: 'checkbox', color: 'color', date: 'date', datetimeLocal: 'datetime-local', email: 'email', file: 'file', hidden: 'hidden', image: 'image', month: 'month', number: 'number', password: 'password', radio: 'radio', range: 'range', reset: 'reset', search: 'search', submit: 'submit', tel: 'tel', text: 'text', time: 'time', url: 'url', week: 'week'}/*union*/).submit;
   var create = $module$kotlin_react.react.create_r7bapy$;
@@ -274,7 +270,6 @@
     this.username = username;
     this.password = password;
     this.userId = hashCode(this.username);
-    this.shoppingListInfo = getShoppingListInfo();
   }
   function User$Companion() {
     User$Companion_instance = this;
@@ -296,11 +291,10 @@
     return User$Companion_instance;
   }
   function User$$serializer() {
-    this.descriptor_5jv2b4$_0 = new PluginGeneratedSerialDescriptor('User', this, 4);
+    this.descriptor_5jv2b4$_0 = new PluginGeneratedSerialDescriptor('User', this, 3);
     this.descriptor.addElement_ivxn3r$('username', false);
     this.descriptor.addElement_ivxn3r$('password', false);
     this.descriptor.addElement_ivxn3r$('userId', true);
-    this.descriptor.addElement_ivxn3r$('shoppingListInfo', true);
     User$$serializer_instance = this;
   }
   Object.defineProperty(User$$serializer.prototype, 'descriptor', {
@@ -315,8 +309,6 @@
     output.encodeStringElement_iij8qq$(this.descriptor, 1, value.password);
     if (!equals(value.userId, hashCode(this.username)) || output.shouldEncodeElementDefault_szpzho$(this.descriptor, 2))
       output.encodeIntElement_ptg7oe$(this.descriptor, 2, value.userId);
-    if (!equals(value.shoppingListInfo, getShoppingListInfo()) || output.shouldEncodeElementDefault_szpzho$(this.descriptor, 3))
-      output.encodeSerializableElement_r4qlx7$(this.descriptor, 3, ShoppingListItem$$serializer_getInstance(), value.shoppingListInfo);
     output.endStructure_24f42q$(this.descriptor);
   };
   User$$serializer.prototype.deserialize_bq71mq$ = function (decoder) {
@@ -324,8 +316,7 @@
     var bitMask0 = 0;
     var local0
     , local1
-    , local2
-    , local3;
+    , local2;
     var input = decoder.beginStructure_24f42q$(this.descriptor);
     loopLabel: while (true) {
       index = input.decodeElementIndex_24f42q$(this.descriptor);
@@ -342,10 +333,6 @@
           local2 = input.decodeIntElement_szpzho$(this.descriptor, 2);
           bitMask0 |= 4;
           break;
-        case 3:
-          local3 = input.decodeSerializableElement_12e8id$(this.descriptor, 3, ShoppingListItem$$serializer_getInstance(), local3);
-          bitMask0 |= 8;
-          break;
         case -1:
           break loopLabel;
         default:
@@ -353,10 +340,10 @@
       }
     }
     input.endStructure_24f42q$(this.descriptor);
-    return User_init(bitMask0, local0, local1, local2, local3, null);
+    return User_init(bitMask0, local0, local1, local2, null);
   };
   User$$serializer.prototype.childSerializers = function () {
-    return [internal.StringSerializer, internal.StringSerializer, internal.IntSerializer, ShoppingListItem$$serializer_getInstance()];
+    return [internal.StringSerializer, internal.StringSerializer, internal.IntSerializer];
   };
   User$$serializer.$metadata$ = {
     kind: Kind_OBJECT,
@@ -370,7 +357,7 @@
     }
     return User$$serializer_instance;
   }
-  function User_init(seen1, username, password, userId, shoppingListInfo, serializationConstructorMarker) {
+  function User_init(seen1, username, password, userId, serializationConstructorMarker) {
     var $this = serializationConstructorMarker || Object.create(User.prototype);
     if ((seen1 & 1) === 0)
       throw MissingFieldException_init('username');
@@ -384,10 +371,6 @@
       $this.userId = hashCode($this.username);
     else
       $this.userId = userId;
-    if ((seen1 & 8) === 0)
-      $this.shoppingListInfo = getShoppingListInfo();
-    else
-      $this.shoppingListInfo = shoppingListInfo;
     return $this;
   }
   User.$metadata$ = {
@@ -416,9 +399,6 @@
   User.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.username, other.username) && Kotlin.equals(this.password, other.password)))));
   };
-  function getShoppingListInfo() {
-    return new ShoppingListItem('banana', 1);
-  }
   function getCurrentDateTime() {
     var currentMoment = Clock.System.now();
     var currentDate = toLocalDateTime(currentMoment, TimeZone.Companion.currentSystemDefault()).date;
@@ -746,18 +726,18 @@
     else
       return instance.doResume(null);
   }
-  function Coroutine$getUser(continuation_0) {
+  function Coroutine$getUserList(continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.exceptionState_0 = 1;
   }
-  Coroutine$getUser.$metadata$ = {
+  Coroutine$getUserList.$metadata$ = {
     kind: Kotlin.Kind.CLASS,
     simpleName: null,
     interfaces: [CoroutineImpl]
   };
-  Coroutine$getUser.prototype = Object.create(CoroutineImpl.prototype);
-  Coroutine$getUser.prototype.constructor = Coroutine$getUser;
-  Coroutine$getUser.prototype.doResume = function () {
+  Coroutine$getUserList.prototype = Object.create(CoroutineImpl.prototype);
+  Coroutine$getUserList.prototype.constructor = Coroutine$getUserList;
+  Coroutine$getUserList.prototype.doResume = function () {
     do
       try {
         switch (this.state_0) {
@@ -817,26 +797,25 @@
       }
      while (true);
   };
-  function getUser(continuation_0, suspended) {
-    var instance = new Coroutine$getUser(continuation_0);
+  function getUserList(continuation_0, suspended) {
+    var instance = new Coroutine$getUserList(continuation_0);
     if (suspended)
       return instance;
     else
       return instance.doResume(null);
   }
-  function Coroutine$addUser(user_0, continuation_0) {
+  function Coroutine$addUserItem(user_0, continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.exceptionState_0 = 1;
-    this.local$user = user_0;
   }
-  Coroutine$addUser.$metadata$ = {
+  Coroutine$addUserItem.$metadata$ = {
     kind: Kotlin.Kind.CLASS,
     simpleName: null,
     interfaces: [CoroutineImpl]
   };
-  Coroutine$addUser.prototype = Object.create(CoroutineImpl.prototype);
-  Coroutine$addUser.prototype.constructor = Coroutine$addUser;
-  Coroutine$addUser.prototype.doResume = function () {
+  Coroutine$addUserItem.prototype = Object.create(CoroutineImpl.prototype);
+  Coroutine$addUserItem.prototype.constructor = Coroutine$addUserItem;
+  Coroutine$addUserItem.prototype.doResume = function () {
     do
       try {
         switch (this.state_0) {
@@ -846,32 +825,6 @@
             var $receiver_1 = new HttpRequestBuilder_init();
             url($receiver_1, urlString);
             contentType($receiver_1, ContentType.Application.Json);
-            if (this.local$user == null) {
-              $receiver_1.body = utils.EmptyContent;
-              $receiver_1.bodyType = null;
-            } else if (Kotlin.isType(this.local$user, OutgoingContent)) {
-              $receiver_1.body = this.local$user;
-              $receiver_1.bodyType = null;
-            } else {
-              $receiver_1.body = this.local$user;
-              var tmp$ = reflect.JsType;
-              var tmp$_0 = getKClass(User);
-              var tryGetType$result;
-              tryGetType$break: do {
-                try {
-                  tryGetType$result = createKType(getKClass(User), [], false);
-                } catch (cause) {
-                  if (Kotlin.isType(cause, Throwable)) {
-                    tryGetType$result = null;
-                    break tryGetType$break;
-                  } else
-                    throw cause;
-                }
-              }
-               while (false);
-              $receiver_1.bodyType = typeInfoImpl(tmp$, tmp$_0, tryGetType$result);
-            }
-
             $receiver_1.method = HttpMethod.Companion.Post;
             this.state_0 = 2;
             this.result_0 = (new HttpStatement_init($receiver_1, $receiver)).execute(this);
@@ -898,8 +851,8 @@
       }
      while (true);
   };
-  function addUser(user_0, continuation_0, suspended) {
-    var instance = new Coroutine$addUser(user_0, continuation_0);
+  function addUserItem(user_0, continuation_0, suspended) {
+    var instance = new Coroutine$addUserItem(user_0, continuation_0);
     if (suspended)
       return instance;
     else
@@ -1391,170 +1344,39 @@
   }
   var editComponent;
   var scope_1;
-  function Coroutine$SignIn$lambda$lambda$lambda(closure$user_0, $receiver_0, controller, continuation_0) {
-    CoroutineImpl.call(this, continuation_0);
-    this.$controller = controller;
-    this.exceptionState_0 = 1;
-    this.local$closure$user = closure$user_0;
-  }
-  Coroutine$SignIn$lambda$lambda$lambda.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: null,
-    interfaces: [CoroutineImpl]
-  };
-  Coroutine$SignIn$lambda$lambda$lambda.prototype = Object.create(CoroutineImpl.prototype);
-  Coroutine$SignIn$lambda$lambda$lambda.prototype.constructor = Coroutine$SignIn$lambda$lambda$lambda;
-  Coroutine$SignIn$lambda$lambda$lambda.prototype.doResume = function () {
-    do
-      try {
-        switch (this.state_0) {
-          case 0:
-            this.state_0 = 2;
-            this.result_0 = getUser(this);
-            if (this.result_0 === COROUTINE_SUSPENDED)
-              return COROUTINE_SUSPENDED;
-            continue;
-          case 1:
-            throw this.exception_0;
-          case 2:
-            var $this = this.local$closure$user;
-            var value = this.result_0;
-            $this[1](value);
-            return Unit;
-          default:
-            this.state_0 = 1;
-            throw new Error('State Machine Unreachable execution');
-        }
-      } catch (e) {
-        if (this.state_0 === 1) {
-          this.exceptionState_0 = this.state_0;
-          throw e;
-        } else {
-          this.state_0 = this.exceptionState_0;
-          this.exception_0 = e;
-        }
-      }
-     while (true);
-  };
-  function SignIn$lambda$lambda$lambda(closure$user_0) {
-    return function ($receiver_0, continuation_0, suspended) {
-      var instance = new Coroutine$SignIn$lambda$lambda$lambda(closure$user_0, $receiver_0, this, continuation_0);
-      if (suspended)
-        return instance;
-      else
-        return instance.doResume(null);
-    };
-  }
-  function SignIn$lambda$lambda(closure$user) {
-    return function ($receiver) {
-      launch(scope_1, void 0, void 0, SignIn$lambda$lambda$lambda(closure$user));
-      return Unit;
-    };
-  }
-  function SignIn$lambda$lambda$lambda$lambda($receiver) {
-    $receiver.unaryPlus_pdl1vz$('Please Sign In');
+  function Login$lambda$lambda$lambda$lambda($receiver) {
+    $receiver.unaryPlus_pdl1vz$('Please Log In');
     return Unit;
   }
-  function SignIn$lambda$lambda$lambda_0($receiver) {
-    $receiver.invoke_gax9jq$(html.ReactHTML.h1, SignIn$lambda$lambda$lambda$lambda);
+  function Login$lambda$lambda$lambda($receiver) {
+    $receiver.invoke_gax9jq$(html.ReactHTML.h1, Login$lambda$lambda$lambda$lambda);
     return Unit;
   }
-  function Coroutine$SignIn$lambda$lambda$lambda$lambda$lambda(closure$userinfo_0, closure$user_0, $receiver_0, controller, continuation_0) {
-    CoroutineImpl.call(this, continuation_0);
-    this.$controller = controller;
-    this.exceptionState_0 = 1;
-    this.local$closure$userinfo = closure$userinfo_0;
-    this.local$closure$user = closure$user_0;
-  }
-  Coroutine$SignIn$lambda$lambda$lambda$lambda$lambda.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: null,
-    interfaces: [CoroutineImpl]
-  };
-  Coroutine$SignIn$lambda$lambda$lambda$lambda$lambda.prototype = Object.create(CoroutineImpl.prototype);
-  Coroutine$SignIn$lambda$lambda$lambda$lambda$lambda.prototype.constructor = Coroutine$SignIn$lambda$lambda$lambda$lambda$lambda;
-  Coroutine$SignIn$lambda$lambda$lambda$lambda$lambda.prototype.doResume = function () {
-    do
-      try {
-        switch (this.state_0) {
-          case 0:
-            this.state_0 = 2;
-            this.result_0 = addUser(this.local$closure$userinfo, this);
-            if (this.result_0 === COROUTINE_SUSPENDED)
-              return COROUTINE_SUSPENDED;
-            continue;
-          case 1:
-            throw this.exception_0;
-          case 2:
-            this.state_0 = 3;
-            this.result_0 = getUser(this);
-            if (this.result_0 === COROUTINE_SUSPENDED)
-              return COROUTINE_SUSPENDED;
-            continue;
-          case 3:
-            var $this = this.local$closure$user;
-            var value = this.result_0;
-            $this[1](value);
-            return Unit;
-          default:
-            this.state_0 = 1;
-            throw new Error('State Machine Unreachable execution');
-        }
-      } catch (e) {
-        if (this.state_0 === 1) {
-          this.exceptionState_0 = this.state_0;
-          throw e;
-        } else {
-          this.state_0 = this.exceptionState_0;
-          this.exception_0 = e;
-        }
-      }
-     while (true);
-  };
-  function SignIn$lambda$lambda$lambda$lambda$lambda(closure$userinfo_0, closure$user_0) {
-    return function ($receiver_0, continuation_0, suspended) {
-      var instance = new Coroutine$SignIn$lambda$lambda$lambda$lambda$lambda(closure$userinfo_0, closure$user_0, $receiver_0, this, continuation_0);
-      if (suspended)
-        return instance;
-      else
-        return instance.doResume(null);
-    };
-  }
-  function SignIn$lambda$lambda$lambda$lambda_0(closure$user) {
-    return function (input, input2) {
-      var userinfo = new User(input, input2);
-      console.log(input);
-      console.log(input2);
-      launch(scope_1, void 0, void 0, SignIn$lambda$lambda$lambda$lambda$lambda(userinfo, closure$user));
-      return Unit;
-    };
-  }
-  function SignIn$lambda$lambda$lambda_1(closure$user) {
-    return function ($receiver) {
-      $receiver.onSubmit = SignIn$lambda$lambda$lambda$lambda_0(closure$user);
-      return Unit;
-    };
-  }
-  function SignIn$lambda$lambda_0(closure$user) {
-    return function ($receiver) {
-      var $receiver_0 = {};
-      $receiver_0.display = (/*union*/{block: 'block', inline: 'inline', runIn: 'run-in', flex: 'flex', flow: 'flow', flowRoot: 'flow-root', grid: 'grid', ruby: 'ruby', table: 'table', rubyBase: 'ruby-base', rubyBaseContainer: 'ruby-base-container', rubyText: 'ruby-text', rubyTextContainer: 'ruby-text-container', tableCaption: 'table-caption', tableCell: 'table-cell', tableColumn: 'table-column', tableColumnGroup: 'table-column-group', tableFooterGroup: 'table-footer-group', tableHeaderGroup: 'table-header-group', tableRow: 'table-row', tableRowGroup: 'table-row-group', inlineBlock: 'inline-block', inlineFlex: 'inline-flex', inlineGrid: 'inline-grid', inlineListItem: 'inline-list-item', inlineTable: 'inline-table', contents: 'contents', listItem: 'list-item'}/*union*/).flex;
-      $receiver_0.flexDirection = (/*union*/{column: 'column', columnReverse: 'column-reverse', row: 'row', rowReverse: 'row-reverse'}/*union*/).column;
-      $receiver_0.alignItems = (/*union*/{center: 'center', end: 'end', flexEnd: 'flex-end', flexStart: 'flex-start', selfEnd: 'self-end', selfStart: 'self-start', start: 'start', baseline: 'baseline', normal: 'normal', stretch: 'stretch'}/*union*/).center;
-      $receiver.className = css($receiver_0);
-      $receiver.invoke_gax9jq$(html.ReactHTML.div, SignIn$lambda$lambda$lambda_0);
-      $receiver.invoke_gax9jq$(signInComponent, SignIn$lambda$lambda$lambda_1(closure$user));
-      return Unit;
-    };
-  }
-  function SignIn$lambda($receiver, it) {
-    var user = useState(emptyList());
-    useEffectOnce(SignIn$lambda$lambda(user));
-    $receiver.invoke_gax9jq$(html.ReactHTML.div, SignIn$lambda$lambda_0(user));
+  function Login$lambda$lambda$lambda$lambda_0(input, input2) {
+    console.log(input);
+    console.log(input2);
     return Unit;
   }
-  var SignIn;
-  function signInComponent$lambda$lambda(closure$setPass, closure$setUsername, closure$props, closure$username, closure$pass) {
+  function Login$lambda$lambda$lambda_0($receiver) {
+    $receiver.onSubmit = Login$lambda$lambda$lambda$lambda_0;
+    return Unit;
+  }
+  function Login$lambda$lambda($receiver) {
+    var $receiver_0 = {};
+    $receiver_0.display = (/*union*/{block: 'block', inline: 'inline', runIn: 'run-in', flex: 'flex', flow: 'flow', flowRoot: 'flow-root', grid: 'grid', ruby: 'ruby', table: 'table', rubyBase: 'ruby-base', rubyBaseContainer: 'ruby-base-container', rubyText: 'ruby-text', rubyTextContainer: 'ruby-text-container', tableCaption: 'table-caption', tableCell: 'table-cell', tableColumn: 'table-column', tableColumnGroup: 'table-column-group', tableFooterGroup: 'table-footer-group', tableHeaderGroup: 'table-header-group', tableRow: 'table-row', tableRowGroup: 'table-row-group', inlineBlock: 'inline-block', inlineFlex: 'inline-flex', inlineGrid: 'inline-grid', inlineListItem: 'inline-list-item', inlineTable: 'inline-table', contents: 'contents', listItem: 'list-item'}/*union*/).flex;
+    $receiver_0.flexDirection = (/*union*/{column: 'column', columnReverse: 'column-reverse', row: 'row', rowReverse: 'row-reverse'}/*union*/).column;
+    $receiver_0.alignItems = (/*union*/{center: 'center', end: 'end', flexEnd: 'flex-end', flexStart: 'flex-start', selfEnd: 'self-end', selfStart: 'self-start', start: 'start', baseline: 'baseline', normal: 'normal', stretch: 'stretch'}/*union*/).center;
+    $receiver.className = css($receiver_0);
+    $receiver.invoke_gax9jq$(html.ReactHTML.div, Login$lambda$lambda$lambda);
+    $receiver.invoke_gax9jq$(loginComponent, Login$lambda$lambda$lambda_0);
+    return Unit;
+  }
+  function Login$lambda($receiver, it) {
+    $receiver.invoke_gax9jq$(html.ReactHTML.div, Login$lambda$lambda);
+    return Unit;
+  }
+  var Login;
+  function loginComponent$lambda$lambda(closure$setPass, closure$setUsername, closure$props, closure$username, closure$pass) {
     return function (it) {
       it.preventDefault();
       closure$setPass('');
@@ -1563,105 +1385,93 @@
       return Unit;
     };
   }
-  function signInComponent$lambda$lambda_0(closure$setUsername) {
+  function loginComponent$lambda$lambda_0(closure$setUsername) {
     return function (it) {
       closure$setUsername(it.target.value);
       return Unit;
     };
   }
-  function signInComponent$lambda$lambda_1(closure$setPass) {
+  function loginComponent$lambda$lambda_1(closure$setPass) {
     return function (it) {
       closure$setPass(it.target.value);
       return Unit;
     };
   }
-  function signInComponent$lambda$lambda$lambda$lambda(closure$changeHandler, closure$username) {
+  function loginComponent$lambda$lambda_2($receiver) {
+    $receiver.unaryPlus_pdl1vz$('login');
+    return Unit;
+  }
+  function loginComponent$lambda$lambda$lambda$lambda(closure$changeHandler, closure$username) {
     return function ($receiver) {
       $receiver.type = InputType$text;
       $receiver.onChange = closure$changeHandler;
       $receiver.name = 'name';
       $receiver.value = closure$username;
-      $receiver.placeholder = 'Username';
       return Unit;
     };
   }
-  function signInComponent$lambda$lambda$lambda(closure$changeHandler, closure$username) {
+  function loginComponent$lambda$lambda$lambda(closure$changeHandler, closure$username) {
     return function ($receiver) {
       $receiver.htmlFor = 'name';
-      $receiver.invoke_gax9jq$(html.ReactHTML.input, signInComponent$lambda$lambda$lambda$lambda(closure$changeHandler, closure$username));
+      $receiver.unaryPlus_pdl1vz$('Name:');
+      $receiver.invoke_gax9jq$(html.ReactHTML.input, loginComponent$lambda$lambda$lambda$lambda(closure$changeHandler, closure$username));
       return Unit;
     };
   }
-  function signInComponent$lambda$lambda$lambda_0($receiver) {
-    return Unit;
-  }
-  function signInComponent$lambda$lambda$lambda$lambda_0(closure$changeHandle, closure$pass) {
+  function loginComponent$lambda$lambda$lambda$lambda_0(closure$changeHandle, closure$pass) {
     return function ($receiver) {
       $receiver.type = InputType$password;
       $receiver.onChange = closure$changeHandle;
       $receiver.name = 'password';
       $receiver.value = closure$pass;
-      $receiver.placeholder = 'Password';
       return Unit;
     };
   }
-  function signInComponent$lambda$lambda$lambda_1(closure$changeHandle, closure$pass) {
+  function loginComponent$lambda$lambda$lambda_0(closure$changeHandle, closure$pass) {
     return function ($receiver) {
       $receiver.htmlFor = 'password';
-      $receiver.invoke_gax9jq$(html.ReactHTML.input, signInComponent$lambda$lambda$lambda$lambda_0(closure$changeHandle, closure$pass));
+      $receiver.unaryPlus_pdl1vz$('Password:');
+      $receiver.invoke_gax9jq$(html.ReactHTML.input, loginComponent$lambda$lambda$lambda$lambda_0(closure$changeHandle, closure$pass));
       return Unit;
     };
   }
-  function signInComponent$lambda$lambda$lambda$lambda$lambda(closure$navigate) {
-    return function (it) {
-      closure$navigate('/');
-      return Unit;
-    };
+  function loginComponent$lambda$lambda$lambda$lambda_1($receiver) {
+    $receiver.type = InputType$submit;
+    $receiver.className = 'btn';
+    $receiver.value = 'LOGIN';
+    return Unit;
   }
-  function signInComponent$lambda$lambda$lambda$lambda_1(closure$navigate) {
-    return function ($receiver) {
-      $receiver.type = InputType$submit;
-      $receiver.className = 'btn';
-      $receiver.value = 'SignIn';
-      $receiver.onClick = signInComponent$lambda$lambda$lambda$lambda$lambda(closure$navigate);
-      return Unit;
-    };
+  function loginComponent$lambda$lambda$lambda_1($receiver) {
+    $receiver.invoke_gax9jq$(html.ReactHTML.input, loginComponent$lambda$lambda$lambda$lambda_1);
+    return Unit;
   }
-  function signInComponent$lambda$lambda$lambda_2(closure$navigate) {
-    return function ($receiver) {
-      $receiver.className = 'signIn';
-      $receiver.invoke_gax9jq$(html.ReactHTML.input, signInComponent$lambda$lambda$lambda$lambda_1(closure$navigate));
-      return Unit;
-    };
-  }
-  function signInComponent$lambda$lambda_2(closure$submitHandler, closure$changeHandler, closure$username, closure$changeHandle, closure$pass, closure$navigate) {
+  function loginComponent$lambda$lambda_3(closure$submitHandler, closure$changeHandler, closure$username, closure$changeHandle, closure$pass) {
     return function ($receiver) {
       $receiver.onSubmit = closure$submitHandler;
-      $receiver.invoke_gax9jq$(html.ReactHTML.label, signInComponent$lambda$lambda$lambda(closure$changeHandler, closure$username));
-      $receiver.invoke_gax9jq$(html.ReactHTML.br, signInComponent$lambda$lambda$lambda_0);
-      $receiver.invoke_gax9jq$(html.ReactHTML.label, signInComponent$lambda$lambda$lambda_1(closure$changeHandle, closure$pass));
-      $receiver.invoke_gax9jq$(html.ReactHTML.div, signInComponent$lambda$lambda$lambda_2(closure$navigate));
+      $receiver.invoke_gax9jq$(html.ReactHTML.label, loginComponent$lambda$lambda$lambda(closure$changeHandler, closure$username));
+      $receiver.invoke_gax9jq$(html.ReactHTML.label, loginComponent$lambda$lambda$lambda_0(closure$changeHandle, closure$pass));
+      $receiver.invoke_gax9jq$(html.ReactHTML.div, loginComponent$lambda$lambda$lambda_1);
       return Unit;
     };
   }
-  function signInComponent$lambda($receiver, props) {
+  function loginComponent$lambda($receiver, props) {
     var tmp$ = useState('');
     var username = tmp$[0];
     var setUsername = tmp$[1];
     var tmp$_0 = useState('');
     var pass = tmp$_0[0];
     var setPass = tmp$_0[1];
-    var submitHandler = signInComponent$lambda$lambda(setPass, setUsername, props, username, pass);
-    var navigate = useNavigate();
-    var changeHandler = signInComponent$lambda$lambda_0(setUsername);
-    var changeHandle = signInComponent$lambda$lambda_1(setPass);
-    $receiver.invoke_gax9jq$(html.ReactHTML.form, signInComponent$lambda$lambda_2(submitHandler, changeHandler, username, changeHandle, pass, navigate));
+    var submitHandler = loginComponent$lambda$lambda(setPass, setUsername, props, username, pass);
+    var changeHandler = loginComponent$lambda$lambda_0(setUsername);
+    var changeHandle = loginComponent$lambda$lambda_1(setPass);
+    $receiver.invoke_gax9jq$(html.ReactHTML.h2, loginComponent$lambda$lambda_2);
+    $receiver.invoke_gax9jq$(html.ReactHTML.form, loginComponent$lambda$lambda_3(submitHandler, changeHandler, username, changeHandle, pass));
     return Unit;
   }
-  var signInComponent;
+  var loginComponent;
   function Application$lambda$lambda$lambda$lambda($receiver) {
-    $receiver.path = '/signIn';
-    $receiver.element = create(SignIn);
+    $receiver.path = '/login';
+    $receiver.element = create(Login);
     return Unit;
   }
   function Application$lambda$lambda$lambda$lambda_0($receiver) {
@@ -1708,9 +1518,8 @@
   Object.defineProperty(User, '$serializer', {
     get: User$$serializer_getInstance
   });
-  _.User_init_7utpkr$ = User_init;
+  _.User_init_bmpwe9$ = User_init;
   _.User = User;
-  _.getShoppingListInfo = getShoppingListInfo;
   _.getCurrentDateTime = getCurrentDateTime;
   Object.defineProperty(_, 'endpoint', {
     get: function () {
@@ -1727,8 +1536,8 @@
   _.addShoppingListItem_lsukc9$ = addShoppingListItem;
   _.deleteShoppingListItem_lsukc9$ = deleteShoppingListItem;
   _.editShoppingListItem_b2gtvw$ = editShoppingListItem;
-  _.getUser = getUser;
-  _.addUser_1kpnv$ = addUser;
+  _.getUserList = getUserList;
+  _.addUserItem_1kpnv$ = addUserItem;
   $$importsForInline$$['kotlin-react-core'] = $module$kotlin_react_core;
   $$importsForInline$$['kotlin-csstype'] = $module$kotlin_csstype;
   Object.defineProperty(_, 'App', {
@@ -1747,15 +1556,14 @@
     }
   });
   $$importsForInline$$['kotlin-emotion'] = $module$kotlin_emotion;
-  Object.defineProperty(_, 'SignIn', {
+  Object.defineProperty(_, 'Login', {
     get: function () {
-      return SignIn;
+      return Login;
     }
   });
-  $$importsForInline$$['kotlin-react-router-dom'] = $module$kotlin_react_router_dom;
-  Object.defineProperty(_, 'signInComponent', {
+  Object.defineProperty(_, 'loginComponent', {
     get: function () {
-      return signInComponent;
+      return loginComponent;
     }
   });
   Object.defineProperty(_, 'Application', {
@@ -1774,8 +1582,8 @@
   scope_0 = MainScope();
   editComponent = FC(editComponent$lambda);
   scope_1 = MainScope();
-  SignIn = FC(SignIn$lambda);
-  signInComponent = FC(signInComponent$lambda);
+  Login = FC(Login$lambda);
+  loginComponent = FC(loginComponent$lambda);
   Application = FC(Application$lambda);
   main();
   Kotlin.defineModule('shoppinglist', _);

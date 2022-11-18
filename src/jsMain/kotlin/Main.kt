@@ -17,8 +17,8 @@ val Application = FC<Props> {
     BrowserRouter {
         Routes {
             Route {
-                path = "/signIn"
-                element = SignIn.create()
+                path = "/login"
+                element = Login.create()
             }
             Route {
                 //index=true
@@ -31,6 +31,8 @@ val Application = FC<Props> {
 
 fun main() {
     val container = document.getElementById("root") ?: error("Couldn't find container!")
+//    val LoginContainer = document.getElementById("login-root") ?: error("Couldn't find container!")
     createRoot(container).render(Application.create())
+//    createRoot(LoginContainer).render(LoginComponent.create())
 
 }

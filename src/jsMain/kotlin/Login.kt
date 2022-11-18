@@ -22,14 +22,8 @@ import react.dom.html.ReactHTML.button
 private val scope = MainScope()
 
 
-val SignIn = FC<Props> {
-    var user by useState(emptyList<User>())
-
-    useEffectOnce {
-        scope.launch {
-            user = getUser()
-        }
-    }
+val Login = FC<Props> {
+    //val (token, setToken) = useState("")
     div {
         css {
             display = Display.flex
@@ -38,19 +32,19 @@ val SignIn = FC<Props> {
         }
         div {
             h1 {
-                +"Please Sign In"
+                +"Please Log In"
             }
         }
-        signInComponent {
-
+        loginComponent {
             onSubmit= { input, input2 -> // differet onSubmit than the other??
-                val userinfo = User(input,input2)
+                //val user = User(input,input2)
                 console.log(input)
                 console.log(input2)
-                scope.launch {
-                    addUser(userinfo)
-                    user = getUser()
-                }
+//                scope.launch {
+//                    editShoppingListItem(item,cartItem)
+//                    shoppingList = getShoppingList()
+//                }
+//                selectedEditItem=null
             }
         }
 
