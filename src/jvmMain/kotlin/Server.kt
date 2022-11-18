@@ -22,7 +22,7 @@ import org.litote.kmongo.reactivestreams.KMongo
 //)
 val client = KMongo.createClient().coroutine
 val database = client.getDatabase("shoppingList")
-
+val userDatabase = client.getDatabase("user")
 val connectionString: ConnectionString? = System.getenv("MONGODB_URI")?.let {
     ConnectionString("$it?retryWrites=false")
 }
@@ -31,6 +31,7 @@ val connectionString: ConnectionString? = System.getenv("MONGODB_URI")?.let {
 //    if (connectionString != null) KMongo.createClient(connectionString).coroutine else KMongo.createClient().coroutine
 //val database = client.getDatabase(connectionString?.database ?: "shoppingList")
 val collection = database.getCollection<ShoppingListItem>()
+val userCollection = userDatabase.getCollection<User>()
 fun main() {
     val port = System.getenv("PORT")?.toInt() ?: 9090
     embeddedServer(Netty, 9090) {
@@ -65,10 +66,17 @@ fun main() {
             route(ShoppingListItem.path) {
                 get {
                     call.respond(collection.find().toList())
+//                    call.respond(userCollection.find().toList())
                 }
                 post {
                     collection.insertOne(call.receive<ShoppingListItem>())
+//                    userCollection.insertOne(call.receive<User>())
                     call.respond(HttpStatusCode.OK)
+                }
+                put("/{id}") {
+                    val id = call.parameters["id"]?.toInt() ?: error("Invalid delete request")
+                    val listItemRequest= call.receive<ShoppingListItem>()
+                    collection.updateOne(ShoppingListItem::id eq id, listItemRequest)
                 }
                 delete("/{id}") {
                     val id = call.parameters["id"]?.toInt() ?: error("Invalid delete request")
@@ -76,20 +84,20 @@ fun main() {
                     call.respond(HttpStatusCode.OK)
                 }
             }
-//            route(User.path) {
-//                get {
-//                    call.respond(collection.find().toList())
-//                }
-//                post {
-//                    collection.insertOne(call.receive<User>())
-//                    call.respond(HttpStatusCode.OK)
-//                }
-//                delete("/{userId}") {
-//                    val id = call.parameters["userId"]?.toInt() ?: error("Invalid delete request")
-//                    collection.deleteOne(User::id eq id)
-//                    call.respond(HttpStatusCode.OK)
-//                }
-//            }
+            route(User.path) {
+                get {
+                    call.respond(userCollection.find().toList())
+                }
+                post {
+                    userCollection.insertOne(call.receive<User>())
+                    call.respond(HttpStatusCode.OK)
+                }
+                delete("/{userId}") {
+                    val id = call.parameters["userId"]?.toInt() ?: error("Invalid delete request")
+                    userCollection.deleteOne(User::userId eq id)
+                    call.respond(HttpStatusCode.OK)
+                }
+            }
         }
 
     }.start(wait = true)

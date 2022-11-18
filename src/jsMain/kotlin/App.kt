@@ -1,6 +1,5 @@
 import csstype.*
 import csstype.Font.Companion.icon
-import csstype.FontSize.Companion.smaller
 import emotion.react.css
 import kotlinx.browser.document
 import react.*
@@ -22,9 +21,7 @@ import org.w3c.dom.HTMLInputElement
 import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.ReactHTML.body
-import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.i
-import react.dom.html.ReactHTML.small
 import react.dom.html.ReactHTML.style
 
 @JsName("$")
@@ -39,7 +36,8 @@ private val scope = MainScope()
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
-
+    var selectedEditItem: ShoppingListItem?  by useState(null)
+//    var counter=0
     useEffectOnce {
         scope.launch {
             shoppingList = getShoppingList()
@@ -65,69 +63,57 @@ val App = FC<Props> {
     ul {
         shoppingList.sortedByDescending(ShoppingListItem::priority).forEach { item ->
             li {
-                key = item.toString()
-                p {
-                    id = "delete"
-
-                    i {
-                        className = ClassName("fa fa-trash")
-                    }
-//                    +"\uD83D\uDDD1️"
-                    onClick = {
-                        scope.launch {
-                            deleteShoppingListItem(item)
-                            shoppingList = getShoppingList()
+//                counter+=1
+                if(item!=selectedEditItem) {
+                    p {
+//                        +"$counter"
+                        i {
+                            className = ClassName("fa fa-trash")
                         }
-                    }
-                }
-                p{
-                    id = "edit"
-
-                    i {
-                        className = ClassName("fa fa-pencil")
-                    }
-//                    +"✏️"
-                    onClick = {
-                        jq(".${item.id} #edit-form").toggleClass("show-inline")
-                        jq("#${item.id}").toggleClass("suppress")
-                        console.log("${item.id}")
-                    }
-                }
-
-                p {
-                    id = "${item.id}"
-                    +"[${item.priority}] ${item.desc} || "
-                    ReactHTML.small{
-                        +" Last Edited: ${convertDateTime(item.lastEditTime)}"
-                        //+" DateTime: ${item.lastEditTime}"
-                    }
-                }
-
-                div {
-                    className = ClassName("${item.id}")
-                    editComponent {
-                        var item_desc = item.desc
-                        onSubmit = { input ->
-//                        jq("#edit-form").toggleClass("show-inline")
-//                        jq("#${item.id}").toggleClass("suppress")
-                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' })
+                        onClick = {
                             scope.launch {
                                 deleteShoppingListItem(item)
-                                addShoppingListItem(cartItem)
-//                            editShoppingListItem(item)
-                                shoppingList = getShoppingList()
+                                shoppingList = getShoppingList()// what is the point of this
                             }
                         }
                     }
+                    p {
+                        i {
+                            className = ClassName("fa fa-pencil")
+                        }
+                        onClick = {
+                            //window.alert("Clicked edit!")
+                            selectedEditItem = item
+                        }
+                    }
                 }
+
+                key = item.toString()
+                if(item==selectedEditItem) {
+                    //print as a textfield
+                    editComponent{
+                        onSubmit = { input->
+                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' })
+                            scope.launch {
+                                editShoppingListItem(item,cartItem)
+                                shoppingList = getShoppingList()
+                            }
+                            selectedEditItem=null
+                        }
+                    }
+                }
+                else{
+                    +"[${item.priority}] ${item.desc}  || "
+                    p {
+                        className = ClassName("font-small")
+                        +" Last Edited: ${convertDateTime(item.lastEditTime)}"
+                    }
+                }
+
+                //+"${key.priority}"
+
             }
         }
     }
-}
 
-//val LoginContainer = document.getElementById("login-root") ?: error("Couldn't find container!")
-//val LoginComponent = FC<Props> {
-//    h1 {
-//        +"Login"
-//    }
-//}
+}

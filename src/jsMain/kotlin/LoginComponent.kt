@@ -1,4 +1,5 @@
 
+import csstype.ClassName
 import org.w3c.dom.HTMLFormElement
 import react.*
 import org.w3c.dom.HTMLInputElement
@@ -7,6 +8,7 @@ import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.AutoComplete
 import react.dom.html.InputType
+import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.h2
 import react.dom.html.ReactHTML.input
@@ -14,8 +16,6 @@ import react.dom.html.ReactHTML.label
 
 external interface LoginProps : Props {
     var onSubmit: (String,String) -> Unit
-
-//    var user: (String) -> Unit
 }
 
 val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a string
@@ -41,16 +41,7 @@ val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a
     }
     form {
         onSubmit = submitHandler
-        //        label{
-//            htmlFor="email"
-//            +"Email:"
-//            input{
-//                type=InputType.email
-//                onChange=changeHandler
-//                name="email"
-//
-//            }
-//        }
+
         label {
             htmlFor = "name"
             +"Name:"
@@ -72,9 +63,12 @@ val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a
 
             }
         }
-        input {
-            type = InputType.submit
-            value = "LOGIN"
+        div {
+            input {
+                type = InputType.submit
+                className = ClassName("btn")
+                value = "LOGIN"
+            }
         }
 
 

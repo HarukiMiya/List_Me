@@ -6,9 +6,13 @@ import react.*
 import org.w3c.dom.HTMLInputElement
 import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
+import react.dom.html.ButtonType
 import react.dom.html.InputType
+import react.dom.html.ReactHTML
 import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.input
+import react.dom.html.ReactHTML.i
+import react.dom.html.ReactHTML.button
 
 external interface InputProps : Props {
     var onSubmit: (String) -> Unit
@@ -53,34 +57,16 @@ val editComponent = FC<InputProps> { props ->
     form {
         id = "edit-form"
         onSubmit = submitHandler
-        input {
-            type = InputType.text
-            onChange = changeHandler
-            value = text
+        button {
+            type = ButtonType.submit
+            i {
+                className = ClassName("fa fa-floppy-o")
+            }
         }
-    }
-}
-
-val userComponent = FC<InputProps> { props ->
-    val (text, setText) = useState("")
-
-    val submitHandler: FormEventHandler<HTMLFormElement> = {
-        it.preventDefault()
-        setText("")
-        props.onSubmit(text)
-    }
-
-    val changeHandler: ChangeEventHandler<HTMLInputElement> = {
-        setText(it.target.value)
-    }
-
-    form {
-        onSubmit = submitHandler
         input {
             type = InputType.text
             onChange = changeHandler
             value = text
-            placeholder = "Username"
         }
     }
 }
