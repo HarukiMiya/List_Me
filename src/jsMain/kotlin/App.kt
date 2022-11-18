@@ -36,6 +36,7 @@ private val scope = MainScope()
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
+    //var userList by useState(emptyList<User>())
     var selectedEditItem: ShoppingListItem?  by useState(null)
 //    var counter=0
     useEffectOnce {
@@ -77,7 +78,6 @@ val App = FC<Props> {
                             }
                         }
                     }
-
                     p {
                         i {
                             className = ClassName("fa fa-pencil")
@@ -107,11 +107,10 @@ val App = FC<Props> {
                     +"[${item.priority}] ${item.desc}  || "
                     p {
                         className = ClassName("font-small")
-                        +" DateTime: ${item.DateTime}"
+                        +" Last Edited: ${convertDateTime(item.lastEditTime)}"
                     }
                 }
 
-                //+"${key.priority}"
 
             }
         }

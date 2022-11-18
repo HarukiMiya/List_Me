@@ -49,3 +49,7 @@ suspend fun addUser(user: User) {
         setBody(user)
     }
 }
+
+suspend fun deleteUserItem(user:User){
+    jsonClient.delete(endpoint + User.path + "/${user.userId}")
+}
