@@ -23,13 +23,7 @@ import org.litote.kmongo.reactivestreams.KMongo
 val client = KMongo.createClient().coroutine
 val database = client.getDatabase("shoppingList")
 val userDatabase = client.getDatabase("user")
-val connectionString: ConnectionString? = System.getenv("MONGODB_URI")?.let {
-    ConnectionString("$it?retryWrites=false")
-}
 
-//val client =
-//    if (connectionString != null) KMongo.createClient(connectionString).coroutine else KMongo.createClient().coroutine
-//val database = client.getDatabase(connectionString?.database ?: "shoppingList")
 val collection = database.getCollection<ShoppingListItem>()
 val userCollection = userDatabase.getCollection<User>()
 fun main() {
@@ -54,9 +48,9 @@ fun main() {
                     ContentType.Text.Html
                 )
             }
-            get("/login") {
+            get("/signIn") {
                 call.respondText(
-                    this::class.java.classLoader.getResource("login.html")!!.readText(),
+                    this::class.java.classLoader.getResource("signIn.html")!!.readText(),
                     ContentType.Text.Html
                 )
             }
