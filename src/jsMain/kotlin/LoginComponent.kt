@@ -21,18 +21,18 @@ external interface LoginProps : Props {
 val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a string
     val (username, setUsername) = useState("")
     val (pass, setPass) = useState("")
+
     val submitHandler: FormEventHandler<HTMLFormElement> = { // on submit do this
         it.preventDefault() // prevents autosubmit or something
         setPass("") // clear text
         setUsername("")
-//        username=text
         props.onSubmit(username, pass)
     }
 
-    val changeHandler: ChangeEventHandler<HTMLInputElement> = {
+    val changeHandlerName: ChangeEventHandler<HTMLInputElement> = {
         setUsername(it.target.value)
     }
-    val changeHandle: ChangeEventHandler<HTMLInputElement> = {
+    val changeHandlerPass: ChangeEventHandler<HTMLInputElement> = {
         setPass(it.target.value)
     }
 
@@ -47,22 +47,25 @@ val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a
             +"Name:"
             input {
                 type = InputType.text
-                onChange = changeHandler
+                onChange = changeHandlerName
                 name = "name"
                 value = username
             }
         }
+
+
         label {
             htmlFor = "password"
             +"Password:"
             input {
                 type = InputType.password
-                onChange = changeHandle
+                onChange = changeHandlerPass
                 name = "password"
                 value = pass
 
             }
         }
+
         div {
             input {
                 type = InputType.submit
@@ -70,7 +73,5 @@ val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a
                 value = "LOGIN"
             }
         }
-
-
     }
 }

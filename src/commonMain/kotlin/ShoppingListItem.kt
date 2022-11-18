@@ -15,19 +15,28 @@ data class ShoppingListItem(val desc: String, val priority: Int ) {
 @Serializable
 data class User(val username: String, val password: String) {
     val userId: Int = username.hashCode()
-
+    val item: Collection<ShoppingListItem> = getDummyShoppingList()
     companion object {
         const val path = "/user"
     }
 }
 
-public fun getCurrentDateTime(): Instant {
+fun getDummyShoppingList(): Collection<ShoppingListItem>{
+
+    val item = ShoppingListItem("Apples",5)
+    val item2 = ShoppingListItem("Oranges",5)
+
+    return listOf(item, item2)
+
+}
+
+fun getCurrentDateTime(): Instant {
     // return something like 2022-11-17T11:56:34.311Z
     val currentMoment: Instant = Clock.System.now()
     return currentMoment
 }
 
-public fun convertDateTime(currentMoment: Instant):String  {
+fun convertDateTime(currentMoment: Instant):String  {
         var day=currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).dayOfMonth.toString()
         var month= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).monthNumber.toString()
         var year= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).year.toString()

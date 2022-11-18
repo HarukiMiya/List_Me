@@ -36,6 +36,7 @@ private val scope = MainScope()
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
+    //var userList by useState(emptyList<User>())
     var selectedEditItem: ShoppingListItem?  by useState(null)
 //    var counter=0
     useEffectOnce {
@@ -110,7 +111,6 @@ val App = FC<Props> {
                     }
                 }
 
-                //+"${key.priority}"
 
             }
         }

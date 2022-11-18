@@ -23,7 +23,13 @@ private val scope = MainScope()
 
 
 val Login = FC<Props> {
-    //val (token, setToken) = useState("")
+    var userList by useState(emptyList<User>())
+    useEffectOnce {
+        scope.launch {
+            userList = getUserList()
+        }
+    }
+
     div {
         css {
             display = Display.flex
@@ -37,16 +43,26 @@ val Login = FC<Props> {
         }
         loginComponent {
             onSubmit= { input, input2 -> // differet onSubmit than the other??
-                //val user = User(input,input2)
+                val user = User(input , input2)
+                scope.launch {
+                    addUserItem(user)
+                    userList = getUserList()
+                }
                 console.log(input)
                 console.log(input2)
-//                scope.launch {
-//                    editShoppingListItem(item,cartItem)
-//                    shoppingList = getShoppingList()
-//                }
-//                selectedEditItem=null
             }
         }
+        // Used this commented code for testing
+        /*
+        ul {
+            userList.sortedByDescending(User::username).forEach { item ->
+                li {
+                    key = item.toString()
+                    +"[${item.username}] ${item.password} "
+                }
+            }
+        }
+         */
 
 
 
