@@ -13,9 +13,19 @@ data class ShoppingListItem(val desc: String, val priority: Int) {
 @Serializable
 data class User(val username: String, val password: String) {
     val userId: Int = username.hashCode()
+    val item: Collection<ShoppingListItem> = getDummyShoppingList()
     companion object {
         const val path = "/user"
     }
+}
+
+fun getDummyShoppingList(): Collection<ShoppingListItem>{
+
+    val item = ShoppingListItem("Apples",5)
+    val item2 = ShoppingListItem("Oranges",5)
+
+    return listOf(item, item2)
+
 }
 
 
