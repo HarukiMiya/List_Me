@@ -27,7 +27,7 @@ public fun convertDateTime(currentMoment: Instant):String  {
         var month= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).monthNumber.toString()
         var year= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).year.toString()
         var time= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).time.toString().take(8)
-        return "Current Date: $month-$day-$year Current Time: $time"
+        return "Date: $month-$day-$year Time: $time"
 
     }
     else{

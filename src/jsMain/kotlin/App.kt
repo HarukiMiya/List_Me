@@ -98,7 +98,7 @@ val App = FC<Props> {
                     id = "${item.id}"
                     +"[${item.priority}] ${item.desc} || "
                     ReactHTML.small{
-                        +" DateTime: ${convertDateTime(item.lastEditTime)}"
+                        +" Last Edited: ${convertDateTime(item.lastEditTime)}"
                         //+" DateTime: ${item.lastEditTime}"
                     }
                 }
