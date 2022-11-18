@@ -78,7 +78,6 @@ val App = FC<Props> {
                             }
                         }
                     }
-
                     p {
                         i {
                             className = ClassName("fa fa-pencil")
@@ -108,7 +107,7 @@ val App = FC<Props> {
                     +"[${item.priority}] ${item.desc}  || "
                     p {
                         className = ClassName("font-small")
-                        +" DateTime: ${item.DateTime}"
+                        +" Last Edited: ${convertDateTime(item.lastEditTime)}"
                     }
                 }
 

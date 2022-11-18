@@ -1,0 +1,14 @@
+.gradle/
+.idea/
+build/
+gradle/
+kotlin-js-store/
+node_modules/
+gradle.properties
+gradlew
+gradlew.bat
+package-lock.json
+package.json
+Procfile
+settings.gradle.kts
+.DS_Store
