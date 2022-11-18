@@ -13,11 +13,11 @@ let config = {
 
 // entry
 config.entry = {
-    main: ["/Users/harukimiyazaki/Site/CS178_2022/build/js/packages/shoppinglist/kotlin-dce-dev/shoppinglist.js"]
+    main: ["/Users/jayupadhyay/Desktop/SizzleApp/build/js/packages/shoppinglist/kotlin-dce-dev/shoppinglist.js"]
 };
 
 config.output = {
-    path: "/Users/harukimiyazaki/Site/CS178_2022/build/distributions",
+    path: "/Users/jayupadhyay/Desktop/SizzleApp/build/distributions",
     filename: (chunkData) => {
         return chunkData.chunk.name === 'main'
             ? "shoppinglist.js"
@@ -29,7 +29,7 @@ config.output = {
 };
 
 // resolve modules
-config.resolve.modules.unshift("/Users/harukimiyazaki/Site/CS178_2022/build/js/packages/shoppinglist/kotlin-dce-dev")
+config.resolve.modules.unshift("/Users/jayupadhyay/Desktop/SizzleApp/build/js/packages/shoppinglist/kotlin-dce-dev")
 
 // source maps
 config.module.rules.push({
@@ -47,7 +47,7 @@ config.ignoreWarnings = [/Failed to parse source map/]
     const handler = (percentage, message, ...args) => {
         const p = percentage * 100;
         let msg = `${Math.trunc(p / 10)}${Math.trunc(p % 10)}% ${message} ${args.join(' ')}`;
-        msg = msg.replace("/Users/harukimiyazaki/Site/CS178_2022/build/js", '');;
+        msg = msg.replace("/Users/jayupadhyay/Desktop/SizzleApp/build/js", '');;
         console.log(msg);
     };
 
@@ -69,7 +69,7 @@ config.ignoreWarnings = [/Failed to parse source map/]
     const util = require('util');
     const fs = require('fs');
     const evaluatedConfig = util.inspect(config, {showHidden: false, depth: null, compact: false});
-    fs.writeFile("/Users/harukimiyazaki/Site/CS178_2022/build/reports/webpack/shoppinglist/webpack.config.evaluated.js", evaluatedConfig, function (err) {});
+    fs.writeFile("/Users/jayupadhyay/Desktop/SizzleApp/build/reports/webpack/shoppinglist/webpack.config.evaluated.js", evaluatedConfig, function (err) {});
 })(config);
 
 module.exports = config

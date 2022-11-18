@@ -64,6 +64,7 @@
   var PluginGeneratedSerialDescriptor = $module$kotlinx_serialization_kotlinx_serialization_core_js_legacy.kotlinx.serialization.internal.PluginGeneratedSerialDescriptor;
   var hashCode = Kotlin.hashCode;
   var equals = Kotlin.equals;
+  var serializers = $module$Kotlin_DateTime_library_kotlinx_datetime_js_legacy.kotlinx.datetime.serializers;
   var UnknownFieldException = $module$kotlinx_serialization_kotlinx_serialization_core_js_legacy.kotlinx.serialization.UnknownFieldException;
   var internal = $module$kotlinx_serialization_kotlinx_serialization_core_js_legacy.kotlinx.serialization.internal;
   var GeneratedSerializer = $module$kotlinx_serialization_kotlinx_serialization_core_js_legacy.kotlinx.serialization.internal.GeneratedSerializer;
@@ -123,7 +124,7 @@
     this.desc = desc;
     this.priority = priority;
     this.id = hashCode(this.desc);
-    this.DateTime = getCurrentDateTime();
+    this.lastEditTime = getCurrentDateTime();
   }
   function ShoppingListItem$Companion() {
     ShoppingListItem$Companion_instance = this;
@@ -149,7 +150,7 @@
     this.descriptor.addElement_ivxn3r$('desc', false);
     this.descriptor.addElement_ivxn3r$('priority', false);
     this.descriptor.addElement_ivxn3r$('id', true);
-    this.descriptor.addElement_ivxn3r$('DateTime', true);
+    this.descriptor.addElement_ivxn3r$('lastEditTime', true);
     ShoppingListItem$$serializer_instance = this;
   }
   Object.defineProperty(ShoppingListItem$$serializer.prototype, 'descriptor', {
@@ -164,8 +165,8 @@
     output.encodeIntElement_ptg7oe$(this.descriptor, 1, value.priority);
     if (!equals(value.id, hashCode(this.desc)) || output.shouldEncodeElementDefault_szpzho$(this.descriptor, 2))
       output.encodeIntElement_ptg7oe$(this.descriptor, 2, value.id);
-    if (!equals(value.DateTime, getCurrentDateTime()) || output.shouldEncodeElementDefault_szpzho$(this.descriptor, 3))
-      output.encodeStringElement_iij8qq$(this.descriptor, 3, value.DateTime);
+    if (!equals(value.lastEditTime, getCurrentDateTime()) || output.shouldEncodeElementDefault_szpzho$(this.descriptor, 3))
+      output.encodeSerializableElement_r4qlx7$(this.descriptor, 3, serializers.InstantIso8601Serializer, value.lastEditTime);
     output.endStructure_24f42q$(this.descriptor);
   };
   ShoppingListItem$$serializer.prototype.deserialize_bq71mq$ = function (decoder) {
@@ -192,7 +193,7 @@
           bitMask0 |= 4;
           break;
         case 3:
-          local3 = input.decodeStringElement_szpzho$(this.descriptor, 3);
+          local3 = input.decodeSerializableElement_12e8id$(this.descriptor, 3, serializers.InstantIso8601Serializer, local3);
           bitMask0 |= 8;
           break;
         case -1:
@@ -205,7 +206,7 @@
     return ShoppingListItem_init(bitMask0, local0, local1, local2, local3, null);
   };
   ShoppingListItem$$serializer.prototype.childSerializers = function () {
-    return [internal.StringSerializer, internal.IntSerializer, internal.IntSerializer, internal.StringSerializer];
+    return [internal.StringSerializer, internal.IntSerializer, internal.IntSerializer, serializers.InstantIso8601Serializer];
   };
   ShoppingListItem$$serializer.$metadata$ = {
     kind: Kind_OBJECT,
@@ -219,7 +220,7 @@
     }
     return ShoppingListItem$$serializer_instance;
   }
-  function ShoppingListItem_init(seen1, desc, priority, id, DateTime, serializationConstructorMarker) {
+  function ShoppingListItem_init(seen1, desc, priority, id, lastEditTime, serializationConstructorMarker) {
     var $this = serializationConstructorMarker || Object.create(ShoppingListItem.prototype);
     if ((seen1 & 1) === 0)
       throw MissingFieldException_init('desc');
@@ -234,9 +235,9 @@
     else
       $this.id = id;
     if ((seen1 & 8) === 0)
-      $this.DateTime = getCurrentDateTime();
+      $this.lastEditTime = getCurrentDateTime();
     else
-      $this.DateTime = DateTime;
+      $this.lastEditTime = lastEditTime;
     return $this;
   }
   ShoppingListItem.$metadata$ = {
@@ -401,12 +402,14 @@
   };
   function getCurrentDateTime() {
     var currentMoment = Clock.System.now();
-    var currentDate = toLocalDateTime(currentMoment, TimeZone.Companion.currentSystemDefault()).date;
-    var day = currentDate.dayOfMonth.toString();
-    var month = currentDate.monthNumber.toString();
-    var year = currentDate.year.toString();
-    var currentTime = take(toLocalDateTime(currentMoment, TimeZone.Companion.currentSystemDefault()).time.toString(), 8);
-    return day + '/' + month + '/' + year + ' ' + currentTime;
+    return currentMoment;
+  }
+  function convertDateTime(currentMoment) {
+    var day = toLocalDateTime(currentMoment, TimeZone.Companion.currentSystemDefault()).dayOfMonth.toString();
+    var month = toLocalDateTime(currentMoment, TimeZone.Companion.currentSystemDefault()).monthNumber.toString();
+    var year = toLocalDateTime(currentMoment, TimeZone.Companion.currentSystemDefault()).year.toString();
+    var time = take(toLocalDateTime(currentMoment, TimeZone.Companion.currentSystemDefault()).time.toString(), 8);
+    return 'Date: ' + month + '-' + day + '-' + year + ' Time: ' + time;
   }
   function get$lambda($receiver) {
     return Unit;
@@ -1205,7 +1208,7 @@
   function App$lambda$lambda$lambda$lambda$lambda_2(closure$item) {
     return function ($receiver) {
       $receiver.className = 'font-small';
-      $receiver.unaryPlus_pdl1vz$(' DateTime: ' + closure$item.DateTime);
+      $receiver.unaryPlus_pdl1vz$(' Last Edited: ' + convertDateTime(closure$item.lastEditTime));
       return Unit;
     };
   }
@@ -1510,7 +1513,7 @@
   Object.defineProperty(ShoppingListItem, '$serializer', {
     get: ShoppingListItem$$serializer_getInstance
   });
-  _.ShoppingListItem_init_gvujw7$ = ShoppingListItem_init;
+  _.ShoppingListItem_init_6x8koi$ = ShoppingListItem_init;
   _.ShoppingListItem = ShoppingListItem;
   Object.defineProperty(User, 'Companion', {
     get: User$Companion_getInstance
@@ -1521,6 +1524,7 @@
   _.User_init_bmpwe9$ = User_init;
   _.User = User;
   _.getCurrentDateTime = getCurrentDateTime;
+  _.convertDateTime_2hqr0b$ = convertDateTime;
   Object.defineProperty(_, 'endpoint', {
     get: function () {
       return endpoint;
