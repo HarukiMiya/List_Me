@@ -13,12 +13,14 @@ import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.h2
 import react.dom.html.ReactHTML.input
 import react.dom.html.ReactHTML.label
+import react.dom.html.ReactHTML.br
+import react.router.useNavigate
 
-external interface LoginProps : Props {
+external interface SignInProps : Props {
     var onSubmit: (String,String) -> Unit
 }
 
-val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a string
+val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is a string
     val (username, setUsername) = useState("")
     val (pass, setPass) = useState("")
     val submitHandler: FormEventHandler<HTMLFormElement> = { // on submit do this
@@ -28,6 +30,7 @@ val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a
 //        username=text
         props.onSubmit(username, pass)
     }
+    val navigate = useNavigate()
 
     val changeHandler: ChangeEventHandler<HTMLInputElement> = {
         setUsername(it.target.value)
@@ -36,41 +39,40 @@ val loginComponent = FC<LoginProps> { props -> // this takes onsubmit which is a
         setPass(it.target.value)
     }
 
-    h2 {
-        +"login"
-    }
     form {
         onSubmit = submitHandler
 
         label {
             htmlFor = "name"
-            +"Name:"
             input {
                 type = InputType.text
                 onChange = changeHandler
                 name = "name"
                 value = username
+                placeholder = "Username"
             }
         }
+        br{}
         label {
             htmlFor = "password"
-            +"Password:"
             input {
                 type = InputType.password
                 onChange = changeHandle
                 name = "password"
                 value = pass
-
+                placeholder = "Password"
             }
         }
         div {
+            className = ClassName("signIn")
             input {
                 type = InputType.submit
                 className = ClassName("btn")
-                value = "LOGIN"
+                value = "SignIn"
+                onClick = {
+                    navigate("/")
+                }
             }
         }
-
-
     }
 }

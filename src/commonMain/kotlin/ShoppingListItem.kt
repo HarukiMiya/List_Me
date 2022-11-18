@@ -13,10 +13,15 @@ data class ShoppingListItem(val desc: String, val priority: Int) {
 @Serializable
 data class User(val username: String, val password: String) {
     val userId: Int = username.hashCode()
+    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
 
     companion object {
         const val path = "/user"
     }
+}
+
+public fun getShoppingListInfo():ShoppingListItem{
+    return ShoppingListItem("banana",1)
 }
 
 public fun getCurrentDateTime(): String {

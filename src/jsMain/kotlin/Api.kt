@@ -40,14 +40,13 @@ suspend fun editShoppingListItem(shoppingListItem: ShoppingListItem, updatedItem
 
 }
 
-
-suspend fun getUserList(): List<User> {
+suspend fun getUser(): List<User> {
     return jsonClient.get(endpoint + User.path).body()
 }
 
-suspend fun addUserItem(user: User) {
+suspend fun addUser(user: User) {
     jsonClient.post(endpoint + User.path) {
         contentType(ContentType.Application.Json)
-//        setBody(User)
+        setBody(user)
     }
 }
