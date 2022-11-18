@@ -5,7 +5,6 @@ import kotlinx.datetime.*
 data class ShoppingListItem(val desc: String, val priority: Int ) {
     val id: Int = desc.hashCode()
     val lastEditTime:Instant=getCurrentDateTime()
-    //val  DateTime: String = getCurrentDateTime()
     companion object {
         const val path = "/shoppingList"
     }
@@ -15,14 +14,16 @@ data class ShoppingListItem(val desc: String, val priority: Int ) {
 @Serializable
 data class User(val username: String, val password: String) {
     val userId: Int = username.hashCode()
+    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
     val item: Collection<ShoppingListItem> = getDummyShoppingList()
     companion object {
         const val path = "/user"
     }
 }
-
+fun getShoppingListInfo():ShoppingListItem{
+    return ShoppingListItem("banana",1)
+}
 fun getDummyShoppingList(): Collection<ShoppingListItem>{
-
     val item = ShoppingListItem("Apples",5)
     val item2 = ShoppingListItem("Oranges",5)
 
