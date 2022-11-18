@@ -11,3 +11,4 @@ package-lock.json
 package.json
 Procfile
 settings.gradle.kts
+.DS_Store
