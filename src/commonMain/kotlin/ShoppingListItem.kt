@@ -2,7 +2,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.datetime.*
 
 @Serializable
-data class ShoppingListItem(val desc: String, val priority: Int ) {
+data class ShoppingListItem(val desc: String, val priority: Int, val creationTime:Instant ) {
     val id: Int = desc.hashCode()
     val lastEditTime:Instant=getCurrentDateTime()
     companion object {
@@ -21,11 +21,11 @@ data class User(val username: String, val password: String) {
     }
 }
 fun getShoppingListInfo():ShoppingListItem{
-    return ShoppingListItem("banana",1)
+    return ShoppingListItem("banana",1,getCurrentDateTime())
 }
 fun getDummyShoppingList(): Collection<ShoppingListItem>{
-    val item = ShoppingListItem("Apples",5)
-    val item2 = ShoppingListItem("Oranges",5)
+    val item = ShoppingListItem("Apples",5,getCurrentDateTime())
+    val item2 = ShoppingListItem("Oranges",5,getCurrentDateTime())
 
     return listOf(item, item2)
 
