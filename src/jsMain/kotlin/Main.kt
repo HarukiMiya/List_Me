@@ -22,8 +22,13 @@ val Application = FC<Props> {
             }
             Route {
                 //index=true
-                path="/"
+                path="/index"
                 element = App.create()
+            }
+            Route {
+                //index=true
+                path="/"
+                element = Home.create()
             }
         }
     }
