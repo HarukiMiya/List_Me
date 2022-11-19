@@ -68,7 +68,7 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
                 className = ClassName("btn")
                 value = "SignIn"
                 onClick = {
-                    navigate("/")
+                    navigate("/logIn")
                 }
             }
         }

@@ -54,6 +54,12 @@ fun main() {
         routing {
             get("/") {
                 call.respondText(
+                    this::class.java.classLoader.getResource("home.html")!!.readText(),
+                    ContentType.Text.Html
+                )
+            }
+            get("/index") {
+                call.respondText(
                     this::class.java.classLoader.getResource("index.html")!!.readText(),
                     ContentType.Text.Html
                 )
