@@ -35,44 +35,49 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
     val changeHandlerPass: ChangeEventHandler<HTMLInputElement> = {
         setPass(it.target.value)
     }
-
-    form {
-        id = "form1"
-        onSubmit = submitHandler
-
-        label {
-            htmlFor = "name"
-            id = "un"
-            input {
-                type = InputType.text
-                onChange = changeHandlerName
-                name = "name"
-                value = username
-                placeholder = "Username"
-            }
-        }
-        br{}
-        label {
-            htmlFor = "password"
-            id = "pass"
-            input {
-                type = InputType.password
-                onChange = changeHandlerPass
-                name = "password"
-                value = pass
-                placeholder = "Password"
-            }
-        }
-
+    div {
+        id = "main"
         div {
-            className = ClassName("signIn")
-            id = "submit"
-            input {
-                type = InputType.submit
-                className = ClassName("btn")
-                value = "SignIn"
-                onClick = {
-                    navigate("/logIn")
+            id = "sign"
+            form {
+                className = ClassName("form1")
+                onSubmit = submitHandler
+
+                label {
+                    htmlFor = "name"
+                    id = "un"
+                    input {
+                        type = InputType.text
+                        onChange = changeHandlerName
+                        name = "name"
+                        value = username
+                        placeholder = "Username"
+                    }
+                }
+                br {}
+                label {
+                    htmlFor = "password"
+                    id = "pass"
+                    input {
+                        type = InputType.password
+                        onChange = changeHandlerPass
+                        name = "password"
+                        value = pass
+                        placeholder = "Password"
+                    }
+                }
+
+                div {
+                    className = ClassName("signIn")
+                    id = "submit"
+                    input {
+                        type = InputType.submit
+                        className = ClassName("btn")
+                        value = "SignIn"
+                        onClick = {
+                            navigate("/logIn")
+                        }
+                    }
                 }
             }
         }
