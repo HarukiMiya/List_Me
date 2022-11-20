@@ -37,10 +37,12 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
     }
 
     form {
+        id = "form1"
         onSubmit = submitHandler
 
         label {
             htmlFor = "name"
+            id = "un"
             input {
                 type = InputType.text
                 onChange = changeHandlerName
@@ -52,6 +54,7 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
         br{}
         label {
             htmlFor = "password"
+            id = "pass"
             input {
                 type = InputType.password
                 onChange = changeHandlerPass
@@ -63,6 +66,7 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
 
         div {
             className = ClassName("signIn")
+            id = "submit"
             input {
                 type = InputType.submit
                 className = ClassName("btn")
