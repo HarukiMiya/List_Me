@@ -1,5 +1,9 @@
 
+import csstype.AlignItems.Companion.center
 import csstype.ClassName
+import csstype.HtmlAttributes
+import emotion.css.css
+import emotion.react.css
 import org.w3c.dom.HTMLFormElement
 import react.*
 import org.w3c.dom.HTMLInputElement
@@ -37,8 +41,8 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
     }
     div {
         id = "main"
-        div {
-            id = "sign"
+
+
             form {
                 className = ClassName("form1")
                 onSubmit = submitHandler
@@ -82,4 +86,4 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
             }
         }
     }
-}
+

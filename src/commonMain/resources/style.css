@@ -76,11 +76,17 @@ body {
 }
 
 #sign {
+
     padding-top: 40px;
     color: #8C55AA;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 23px;
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 #un {
@@ -101,6 +107,7 @@ body {
     text-align: center;
     margin-bottom: 27px;
     font-family: 'Ubuntu', sans-serif;
+    align-items: center;
 }
 
 form.form1 {
@@ -125,6 +132,7 @@ form.form1 {
     text-align: center;
     margin-bottom: 27px;
     font-family: 'Ubuntu', sans-serif;
+    align-items: center;
 }
 
 
@@ -147,6 +155,7 @@ form.form1 {
     margin-left: 35%;
     font-size: 13px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    align-items: center;
 }
 
 #forgot {
