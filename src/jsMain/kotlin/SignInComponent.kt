@@ -1,5 +1,10 @@
 
+import csstype.AlignItems
+import csstype.AlignItems.Companion.center
 import csstype.ClassName
+import csstype.HtmlAttributes
+import emotion.css.css
+import emotion.react.css
 import org.w3c.dom.HTMLFormElement
 import react.*
 import org.w3c.dom.HTMLInputElement
@@ -11,6 +16,7 @@ import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.input
 import react.dom.html.ReactHTML.label
 import react.dom.html.ReactHTML.br
+import react.dom.html.ReactHTML.h1
 import react.router.useNavigate
 
 external interface SignInProps : Props {
@@ -35,42 +41,63 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
     val changeHandlerPass: ChangeEventHandler<HTMLInputElement> = {
         setPass(it.target.value)
     }
-
-    form {
-        onSubmit = submitHandler
-
-        label {
-            htmlFor = "name"
-            input {
-                type = InputType.text
-                onChange = changeHandlerName
-                name = "name"
-                value = username
-                placeholder = "Username"
-            }
-        }
-        br{}
-        label {
-            htmlFor = "password"
-            input {
-                type = InputType.password
-                onChange = changeHandlerPass
-                name = "password"
-                value = pass
-                placeholder = "Password"
-            }
-        }
-
+    div {
+        className = ClassName("main")
         div {
-            className = ClassName("signIn")
-            input {
-                type = InputType.submit
-                className = ClassName("btn")
-                value = "SignIn"
-                onClick = {
-                    navigate("/logIn")
+            id = "sign"
+            h1 {
+                +"Sign in"
+            }
+        }
+
+
+            form {
+                className = ClassName("form1")
+                onSubmit = submitHandler
+
+                label {
+                    htmlFor = "name"
+
+                    input {
+                        id = "un"
+                        type = InputType.text
+                        onChange = changeHandlerName
+                        name = "name"
+                        value = username
+                        placeholder = "Username"
+
+                    }
+                }
+                br {}
+                label {
+                    htmlFor = "password"
+
+                    input {
+                        id = "pass"
+                        type = InputType.password
+                        onChange = changeHandlerPass
+                        name = "password"
+                        value = pass
+                        placeholder = "Password"
+                    }
+                }
+
+                div {
+
+                    className = ClassName("signIn")
+
+                    input {
+                        id = "submit"
+                        type = InputType.submit
+                        className = ClassName("btn")
+                        value = "SignIn"
+                        onClick = {
+                            navigate("/logIn")
+                        }
+                    }
                 }
             }
+
         }
-    }
+
 }

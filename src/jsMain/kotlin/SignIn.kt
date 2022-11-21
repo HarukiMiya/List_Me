@@ -26,6 +26,7 @@ val SignIn = FC<Props> {
             alignItems = center;
         }
         div {
+            id = "sign"
             h1 {
                 +"Please Sign In"
             }
