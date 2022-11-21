@@ -1,10 +1,5 @@
 
-import csstype.AlignItems
-import csstype.AlignItems.Companion.center
 import csstype.ClassName
-import csstype.HtmlAttributes
-import emotion.css.css
-import emotion.react.css
 import org.w3c.dom.HTMLFormElement
 import react.*
 import org.w3c.dom.HTMLInputElement
@@ -19,11 +14,11 @@ import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.h1
 import react.router.useNavigate
 
-external interface SignInProps : Props {
+external interface SignUpProps : Props {
     var onSubmit: (String,String) -> Unit
 }
 
-val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is a string
+val signUpComponent = FC<SignUpProps> { props -> // this takes onsubmit which is a string
     val (username, setUsername) = useState("")
     val (pass, setPass) = useState("")
 
@@ -84,7 +79,7 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
 
                 div {
 
-                    className = ClassName("signIn")
+                    className = ClassName("signUp")
 
                     input {
                         id = "submit"
