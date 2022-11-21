@@ -1,9 +1,10 @@
 import kotlinx.serialization.Serializable
 import kotlinx.datetime.*
+import kotlin.random.Random
 
 @Serializable
 data class ShoppingListItem(val desc: String, val priority: Int, val creationTime:Instant ) {
-    val id: Int = desc.hashCode()
+    val id: Int = desc.hashCode()+ Random.nextInt(0, 100)
     val lastEditTime:Instant=getCurrentDateTime()
     companion object {
         const val path = "/shoppingList"
