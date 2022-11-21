@@ -41,9 +41,9 @@ val Home = FC<Props> {
                 }
                 li {
                     css { display = Display.inline; margin = 5.vh;}
-                    +"SignIn"
+                    +"Sign Up"
                     onClick = {
-                        navigate("/signIn")
+                        navigate("/signUp")
                     }
                 }
             }
