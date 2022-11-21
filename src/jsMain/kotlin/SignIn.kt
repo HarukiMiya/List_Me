@@ -28,7 +28,7 @@ val SignIn = FC<Props> {
         div {
             id = "sign"
             h1 {
-                +"Please Sign In"
+                +"Please Sign Up"
             }
         }
         signInComponent {

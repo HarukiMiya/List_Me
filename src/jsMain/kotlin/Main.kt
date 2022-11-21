@@ -17,7 +17,7 @@ val Application = FC<Props> {
     BrowserRouter {
         Routes {
             Route {
-                path = "/signIn"
+                path = "/signUp"
                 element = SignIn.create()
             }
             Route {

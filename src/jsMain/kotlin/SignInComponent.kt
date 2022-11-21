@@ -46,7 +46,7 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
         div {
             id = "sign"
             h1 {
-                +"Sign in"
+                +"Sign Up"
             }
         }
 
@@ -90,7 +90,7 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
                         id = "submit"
                         type = InputType.submit
                         className = ClassName("btn")
-                        value = "SignIn"
+                        value = "SignUp"
                         onClick = {
                             navigate("/logIn")
                         }
