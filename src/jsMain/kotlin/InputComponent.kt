@@ -16,6 +16,12 @@ import react.dom.html.ReactHTML.button
 
 external interface InputProps : Props {
     var onSubmit: (String) -> Unit
+    var name:(String)
+}
+external interface EditProps : Props {
+    var onSubmit: (String) -> Unit
+    var name:(String)
+
 }
 
 val inputComponent = FC<InputProps> { props ->
@@ -43,7 +49,7 @@ val inputComponent = FC<InputProps> { props ->
 }
 private val scope = MainScope()
 
-val editComponent = FC<InputProps> { props ->
+val editComponent = FC<EditProps> { props ->
     val (text, setText) = useState("")
     val submitHandler: FormEventHandler<HTMLFormElement> = {
         it.preventDefault()
@@ -66,7 +72,7 @@ val editComponent = FC<InputProps> { props ->
         input {
             type = InputType.text
             onChange = changeHandler
-            value = text
+            value = props.name
         }
     }
 }
