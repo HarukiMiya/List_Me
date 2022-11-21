@@ -1,4 +1,5 @@
 
+import csstype.AlignItems
 import csstype.AlignItems.Companion.center
 import csstype.ClassName
 import csstype.HtmlAttributes
@@ -15,6 +16,7 @@ import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.input
 import react.dom.html.ReactHTML.label
 import react.dom.html.ReactHTML.br
+import react.dom.html.ReactHTML.h1
 import react.router.useNavigate
 
 external interface SignInProps : Props {
@@ -40,7 +42,13 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
         setPass(it.target.value)
     }
     div {
-        id = "main"
+        className = ClassName("main")
+        div {
+            id = "sign"
+            h1 {
+                +"Sign in"
+            }
+        }
 
 
             form {
@@ -49,20 +57,23 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
 
                 label {
                     htmlFor = "name"
-                    id = "un"
+
                     input {
+                        id = "un"
                         type = InputType.text
                         onChange = changeHandlerName
                         name = "name"
                         value = username
                         placeholder = "Username"
+
                     }
                 }
                 br {}
                 label {
                     htmlFor = "password"
-                    id = "pass"
+
                     input {
+                        id = "pass"
                         type = InputType.password
                         onChange = changeHandlerPass
                         name = "password"
@@ -72,9 +83,11 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
                 }
 
                 div {
+
                     className = ClassName("signIn")
-                    id = "submit"
+
                     input {
+                        id = "submit"
                         type = InputType.submit
                         className = ClassName("btn")
                         value = "SignIn"
@@ -84,6 +97,7 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
                     }
                 }
             }
-        }
-    }
 
+        }
+
+}
