@@ -2,14 +2,12 @@ import kotlinx.serialization.Serializable
 import kotlinx.datetime.*
 
 @Serializable
-data class ShoppingListItem(val desc: String, val priority: Int, val creationTime:Instant ) {
+data class ShoppingListItem(val desc: String, val priority: Int, val creationTime:Instant?, val lastEditTime:Instant? ) {
     val id: Int = desc.hashCode()
-    val lastEditTime:Instant=getCurrentDateTime()
     companion object {
         const val path = "/shoppingList"
     }
 }
-
 
 @Serializable
 data class User(val username: String, val password: String) {
@@ -21,11 +19,11 @@ data class User(val username: String, val password: String) {
     }
 }
 fun getShoppingListInfo():ShoppingListItem{
-    return ShoppingListItem("banana",1,getCurrentDateTime())
+    return ShoppingListItem("banana",1,getCurrentDateTime(),null)
 }
 fun getDummyShoppingList(): Collection<ShoppingListItem>{
-    val item = ShoppingListItem("Apples",5,getCurrentDateTime())
-    val item2 = ShoppingListItem("Oranges",5,getCurrentDateTime())
+    val item = ShoppingListItem("Apples",5,getCurrentDateTime(), null)
+    val item2 = ShoppingListItem("Oranges",5,getCurrentDateTime(),null )
 
     return listOf(item, item2)
 
@@ -37,10 +35,14 @@ fun getCurrentDateTime(): Instant {
     return currentMoment
 }
 
-fun convertDateTime(currentMoment: Instant):String  {
+fun convertDateTime(currentMoment: Instant?):String  {
+        return if(currentMoment==null) {
+        "N/A"
+    }
+    else {
         var day=currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).dayOfMonth.toString()
         var month= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).monthNumber.toString()
         var year= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).year.toString()
         var time= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).time.toString().take(8)
-        return "Date: $month-$day-$year Time: $time"
+        return "Date: $month-$day-$year Time: $time"}
 }
