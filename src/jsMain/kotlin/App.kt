@@ -93,6 +93,7 @@ val App = FC<Props> {
                 if(item==selectedEditItem) {
                     //print as a textfield
                     editComponent{
+                        listItem=item
                         onSubmit = { input->
                             val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime())
                             scope.launch {
