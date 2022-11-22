@@ -53,3 +53,7 @@ suspend fun addUser(user: User) {
 suspend fun deleteUserItem(user:User){
     jsonClient.delete(endpoint + User.path + "/${user.userId}")
 }
+
+suspend fun searchUser(user:User): String{
+    return jsonClient.get(endpoint + User.path + "/${user.username}").body()
+}

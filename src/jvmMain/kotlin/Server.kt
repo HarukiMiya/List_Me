@@ -4,6 +4,7 @@ import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.application.*
+import io.ktor.server.html.*
 import io.ktor.server.http.content.*
 import io.ktor.server.plugins.compression.*
 import io.ktor.server.plugins.contentnegotiation.*
@@ -15,6 +16,7 @@ import org.litote.kmongo.coroutine.coroutine
 import org.litote.kmongo.coroutine.insertOne
 import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
+import java.util.StringJoiner
 
 //val shoppingList = mutableListOf(
 //    ShoppingListItem("Cucumbers 🥒", 1),
@@ -113,9 +115,10 @@ fun main() {
             }
              */
             route(User.path){
-                get{
+               get{
                     call.respond(userCollection.find().toList())
-                }
+
+               }
                 post {
                     userCollection.insertOne(call.receive<User>())
                     call.respond(HttpStatusCode.OK)
@@ -124,6 +127,19 @@ fun main() {
                     val id = call.parameters["userId"]?.toInt() ?: error("Invalid delete request")
                     userCollection.deleteOne(User::userId eq id)
                     call.respond(HttpStatusCode.OK)
+                }
+                get("/{name}"){
+                    val nameSearch = call.parameters["name"].toString()
+                    val record = userCollection.findOne(User::username eq nameSearch)
+
+                    val isFound:String = if(record != null){
+                        "True"
+                    } else{
+                        "False"
+                    }
+
+                    call.respondText(isFound)
+
                 }
             }
 

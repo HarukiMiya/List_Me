@@ -86,9 +86,6 @@ val signUpComponent = FC<SignUpProps> { props -> // this takes onsubmit which is
                         type = InputType.submit
                         className = ClassName("btn")
                         value = "SignUp"
-                        onClick = {
-                            navigate("/logIn")
-                        }
                     }
                 }
             }
