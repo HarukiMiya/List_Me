@@ -29,7 +29,7 @@ display: inline;
     display: inline;
 }
 ul{
-    margin-left: 40vw;
+    margin-left: 20vw;
     list-style-type: none;
     font-size: 1.3vw;
 }
@@ -54,8 +54,8 @@ ul{
 }
 
 
-/*--------------------------Sign In Page----------------------*/
-.signIn{
+/*--------------------------Sign Up Page----------------------*/
+.signUp{
     text-align: center !important;
 }
 input{

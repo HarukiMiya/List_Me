@@ -24,15 +24,7 @@ import react.dom.html.ReactHTML.body
 import react.dom.html.ReactHTML.i
 import react.dom.html.ReactHTML.style
 
-@JsName("$")
-@JsNonModule
-@JsModule("jquery")
-external fun jq(id: String): dynamic
-
-
 private val scope = MainScope()
-
-//var inputVal =
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
@@ -49,6 +41,7 @@ val App = FC<Props> {
     }
     inputComponent {
         onSubmit = { input ->
+//            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' })
             val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime())
             scope.launch {
                 addShoppingListItem(cartItem)
@@ -95,6 +88,7 @@ val App = FC<Props> {
                     editComponent{
                         onSubmit = { input->
                             val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime)
+//                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' })
                             scope.launch {
                                 editShoppingListItem(item,cartItem)
                                 shoppingList = getShoppingList()

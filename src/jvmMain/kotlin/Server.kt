@@ -12,7 +12,6 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.litote.kmongo.coroutine.coroutine
-import org.litote.kmongo.coroutine.insertOne
 import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
 
@@ -64,9 +63,15 @@ fun main() {
                     ContentType.Text.Html
                 )
             }
-            get("/signIn") {
+            get("/signUp") {
                 call.respondText(
-                    this::class.java.classLoader.getResource("signIn.html")!!.readText(),
+                    this::class.java.classLoader.getResource("signUp.html")!!.readText(),
+                    ContentType.Text.Html
+                )
+            }
+            get("/logIn") {
+                call.respondText(
+                    this::class.java.classLoader.getResource("logIn.html")!!.readText(),
                     ContentType.Text.Html
                 )
             }

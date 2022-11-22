@@ -11,7 +11,7 @@ import react.dom.html.ReactHTML.div
 private val scope = MainScope()
 
 
-val SignIn = FC<Props> {
+val LogIn = FC<Props> {
     var user by useState(emptyList<User>())
 
     useEffectOnce {
@@ -27,24 +27,16 @@ val SignIn = FC<Props> {
         }
         div {
             h1 {
-                +"Please Sign In"
+                +"Please Log In"
             }
         }
-        signInComponent {
-
+        logInComponent {
             onSubmit= { input, input2 -> // differet onSubmit than the other??
                 val userinfo = User(input,input2)
                 console.log(input)
                 console.log(input2)
-                scope.launch {
-                    addUser(userinfo)
-                    user = getUser()
-                }
             }
         }
     }
 }
-
-
-
 

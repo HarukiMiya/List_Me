@@ -13,11 +13,11 @@ import react.dom.html.ReactHTML.label
 import react.dom.html.ReactHTML.br
 import react.router.useNavigate
 
-external interface SignInProps : Props {
+external interface SignUpProps : Props {
     var onSubmit: (String,String) -> Unit
 }
 
-val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is a string
+val signUpComponent = FC<SignUpProps> { props -> // this takes onsubmit which is a string
     val (username, setUsername) = useState("")
     val (pass, setPass) = useState("")
 
@@ -62,14 +62,14 @@ val signInComponent = FC<SignInProps> { props -> // this takes onsubmit which is
         }
 
         div {
-            className = ClassName("signIn")
+            className = ClassName("signUp")
             input {
                 type = InputType.submit
                 className = ClassName("btn")
-                value = "SignIn"
-                onClick = {
-                    navigate("/logIn")
-                }
+                value = "SignUp"
+//                onClick = {
+//                    navigate("/logIn")
+//                }
             }
         }
     }
