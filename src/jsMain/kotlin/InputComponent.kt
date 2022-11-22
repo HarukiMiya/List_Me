@@ -16,11 +16,10 @@ import react.dom.html.ReactHTML.button
 
 external interface InputProps : Props {
     var onSubmit: (String) -> Unit
-    var name:(String)
 }
 external interface EditProps : Props {
     var onSubmit: (String) -> Unit
-    var name:(String)
+    var listItem:(ShoppingListItem)
 
 }
 
@@ -50,7 +49,8 @@ val inputComponent = FC<InputProps> { props ->
 private val scope = MainScope()
 
 val editComponent = FC<EditProps> { props ->
-    val (text, setText) = useState("")
+    val (text, setText) = useState(props.listItem.desc+"!".repeat(props.listItem.priority))
+
     val submitHandler: FormEventHandler<HTMLFormElement> = {
         it.preventDefault()
         setText("")
@@ -72,7 +72,7 @@ val editComponent = FC<EditProps> { props ->
         input {
             type = InputType.text
             onChange = changeHandler
-            value = props.name
+            value = text
         }
     }
 }

@@ -85,7 +85,7 @@ fun main() {
                     call.respond(HttpStatusCode.OK)
                 }
                 put("/{id}") {
-                    val id = call.parameters["id"]?.toInt() ?: error("Invalid delete request")
+                    val id = call.parameters["id"]?.toInt() ?: error("Invalid edit request")
                     val listItemRequest= call.receive<ShoppingListItem>()
                     collection.updateOne(ShoppingListItem::id eq id, listItemRequest)
                 }
