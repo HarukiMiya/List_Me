@@ -71,7 +71,7 @@ fun main() {
                     ContentType.Text.Html
                 )
             }
-            get("/login") {
+            get("/logIn") {
                 call.respondText(
                     this::class.java.classLoader.getResource("logIn.html")!!.readText(),
                     ContentType.Text.Html
