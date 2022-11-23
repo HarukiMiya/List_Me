@@ -38,7 +38,7 @@ val SignUp = FC<Props> {
                 scope.launch {
                     if (searchUser(userinfo) == "False") {
                         addUser(userinfo)
-                        navigate("/login")
+                        navigate("/logIn")
                     } else {
                         setExist(true)
                     }
