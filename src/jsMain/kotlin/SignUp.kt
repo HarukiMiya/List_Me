@@ -17,7 +17,6 @@ private val scope = MainScope()
 val SignUp = FC<Props> {
     val navigate = useNavigate()
     var user by useState(emptyList<User>())
-
     val (exist, setExist) = useState(false)
 
     useEffectOnce {
@@ -31,40 +30,27 @@ val SignUp = FC<Props> {
             flexDirection = column
             alignItems = center;
         }
-        div {
-            id = "sign"
-            h1 {
-                +"Please Sign Up"
-            }
-        }
         signUpComponent {
-            onSubmit= { input, input2 -> // differet onSubmit than the other??
-                val userinfo = User(input,input2)
+            onSubmit = { input, input2 -> // differet onSubmit than the other??
+                val userinfo = User(input, input2)
                 console.log(input)
                 console.log(input2)
                 scope.launch {
-                    if(searchUser(userinfo) == "False"){
+                    if (searchUser(userinfo) == "False") {
                         addUser(userinfo)
                         navigate("/login")
-                    }
-                    else{
+                    } else {
                         setExist(true)
                     }
                 }
             }
         }
-        if(exist){
-            p{
+        if (exist) {
+            p {
                 id = "exists"
                 +"Username already taken"
             }
 
         }
-
-
     }
 }
-
-
-
-

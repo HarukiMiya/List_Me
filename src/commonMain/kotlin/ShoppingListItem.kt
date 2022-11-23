@@ -25,9 +25,7 @@ fun getShoppingListInfo():ShoppingListItem{
 fun getDummyShoppingList(): Collection<ShoppingListItem>{
     val item = ShoppingListItem("Apples",5,getCurrentDateTime(), null)
     val item2 = ShoppingListItem("Oranges",5,getCurrentDateTime(),null )
-
     return listOf(item, item2)
-
 }
 
 fun getCurrentDateTime(): Instant {

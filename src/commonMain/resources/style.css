@@ -29,7 +29,7 @@ display: inline;
     display: inline;
 }
 ul{
-    margin-left: 40vw;
+    margin-left: 20vw;
     list-style-type: none;
     font-size: 1.3vw;
 }
@@ -54,7 +54,7 @@ ul{
 }
 
 
-/*--------------------------Sign In Page----------------------*/
+/*--------------------------Sign Up Page----------------------*/
 .signUp{
     text-align: center !important;
 }
@@ -62,7 +62,6 @@ ul{
     font-family: 'Ubuntu', sans-serif;
     color: #8C55AA;
     text-align: center !important;
-
 }
 input{
     margin: 1vh 0;

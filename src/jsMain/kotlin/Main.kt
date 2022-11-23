@@ -21,6 +21,10 @@ val Application = FC<Props> {
                 element = SignUp.create()
             }
             Route {
+                path = "/logIn"
+                element = LogIn.create()
+            }
+            Route {
                 //index=true
                 path="/index"
                 element = App.create()

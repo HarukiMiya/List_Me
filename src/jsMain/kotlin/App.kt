@@ -24,15 +24,7 @@ import react.dom.html.ReactHTML.body
 import react.dom.html.ReactHTML.i
 import react.dom.html.ReactHTML.style
 
-@JsName("$")
-@JsNonModule
-@JsModule("jquery")
-external fun jq(id: String): dynamic
-
-
 private val scope = MainScope()
-
-//var inputVal =
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
