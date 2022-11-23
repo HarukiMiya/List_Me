@@ -7,9 +7,10 @@ import kotlinx.coroutines.launch
 import react.*
 import react.dom.html.ReactHTML.h1
 import react.dom.html.ReactHTML.div
+import react.dom.html.ReactHTML.p
+import react.router.useNavigate
 
 private val scope = MainScope()
-
 
 val LogIn = FC<Props> {
     var user by useState(emptyList<User>())
@@ -26,6 +27,7 @@ val LogIn = FC<Props> {
             alignItems = center;
         }
         div {
+            id = "sign"
             h1 {
                 +"Please Log In"
             }

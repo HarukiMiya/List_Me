@@ -41,8 +41,7 @@ val App = FC<Props> {
     }
     inputComponent {
         onSubmit = { input ->
-//            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' })
-            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime())
+            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null)
             scope.launch {
                 addShoppingListItem(cartItem)
                 shoppingList = getShoppingList()
@@ -86,9 +85,9 @@ val App = FC<Props> {
                 if(item==selectedEditItem) {
                     //print as a textfield
                     editComponent{
+                        listItem=item
                         onSubmit = { input->
-                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime)
-//                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' })
+                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime())
                             scope.launch {
                                 editShoppingListItem(item,cartItem)
                                 shoppingList = getShoppingList()
