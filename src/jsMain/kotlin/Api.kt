@@ -57,3 +57,7 @@ suspend fun deleteUserItem(user:User){
 suspend fun searchUser(user:User): String{
     return jsonClient.get(endpoint + User.path + "/${user.username}").body()
 }
+
+suspend fun searchUserNamePwd(user:User): String{
+    return jsonClient.get(endpoint + User.path + "/search/${user.username}/${user.password}").body()
+}

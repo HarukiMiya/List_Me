@@ -14,6 +14,8 @@ private val scope = MainScope()
 
 val LogIn = FC<Props> {
     var user by useState(emptyList<User>())
+    val (exist, setExist) = useState(false)
+    val navigate = useNavigate()
 
     useEffectOnce {
         scope.launch {
@@ -24,7 +26,7 @@ val LogIn = FC<Props> {
         css {
             display = Display.flex
             flexDirection = column
-            alignItems = center;
+            alignItems = center
         }
         div {
             id = "sign"
@@ -37,6 +39,19 @@ val LogIn = FC<Props> {
                 val userinfo = User(input,input2)
                 console.log(input)
                 console.log(input2)
+                scope.launch {
+                    if (searchUserNamePwd(userinfo) == "True") {
+                        navigate("/index")
+                    } else {
+                        setExist(true)
+                    }
+                }
+            }
+        }
+        if (exist) {
+            p {
+                id = "exists"
+                +"Incorrect username or password"
             }
         }
     }

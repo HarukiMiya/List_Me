@@ -122,7 +122,6 @@ fun main() {
             route(User.path){
                get{
                     call.respond(userCollection.find().toList())
-
                }
                 post {
                     userCollection.insertOne(call.receive<User>())
@@ -142,12 +141,21 @@ fun main() {
                     } else{
                         "False"
                     }
-
                     call.respondText(isFound)
+                }
+                get("search/{name}/{password}"){
+                    val nameSearch = call.parameters["name"].toString()
+                    val pwdSearch = call.parameters["password"].toString()
+                    val recordName = userCollection.findOne(User::username eq nameSearch)
 
+                    val isFound:String = if(recordName != null && pwdSearch == recordName?.password){
+                        "True"
+                    } else{
+                        "False"
+                    }
+                    call.respondText(isFound)
                 }
             }
-
         }
 
     }.start(wait = true)
