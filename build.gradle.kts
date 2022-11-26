@@ -12,6 +12,11 @@ plugins {
     kotlin("multiplatform") version "1.7.20-Beta"
     application //to run JVM part
     kotlin("plugin.serialization") version "1.7.20-Beta"
+
+    id("org.springframework.boot") version "2.7.1"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+
+    kotlin("plugin.spring") version "1.6.21"
 }
 
 group = "org.example"
@@ -43,6 +48,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+
+
             }
         }
 

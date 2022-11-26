@@ -1,14 +1,31 @@
-import kotlinx.serialization.Serializable
 import kotlinx.datetime.*
+import kotlinx.serialization.Serializable
+
+import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.mongodb.core.mapping.Field
 
 @Serializable
-data class ShoppingListItem(val desc: String, val priority: Int, val creationTime:Instant ) {
+data class ShoppingListItem(val desc: String? = null, val priority: Int, val creationTime:Instant ) {
     val id: Int = desc.hashCode()
     val lastEditTime:Instant=getCurrentDateTime()
     companion object {
         const val path = "/shoppingList"
     }
+
+    override fun toString(): String {
+        return "ShoppingList [id = $id, desc = $desc, priority = $priority, creationTime = $creationTime]"
+    }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 @Serializable
@@ -19,10 +36,19 @@ data class User(val username: String, val password: String) {
     companion object {
         const val path = "/user"
     }
+    override fun toString(): String {
+        return "User [id = $userId, username = $username, password = $password, shoppingListInfo = $shoppingListInfo]"
+    }
+
+
 }
 fun getShoppingListInfo():ShoppingListItem{
     return ShoppingListItem("banana",1,getCurrentDateTime())
 }
+
+
+
+
 fun getDummyShoppingList(): Collection<ShoppingListItem>{
     val item = ShoppingListItem("Apples",5,getCurrentDateTime())
     val item2 = ShoppingListItem("Oranges",5,getCurrentDateTime())
@@ -44,3 +70,5 @@ fun convertDateTime(currentMoment: Instant):String  {
         var time= currentMoment.toLocalDateTime(TimeZone.currentSystemDefault()).time.toString().take(8)
         return "Date: $month-$day-$year Time: $time"
 }
+
+
