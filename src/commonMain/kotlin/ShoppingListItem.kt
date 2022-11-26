@@ -42,6 +42,7 @@ data class User(val username: String, val password: String) {
 
 
 }
+
 fun getShoppingListInfo():ShoppingListItem{
     return ShoppingListItem("banana",1,getCurrentDateTime())
 }
