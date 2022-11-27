@@ -16,6 +16,7 @@ import org.litote.kmongo.contains
 import org.litote.kmongo.coroutine.coroutine
 import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
+import org.litote.kmongo.setValue
 import java.util.StringJoiner
 
 //val shoppingList = mutableListOf(
@@ -98,7 +99,8 @@ fun main() {
                 put("/{id}") {
                     val id = call.parameters["id"]?.toInt() ?: error("Invalid edit request")
                     val listItemRequest= call.receive<ShoppingListItem>()
-                    collection.updateOne(ShoppingListItem::id eq id, listItemRequest)
+                    collection.updateOne(ShoppingListItem::id eq id, setValue(ShoppingListItem::desc,listItemRequest.desc))
+                    collection.updateOne(ShoppingListItem::id eq id, setValue(ShoppingListItem::priority,listItemRequest.priority))
                 }
                 delete("/{id}") {
                     val id = call.parameters["id"]?.toInt() ?: error("Invalid delete request")
