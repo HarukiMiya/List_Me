@@ -31,8 +31,8 @@ val App = FC<Props> {
     //var user:User by useState(User("owner", "pw", false))
     var userList by useState(emptyList<User>())
     //val user:User = User("Dumb", "Dumber", false)
+    //var activeUser:String = "dummy"
     var activeUser:String = "dummy"
-
     var selectedEditItem: ShoppingListItem?  by useState(null)
 //    var counter=0
 
@@ -57,8 +57,11 @@ val App = FC<Props> {
     }
     inputComponent {
         onSubmit = { input ->
-            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(activeUser))
+
             scope.launch {
+                activeUser = findActive()
+                activeUser = activeUser.drop(1)
+                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(activeUser))
                 addShoppingListItem(cartItem)
                 shoppingList = getShoppingList(activeUser)
             }
@@ -81,6 +84,8 @@ val App = FC<Props> {
                         }
                         onClick = {
                             scope.launch {
+                                activeUser = findActive()
+                                activeUser = activeUser.drop(1)
                                 deleteShoppingListItem(item)
                                 shoppingList = getShoppingList(activeUser)// what is the point of this
                             }
@@ -103,8 +108,10 @@ val App = FC<Props> {
                     editComponent{
                         listItem=item
                         onSubmit = { input->
-                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(activeUser))
                             scope.launch {
+                                activeUser = findActive()
+                                activeUser = activeUser.drop(1)
+                                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(activeUser))
                                 editShoppingListItem(item,cartItem)
                                 shoppingList = getShoppingList(activeUser)
                             }
