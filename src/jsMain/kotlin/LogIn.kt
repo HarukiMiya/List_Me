@@ -1,5 +1,4 @@
 import csstype.AlignItems.Companion.center
-import csstype.ClassName
 import csstype.Display
 import csstype.FlexDirection.Companion.column
 import emotion.react.css
@@ -13,11 +12,10 @@ import react.router.useNavigate
 
 private val scope = MainScope()
 
-
-val SignUp = FC<Props> {
-    val navigate = useNavigate()
+val LogIn = FC<Props> {
     var user by useState(emptyList<User>())
     val (exist, setExist) = useState(false)
+    val navigate = useNavigate()
 
     useEffectOnce {
         scope.launch {
@@ -28,17 +26,24 @@ val SignUp = FC<Props> {
         css {
             display = Display.flex
             flexDirection = column
-            alignItems = center;
+            alignItems = center
         }
-        signUpComponent {
-            onSubmit = { input, input2 -> // differet onSubmit than the other??
-                val userinfo = User(input, input2)
+        div {
+            id = "sign"
+            h1 {
+                +"Please Log In"
+            }
+        }
+        logInComponent {
+            onSubmit= { input, input2 -> // differet onSubmit than the other??
+                val userinfo = User(input,input2)
                 console.log(input)
                 console.log(input2)
                 scope.launch {
-                    if (searchUser(userinfo) == "False") {
-                        addUser(userinfo)
-                        navigate("/logIn")
+                    if (searchUserNamePwd(userinfo) == "True") {
+                        owner = userinfo.username
+                        pw = userinfo.password
+                        navigate("/index")
                     } else {
                         setExist(true)
                     }
@@ -48,9 +53,9 @@ val SignUp = FC<Props> {
         if (exist) {
             p {
                 id = "exists"
-                +"Username already taken"
+                +"Incorrect username or password"
             }
-
         }
     }
 }
+

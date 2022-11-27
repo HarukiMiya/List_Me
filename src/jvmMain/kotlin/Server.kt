@@ -4,6 +4,7 @@ import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.application.*
+import io.ktor.server.html.*
 import io.ktor.server.http.content.*
 import io.ktor.server.plugins.compression.*
 import io.ktor.server.plugins.contentnegotiation.*
@@ -11,10 +12,11 @@ import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.litote.kmongo.contains
 import org.litote.kmongo.coroutine.coroutine
-import org.litote.kmongo.coroutine.insertOne
 import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
+import java.util.StringJoiner
 
 //val shoppingList = mutableListOf(
 //    ShoppingListItem("Cucumbers 🥒", 1),
@@ -30,12 +32,14 @@ val connectionString: ConnectionString? = System.getenv("MONGODB_URI")?.let {
 
 val collection = database.getCollection<ShoppingListItem>()
 //val userCollection = userDatabase.getCollection<User>()
-val userCollection = database.getCollection<User>()
+val userCollection = userDatabase.getCollection<User>()
 
-val users = mutableListOf(
-    User("Victor", "green"),
-    User("Som", "Yes")
-)
+suspend fun registerUser(user: User): Boolean {
+    return userCollection.insertOne(user).wasAcknowledged()
+}
+suspend fun getListForUser(user: String): List<ShoppingListItem> {
+    return collection.find(ShoppingListItem::owners contains user).toList()
+}
 fun main() {
     val port = System.getenv("PORT")?.toInt() ?: 9090
     embeddedServer(Netty, 9090) {
@@ -70,13 +74,20 @@ fun main() {
                     ContentType.Text.Html
                 )
             }
+            get("/logIn") {
+                call.respondText(
+                    this::class.java.classLoader.getResource("logIn.html")!!.readText(),
+                    ContentType.Text.Html
+                )
+            }
             static("/") {
                 resources("")
             }
 
             route(ShoppingListItem.path) {
-                get {
-                    call.respond(collection.find().toList())
+                get("/{user}") {
+                    val user = call.parameters["user"]?.toString() ?: error("Invalid butt request")
+                    call.respond(collection.find(ShoppingListItem::owners contains user).toList())
 //                    call.respond(userCollection.find().toList())
                 }
                 post {
@@ -85,7 +96,7 @@ fun main() {
                     call.respond(HttpStatusCode.OK)
                 }
                 put("/{id}") {
-                    val id = call.parameters["id"]?.toInt() ?: error("Invalid delete request")
+                    val id = call.parameters["id"]?.toInt() ?: error("Invalid edit request")
                     val listItemRequest= call.receive<ShoppingListItem>()
                     collection.updateOne(ShoppingListItem::id eq id, listItemRequest)
                 }
@@ -113,9 +124,9 @@ fun main() {
             }
              */
             route(User.path){
-                get{
+               get{
                     call.respond(userCollection.find().toList())
-                }
+               }
                 post {
                     userCollection.insertOne(call.receive<User>())
                     call.respond(HttpStatusCode.OK)
@@ -125,8 +136,30 @@ fun main() {
                     userCollection.deleteOne(User::userId eq id)
                     call.respond(HttpStatusCode.OK)
                 }
-            }
+                get("/{name}"){
+                    val nameSearch = call.parameters["name"].toString()
+                    val record = userCollection.findOne(User::username eq nameSearch)
 
+                    val isFound:String = if(record != null){
+                        "True"
+                    } else{
+                        "False"
+                    }
+                    call.respondText(isFound)
+                }
+                get("search/{name}/{password}"){
+                    val nameSearch = call.parameters["name"].toString()
+                    val pwdSearch = call.parameters["password"].toString()
+                    val recordName = userCollection.findOne(User::username eq nameSearch)
+
+                    val isFound:String = if(recordName != null && pwdSearch == recordName?.password){
+                        "True"
+                    } else{
+                        "False"
+                    }
+                    call.respondText(isFound)
+                }
+            }
         }
 
     }.start(wait = true)

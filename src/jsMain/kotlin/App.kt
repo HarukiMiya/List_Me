@@ -24,24 +24,18 @@ import react.dom.html.ReactHTML.body
 import react.dom.html.ReactHTML.i
 import react.dom.html.ReactHTML.style
 
-@JsName("$")
-@JsNonModule
-@JsModule("jquery")
-external fun jq(id: String): dynamic
-
-
 private val scope = MainScope()
-
-//var inputVal =
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
+    var user:User by useState(User(owner, pw))
     //var userList by useState(emptyList<User>())
     var selectedEditItem: ShoppingListItem?  by useState(null)
 //    var counter=0
     useEffectOnce {
         scope.launch {
-            shoppingList = getShoppingList()
+            shoppingList = getShoppingList(user.username)
+            //shoppingList=getListForUser()
         }
     }
     h1 {
@@ -49,10 +43,10 @@ val App = FC<Props> {
     }
     inputComponent {
         onSubmit = { input ->
-            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime())
+            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(user.username))
             scope.launch {
                 addShoppingListItem(cartItem)
-                shoppingList = getShoppingList()
+                shoppingList = getShoppingList(user.username)
             }
         }
     }
@@ -74,7 +68,7 @@ val App = FC<Props> {
                         onClick = {
                             scope.launch {
                                 deleteShoppingListItem(item)
-                                shoppingList = getShoppingList()// what is the point of this
+                                shoppingList = getShoppingList(user.username)// what is the point of this
                             }
                         }
                     }
@@ -93,11 +87,12 @@ val App = FC<Props> {
                 if(item==selectedEditItem) {
                     //print as a textfield
                     editComponent{
+                        listItem=item
                         onSubmit = { input->
-                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime)
+                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(user.username))
                             scope.launch {
                                 editShoppingListItem(item,cartItem)
-                                shoppingList = getShoppingList()
+                                shoppingList = getShoppingList(user.username)
                             }
                             selectedEditItem=null
                         }

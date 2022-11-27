@@ -19,8 +19,8 @@ val jsonClient = HttpClient {
     }
 }
 
-suspend fun getShoppingList(): List<ShoppingListItem> {
-    return jsonClient.get(endpoint + ShoppingListItem.path).body()
+suspend fun getShoppingList(username:String): List<ShoppingListItem> {
+    return jsonClient.get(endpoint + ShoppingListItem.path+"/"+username).body()
 }
 
 suspend fun addShoppingListItem(shoppingListItem: ShoppingListItem) {
@@ -59,4 +59,12 @@ suspend fun addUser(user: User) {
 
 suspend fun deleteUserItem(user:User){
     jsonClient.delete(endpoint + User.path + "/${user.userId}")
+}
+
+suspend fun searchUser(user:User): String{
+    return jsonClient.get(endpoint + User.path + "/${user.username}").body()
+}
+
+suspend fun searchUserNamePwd(user:User): String{
+    return jsonClient.get(endpoint + User.path + "/search/${user.username}/${user.password}").body()
 }
