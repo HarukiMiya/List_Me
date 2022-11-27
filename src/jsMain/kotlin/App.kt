@@ -28,7 +28,7 @@ private val scope = MainScope()
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
-    var user:User by useState(User(owner, pw))
+    var user:User by useState(User("owner", "pw", false))
     //var userList by useState(emptyList<User>())
     var selectedEditItem: ShoppingListItem?  by useState(null)
 //    var counter=0

@@ -11,7 +11,7 @@ data class ShoppingListItem(val desc: String, val priority: Int, val creationTim
 }
 
 @Serializable
-data class User(val username: String, val password: String) {
+data class User(val username: String, val password: String, val status: Boolean) {
     val userId: Int = username.hashCode()
 //    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
 //    val item: Collection<ShoppingListItem> = getDummyShoppingList()

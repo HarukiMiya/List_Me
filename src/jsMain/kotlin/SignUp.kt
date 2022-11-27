@@ -32,7 +32,7 @@ val SignUp = FC<Props> {
         }
         signUpComponent {
             onSubmit = { input, input2 -> // differet onSubmit than the other??
-                val userinfo = User(input, input2)
+                val userinfo = User(input, input2, status = false)
                 console.log(input)
                 console.log(input2)
                 scope.launch {

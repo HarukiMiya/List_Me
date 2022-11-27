@@ -16,6 +16,8 @@ import org.litote.kmongo.contains
 import org.litote.kmongo.coroutine.coroutine
 import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
+import org.litote.kmongo.set
+import org.litote.kmongo.setTo
 import java.util.StringJoiner
 
 //val shoppingList = mutableListOf(
@@ -50,6 +52,7 @@ fun main() {
             allowMethod(HttpMethod.Get)
             allowMethod(HttpMethod.Post)
             allowMethod(HttpMethod.Delete)
+            allowMethod(HttpMethod.Put)
             anyHost()
         }
         install(Compression) {
@@ -152,12 +155,21 @@ fun main() {
                     val pwdSearch = call.parameters["password"].toString()
                     val recordName = userCollection.findOne(User::username eq nameSearch)
 
-                    val isFound:String = if(recordName != null && pwdSearch == recordName?.password){
+                    val isFound:String = if(recordName != null && pwdSearch == recordName.password){
                         "True"
                     } else{
                         "False"
                     }
                     call.respondText(isFound)
+                }
+                put{
+                    userCollection.updateOne(User::status eq true, set(User::status setTo false))
+                    call.respond(HttpStatusCode.OK)
+                }
+                post{
+                    val nameSearch = call.receive<String>()
+                    userCollection.updateOne(User::status eq false, set(User::status setTo true))
+                    //call.respondText("Inside set to true")
                 }
             }
         }
