@@ -63,14 +63,15 @@ suspend fun searchUserNamePwd(user:User): String{
 }
 
 suspend fun resetActive(){
-    return jsonClient.put(endpoint + User.path).body()
+    return jsonClient.patch(endpoint + User.path).body()
 }
 
-suspend fun setActive(name:String){
-    console.log("Please work")
-    jsonClient.post(endpoint + User.path){
+suspend fun setActive(user:User){
+    jsonClient.put(endpoint + User.path + "/${user.username}"){
         contentType(ContentType.Application.Json)
-        setBody(name)
+        setBody(user)
     }
 }
+
+
 

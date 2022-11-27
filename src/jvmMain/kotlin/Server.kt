@@ -109,23 +109,6 @@ fun main() {
                     call.respond(HttpStatusCode.OK)
                 }
             }
-            // used commented code for testing, redid tutorial
-            /*
-            route(User.path){
-                get {
-                    call.respond(users)
-                }
-                post {
-                    users += call.receive<User>()
-                    call.respond(HttpStatusCode.OK)
-                }
-                delete("/{userId}") {
-                    val id = call.parameters["userId"]?.toInt() ?: error("Invalid delete request")
-                    users.removeIf { it.userId == id }
-                    call.respond(HttpStatusCode.OK)
-                }
-            }
-             */
             route(User.path){
                get{
                     call.respond(userCollection.find().toList())
@@ -162,14 +145,14 @@ fun main() {
                     }
                     call.respondText(isFound)
                 }
-                put{
-                    userCollection.updateOne(User::status eq true, set(User::status setTo false))
+                put("/{name}"){
+                    val nameSearch = call.parameters["name"].toString()
+                    userCollection.updateOne(User::username eq nameSearch, set(User::status setTo true))
                     call.respond(HttpStatusCode.OK)
                 }
-                post{
-                    val nameSearch = call.receive<String>()
-                    userCollection.updateOne(User::status eq false, set(User::status setTo true))
-                    //call.respondText("Inside set to true")
+                patch {
+                    userCollection.updateOne(User::status eq true, set(User::status setTo false))
+                    call.respond(HttpStatusCode.OK)
                 }
             }
         }
