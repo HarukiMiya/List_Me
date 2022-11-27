@@ -101,6 +101,8 @@ fun main() {
                     val listItemRequest= call.receive<ShoppingListItem>()
                     collection.updateOne(ShoppingListItem::id eq id, setValue(ShoppingListItem::desc,listItemRequest.desc))
                     collection.updateOne(ShoppingListItem::id eq id, setValue(ShoppingListItem::priority,listItemRequest.priority))
+                    collection.updateOne(ShoppingListItem::id eq id, setValue(ShoppingListItem::lastEditTime,listItemRequest.lastEditTime))
+
                 }
                 delete("/{id}") {
                     val id = call.parameters["id"]?.toInt() ?: error("Invalid delete request")
