@@ -30,20 +30,24 @@ val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
     //var user:User by useState(User("owner", "pw", false))
     var userList by useState(emptyList<User>())
-    var user:User = User("Dumb", "Dumber", false)
+    //val user:User = User("Dumb", "Dumber", false)
+    var activeUser:String = "dummy"
 
     var selectedEditItem: ShoppingListItem?  by useState(null)
 //    var counter=0
+
     useEffectOnce {
         scope.launch{
-            user = findActive()[0]
-            shoppingList = getShoppingList(user.username)
+            activeUser = findActive()
+            activeUser = activeUser.drop(1)
+            console.log("This is activeUser $activeUser")
+            shoppingList = getShoppingList(activeUser)
         }
     }
     /*
     useEffectOnce {
         scope.launch {
-            shoppingList = getShoppingList(user.username)
+            shoppingList = getShoppingList(activeUser)
             //shoppingList=getListForUser()
         }
     }
@@ -53,10 +57,10 @@ val App = FC<Props> {
     }
     inputComponent {
         onSubmit = { input ->
-            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(user.username))
+            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(activeUser))
             scope.launch {
                 addShoppingListItem(cartItem)
-                shoppingList = getShoppingList(user.username)
+                shoppingList = getShoppingList(activeUser)
             }
         }
     }
@@ -78,7 +82,7 @@ val App = FC<Props> {
                         onClick = {
                             scope.launch {
                                 deleteShoppingListItem(item)
-                                shoppingList = getShoppingList(user.username)// what is the point of this
+                                shoppingList = getShoppingList(activeUser)// what is the point of this
                             }
                         }
                     }
@@ -99,10 +103,10 @@ val App = FC<Props> {
                     editComponent{
                         listItem=item
                         onSubmit = { input->
-                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(user.username))
+                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(activeUser))
                             scope.launch {
                                 editShoppingListItem(item,cartItem)
-                                shoppingList = getShoppingList(user.username)
+                                shoppingList = getShoppingList(activeUser)
                             }
                             selectedEditItem=null
                         }

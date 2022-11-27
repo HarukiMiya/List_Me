@@ -113,9 +113,16 @@ fun main() {
                get{
                     call.respond(userCollection.find().toList())
                }
-                head{
+                options{
                     //val state = call.parameters["status"].toBoolean()
-                    call.respond(userCollection.find(User::status eq true).toList())
+                    //call.respond(userCollection.find(User::status eq true).toList())
+                    val record = userCollection.findOne(User::status eq true)
+                    if(record != null){
+                        call.respondText("/${record.username}")
+                    }
+                    else{
+                        call.respondText("not found")
+                    }
 
                 }
                 post {
