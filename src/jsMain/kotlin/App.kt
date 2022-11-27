@@ -28,16 +28,26 @@ private val scope = MainScope()
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
-    var user:User by useState(User("owner", "pw", false))
-    //var userList by useState(emptyList<User>())
+    //var user:User by useState(User("owner", "pw", false))
+    var userList by useState(emptyList<User>())
+    var user:User = User("Dumb", "Dumber", false)
+
     var selectedEditItem: ShoppingListItem?  by useState(null)
 //    var counter=0
+    useEffectOnce {
+        scope.launch{
+            user = findActive()[0]
+            shoppingList = getShoppingList(user.username)
+        }
+    }
+    /*
     useEffectOnce {
         scope.launch {
             shoppingList = getShoppingList(user.username)
             //shoppingList=getListForUser()
         }
     }
+     */
     h1 {
         +"Full-Stack Shopping List"
     }

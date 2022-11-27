@@ -73,5 +73,9 @@ suspend fun setActive(user:User){
     }
 }
 
+suspend fun findActive(): List<User>{
+    return jsonClient.head(endpoint + User.path).body()
+}
+
 
 

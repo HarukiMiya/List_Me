@@ -113,6 +113,11 @@ fun main() {
                get{
                     call.respond(userCollection.find().toList())
                }
+                head{
+                    //val state = call.parameters["status"].toBoolean()
+                    call.respond(userCollection.find(User::status eq true).toList())
+
+                }
                 post {
                     userCollection.insertOne(call.receive<User>())
                     call.respond(HttpStatusCode.OK)
