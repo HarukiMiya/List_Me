@@ -19,6 +19,9 @@ data class User(val username: String, val password: String) {
         const val path = "/user"
     }
 }
+
+public var owner: String = ""
+public var pw: String = ""
 //fun getShoppingListInfo():ShoppingListItem{
 //    return ShoppingListItem("banana",1,getCurrentDateTime(),null)
 //}

@@ -32,13 +32,7 @@ val connectionString: ConnectionString? = System.getenv("MONGODB_URI")?.let {
 
 val collection = database.getCollection<ShoppingListItem>()
 //val userCollection = userDatabase.getCollection<User>()
-val userCollection = database.getCollection<User>()
-
-val users = mutableListOf(
-    User("Victor", "green"),
-    User("Som", "Yes")
-)
-
+val userCollection = userDatabase.getCollection<User>()
 
 suspend fun registerUser(user: User): Boolean {
     return userCollection.insertOne(user).wasAcknowledged()
