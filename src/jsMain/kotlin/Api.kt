@@ -61,3 +61,21 @@ suspend fun searchUser(user:User): String{
 suspend fun searchUserNamePwd(user:User): String{
     return jsonClient.get(endpoint + User.path + "/search/${user.username}/${user.password}").body()
 }
+
+suspend fun resetActive(){
+    return jsonClient.patch(endpoint + User.path).body()
+}
+
+suspend fun setActive(user:User){
+    jsonClient.put(endpoint + User.path + "/${user.username}"){
+        contentType(ContentType.Application.Json)
+        setBody(user)
+    }
+}
+
+suspend fun findActive(): String{
+    return jsonClient.options(endpoint + User.path).body()
+}
+
+
+
