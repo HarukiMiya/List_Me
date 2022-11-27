@@ -28,12 +28,14 @@ private val scope = MainScope()
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
+    var user:User by useState(User("haruki", "password"))
     //var userList by useState(emptyList<User>())
     var selectedEditItem: ShoppingListItem?  by useState(null)
 //    var counter=0
     useEffectOnce {
         scope.launch {
-            shoppingList = getShoppingList()
+            shoppingList = getShoppingList(user.username)
+            //shoppingList=getListForUser()
         }
     }
     h1 {
@@ -41,10 +43,10 @@ val App = FC<Props> {
     }
     inputComponent {
         onSubmit = { input ->
-            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null)
+            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(user.username))
             scope.launch {
                 addShoppingListItem(cartItem)
-                shoppingList = getShoppingList()
+                shoppingList = getShoppingList(user.username)
             }
         }
     }
@@ -66,7 +68,7 @@ val App = FC<Props> {
                         onClick = {
                             scope.launch {
                                 deleteShoppingListItem(item)
-                                shoppingList = getShoppingList()// what is the point of this
+                                shoppingList = getShoppingList(user.username)// what is the point of this
                             }
                         }
                     }
@@ -87,10 +89,10 @@ val App = FC<Props> {
                     editComponent{
                         listItem=item
                         onSubmit = { input->
-                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime())
+                            val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(user.username))
                             scope.launch {
                                 editShoppingListItem(item,cartItem)
-                                shoppingList = getShoppingList()
+                                shoppingList = getShoppingList(user.username)
                             }
                             selectedEditItem=null
                         }

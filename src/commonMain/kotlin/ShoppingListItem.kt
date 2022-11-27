@@ -3,7 +3,7 @@ import kotlinx.datetime.*
 import kotlin.random.Random
 
 @Serializable
-data class ShoppingListItem(val desc: String, val priority: Int, val creationTime:Instant?, val lastEditTime:Instant? ) {
+data class ShoppingListItem(val desc: String, val priority: Int, val creationTime:Instant?, val lastEditTime:Instant?, val owners: List<String> ) {
     val id: Int = desc.hashCode()+ Random.nextInt(0, 100)
     companion object {
         const val path = "/shoppingList"
@@ -13,20 +13,20 @@ data class ShoppingListItem(val desc: String, val priority: Int, val creationTim
 @Serializable
 data class User(val username: String, val password: String) {
     val userId: Int = username.hashCode()
-    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
-    val item: Collection<ShoppingListItem> = getDummyShoppingList()
+//    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
+//    val item: Collection<ShoppingListItem> = getDummyShoppingList()
     companion object {
         const val path = "/user"
     }
 }
-fun getShoppingListInfo():ShoppingListItem{
-    return ShoppingListItem("banana",1,getCurrentDateTime(),null)
-}
-fun getDummyShoppingList(): Collection<ShoppingListItem>{
-    val item = ShoppingListItem("Apples",5,getCurrentDateTime(), null)
-    val item2 = ShoppingListItem("Oranges",5,getCurrentDateTime(),null )
-    return listOf(item, item2)
-}
+//fun getShoppingListInfo():ShoppingListItem{
+//    return ShoppingListItem("banana",1,getCurrentDateTime(),null)
+//}
+//fun getDummyShoppingList(): Collection<ShoppingListItem>{
+//    val item = ShoppingListItem("Apples",5,getCurrentDateTime(), null)
+//    val item2 = ShoppingListItem("Oranges",5,getCurrentDateTime(),null )
+//    return listOf(item, item2)
+//}
 
 fun getCurrentDateTime(): Instant {
     // return something like 2022-11-17T11:56:34.311Z
