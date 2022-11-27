@@ -17,6 +17,8 @@ import org.litote.kmongo.coroutine.coroutine
 import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
 import org.litote.kmongo.setValue
+import org.litote.kmongo.set
+import org.litote.kmongo.setTo
 import java.util.StringJoiner
 
 //val shoppingList = mutableListOf(
@@ -51,6 +53,7 @@ fun main() {
             allowMethod(HttpMethod.Get)
             allowMethod(HttpMethod.Post)
             allowMethod(HttpMethod.Delete)
+            allowMethod(HttpMethod.Put)
             anyHost()
         }
         install(Compression) {
@@ -110,27 +113,22 @@ fun main() {
                     call.respond(HttpStatusCode.OK)
                 }
             }
-            // used commented code for testing, redid tutorial
-            /*
-            route(User.path){
-                get {
-                    call.respond(users)
-                }
-                post {
-                    users += call.receive<User>()
-                    call.respond(HttpStatusCode.OK)
-                }
-                delete("/{userId}") {
-                    val id = call.parameters["userId"]?.toInt() ?: error("Invalid delete request")
-                    users.removeIf { it.userId == id }
-                    call.respond(HttpStatusCode.OK)
-                }
-            }
-             */
             route(User.path){
                get{
                     call.respond(userCollection.find().toList())
                }
+                options{
+                    //val state = call.parameters["status"].toBoolean()
+                    //call.respond(userCollection.find(User::status eq true).toList())
+                    val record = userCollection.findOne(User::status eq true)
+                    if(record != null){
+                        call.respondText("/${record.username}")
+                    }
+                    else{
+                        call.respondText("not found")
+                    }
+
+                }
                 post {
                     userCollection.insertOne(call.receive<User>())
                     call.respond(HttpStatusCode.OK)
@@ -156,12 +154,21 @@ fun main() {
                     val pwdSearch = call.parameters["password"].toString()
                     val recordName = userCollection.findOne(User::username eq nameSearch)
 
-                    val isFound:String = if(recordName != null && pwdSearch == recordName?.password){
+                    val isFound:String = if(recordName != null && pwdSearch == recordName.password){
                         "True"
                     } else{
                         "False"
                     }
                     call.respondText(isFound)
+                }
+                put("/{name}"){
+                    val nameSearch = call.parameters["name"].toString()
+                    userCollection.updateOne(User::username eq nameSearch, set(User::status setTo true))
+                    call.respond(HttpStatusCode.OK)
+                }
+                patch {
+                    userCollection.updateOne(User::status eq true, set(User::status setTo false))
+                    call.respond(HttpStatusCode.OK)
                 }
             }
         }

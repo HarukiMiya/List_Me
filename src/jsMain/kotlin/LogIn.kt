@@ -36,14 +36,17 @@ val LogIn = FC<Props> {
         }
         logInComponent {
             onSubmit= { input, input2 -> // differet onSubmit than the other??
-                val userinfo = User(input,input2)
+                val userinfo = User(input,input2, true)
                 console.log(input)
                 console.log(input2)
                 scope.launch {
                     if (searchUserNamePwd(userinfo) == "True") {
                         owner = userinfo.username
                         pw = userinfo.password
+                        resetActive()
+                        setActive(userinfo)
                         navigate("/index")
+                        console.log("PLEASE WORK")
                     } else {
                         setExist(true)
                     }
