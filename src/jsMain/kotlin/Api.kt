@@ -15,8 +15,8 @@ val jsonClient = HttpClient {
     }
 }
 
-suspend fun getShoppingList(): List<ShoppingListItem> {
-    return jsonClient.get(endpoint + ShoppingListItem.path).body()
+suspend fun getShoppingList(username:String): List<ShoppingListItem> {
+    return jsonClient.get(endpoint + ShoppingListItem.path+"/"+username).body()
 }
 
 suspend fun addShoppingListItem(shoppingListItem: ShoppingListItem) {

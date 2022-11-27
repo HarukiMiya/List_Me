@@ -12,6 +12,7 @@ import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.litote.kmongo.contains
 import org.litote.kmongo.coroutine.coroutine
 import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
@@ -37,6 +38,14 @@ val users = mutableListOf(
     User("Victor", "green"),
     User("Som", "Yes")
 )
+
+
+suspend fun registerUser(user: User): Boolean {
+    return userCollection.insertOne(user).wasAcknowledged()
+}
+suspend fun getListForUser(user: String): List<ShoppingListItem> {
+    return collection.find(ShoppingListItem::owners contains user).toList()
+}
 fun main() {
     val port = System.getenv("PORT")?.toInt() ?: 9090
     embeddedServer(Netty, 9090) {
@@ -82,8 +91,9 @@ fun main() {
             }
 
             route(ShoppingListItem.path) {
-                get {
-                    call.respond(collection.find().toList())
+                get("/{user}") {
+                    val user = call.parameters["user"]?.toString() ?: error("Invalid butt request")
+                    call.respond(collection.find(ShoppingListItem::owners contains user).toList())
 //                    call.respond(userCollection.find().toList())
                 }
                 post {
