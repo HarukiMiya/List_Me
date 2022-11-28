@@ -121,8 +121,6 @@ val App = FC<Props> {
                         }
                         onClick = {
                             scope.launch {
-                                activeUser = findActive()
-                                activeUser = activeUser.drop(1)
                                 deleteShoppingListItem(item)
                                 shoppingList = getShoppingList(findActive())// what is the point of this
                             }
@@ -148,7 +146,7 @@ val App = FC<Props> {
                             scope.launch {
                                 val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(findActive()))
                                 editShoppingListItem(item,cartItem)
-                                shoppingList = getShoppingList(activeUser)
+                                shoppingList = getShoppingList(findActive())
                             }
                             selectedEditItem=null
                         }
