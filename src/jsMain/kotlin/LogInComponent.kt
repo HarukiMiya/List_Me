@@ -6,6 +6,7 @@ import org.w3c.dom.HTMLInputElement
 import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.InputType
+import react.dom.html.ReactHTML
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.input
@@ -35,38 +36,51 @@ val logInComponent = FC<LogInProps> { props -> // this takes onsubmit which is a
     val changeHandlerPass: ChangeEventHandler<HTMLInputElement> = {
         setPass(it.target.value)
     }
-
-    form {
-        onSubmit = submitHandler
-
-        label {
-            htmlFor = "name"
-            input {
-                type = InputType.text
-                onChange = changeHandlerName
-                name = "name"
-                value = username
-                placeholder = "Username"
-            }
-        }
-        br{}
-        label {
-            htmlFor = "password"
-            input {
-                type = InputType.password
-                onChange = changeHandlerPass
-                name = "password"
-                value = pass
-                placeholder = "Password"
-            }
-        }
-
+    div {
+        className = ClassName("main")
         div {
-            className = ClassName("signUp")
-            input {
-                type = InputType.submit
-                className = ClassName("btn")
-                value = "LogIn"
+            id = "sign"
+            ReactHTML.h1 {
+                +"Log In"
+            }
+        }
+
+        form {
+            className = ClassName("form1")
+            onSubmit = submitHandler
+
+            label {
+                htmlFor = "name"
+                input {
+                    id = "un"
+                    type = InputType.text
+                    onChange = changeHandlerName
+                    name = "name"
+                    value = username
+                    placeholder = "Username"
+                }
+            }
+            br {}
+            label {
+                htmlFor = "password"
+                input {
+                    id = "pass"
+                    type = InputType.password
+                    onChange = changeHandlerPass
+                    name = "password"
+                    value = pass
+                    placeholder = "Password"
+                }
+            }
+
+            div {
+                className = ClassName("signUp")
+                input {
+                    id = "submit"
+                    type = InputType.submit
+                    className = ClassName("btn")
+                    value = "LogIn"
+                }
             }
         }
     }
