@@ -36,48 +36,7 @@ val signUpComponent = FC<SignUpProps> { props -> // this takes onsubmit which is
     val changeHandlerPass: ChangeEventHandler<HTMLInputElement> = {
         setPass(it.target.value)
     }
-    // Maybe this is better format, Haruki's code
-    /*
-
-    form {
-        onSubmit = submitHandler
-
-        label {
-            htmlFor = "name"
-            input {
-                type = InputType.text
-                onChange = changeHandlerName
-                name = "name"
-                value = username
-                placeholder = "Username"
-            }
-        }
-        br{}
-        label {
-            htmlFor = "password"
-            input {
-                type = InputType.password
-                onChange = changeHandlerPass
-                name = "password"
-                value = pass
-                placeholder = "Password"
-            }
-        }
-
-        div {
-            className = ClassName("signUp")
-            input {
-                type = InputType.submit
-                className = ClassName("btn")
-                value = "SignUp"
-//                onClick = {
-//                    navigate("/logIn")
-//                }
-            }
-        }
-    }
-
-     */
+    
     div {
         className = ClassName("main")
         div {
@@ -86,7 +45,6 @@ val signUpComponent = FC<SignUpProps> { props -> // this takes onsubmit which is
                 +"Sign Up"
             }
         }
-
 
             form {
                 className = ClassName("form1")
