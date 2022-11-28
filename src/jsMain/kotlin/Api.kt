@@ -1,10 +1,11 @@
-import io.ktor.http.*
+
+
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
+import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
-
 import kotlinx.browser.window
 
 val endpoint = window.location.origin // only needed until https://youtrack.jetbrains.com/issue/KTOR-453 is resolved
@@ -58,7 +59,11 @@ suspend fun searchUser(user:User): String{
     return jsonClient.get(endpoint + User.path + "/${user.username}").body()
 }
 
-suspend fun searchUserNamePwd(user:User): String{
+suspend fun searchPartner(share:Share): String{
+    return jsonClient.get(endpoint + User.path + "/${share.username}").body()
+}
+
+suspend fun searchUserNamePwd(user: User): String{
     return jsonClient.get(endpoint + User.path + "/search/${user.username}/${user.password}").body()
 }
 
