@@ -1,5 +1,9 @@
+
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
-import kotlinx.datetime.*
 import kotlin.random.Random
 
 @Serializable
@@ -14,6 +18,17 @@ data class ShoppingListItem(val desc: String, val priority: Int, val creationTim
 data class User(val username: String, val password: String, val status: Boolean) {
     val userId: Int = username.hashCode()
 //    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
+//    val item: Collection<ShoppingListItem> = getDummyShoppingList()
+    companion object {
+        const val path = "/user"
+    }
+}
+
+
+@Serializable
+data class Share(val username: String, val status: Boolean) {
+    val userId: Int = username.hashCode()
+    //    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
 //    val item: Collection<ShoppingListItem> = getDummyShoppingList()
     companion object {
         const val path = "/user"
