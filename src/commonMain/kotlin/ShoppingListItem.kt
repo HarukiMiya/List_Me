@@ -37,7 +37,14 @@ data class Share(val username: String, val status: Boolean) {
 
 public var owner: String = ""
 public var pw: String = ""
-
+//fun getShoppingListInfo():ShoppingListItem{
+//    return ShoppingListItem("banana",1,getCurrentDateTime(),null)
+//}
+//fun getDummyShoppingList(): Collection<ShoppingListItem>{
+//    val item = ShoppingListItem("Apples",5,getCurrentDateTime(), null)
+//    val item2 = ShoppingListItem("Oranges",5,getCurrentDateTime(),null )
+//    return listOf(item, item2)
+//}
 
 fun getCurrentDateTime(): Instant {
     // return something like 2022-11-17T11:56:34.311Z
