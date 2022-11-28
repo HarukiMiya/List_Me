@@ -5,7 +5,9 @@ import kotlinx.browser.document
 import react.*
 import kotlinx.coroutines.*
 import kotlinx.css.body
+import react.dom.html.ReactHTML.header
 import kotlinx.css.i
+import react.dom.html.ReactHTML.nav
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.h1
 import react.dom.html.ReactHTML.li
@@ -23,6 +25,7 @@ import react.dom.events.FormEventHandler
 import react.dom.html.ReactHTML.body
 import react.dom.html.ReactHTML.i
 import react.dom.html.ReactHTML.style
+import react.router.useNavigate
 
 private val scope = MainScope()
 
@@ -34,6 +37,7 @@ val App = FC<Props> {
     //var activeUser:String = "dummy"
     var activeUser:String = "dummy"
     var selectedEditItem: ShoppingListItem?  by useState(null)
+    val navigate = useNavigate()
 //    var counter=0
 
     useEffectOnce {
@@ -44,6 +48,47 @@ val App = FC<Props> {
             shoppingList = getShoppingList(activeUser)
         }
     }
+    header {
+        nav {
+            css { }
+            div {
+                ReactHTML.ul {
+                    css { height = 10.vh; marginLeft = 5.vw; }
+                    ReactHTML.li {
+                        css { display = Display.inline; margin = 5.vh; }
+                        +"Home"
+                        onClick = {
+                            navigate("/")
+                        }
+                    }
+                    ReactHTML.li {
+                        css { display = Display.inline; margin = 5.vh; }
+                        +"LogIn"
+                        onClick = {
+                            navigate("/logIn")
+                        }
+                    }
+                    ReactHTML.li {
+                        css { display = Display.inline; margin = 5.vh; }
+                        +"Sign Up"
+                        onClick = {
+                            navigate("/signUp")
+                        }
+                    }
+                    ReactHTML.li {
+                        css { display = Display.inline; float = Float.right; margin = 2.5.vh; }
+                        +"Welcome "
+                        scope.launch {
+                            activeUser = findActive()
+                            activeUser = activeUser.drop(1)
+                            +activeUser
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     /*
     useEffectOnce {
         scope.launch {
@@ -52,8 +97,10 @@ val App = FC<Props> {
         }
     }
      */
-    h1 {
-        +"Full-Stack Shopping List"
+    div {
+        h1 {
+            +"Full-Stack Shopping List"
+        }
     }
     inputComponent {
         onSubmit = { input ->
