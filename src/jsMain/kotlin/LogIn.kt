@@ -67,8 +67,6 @@ val LogIn = FC<Props> {
                 console.log(input2)
                 scope.launch {
                     if (searchUserNamePwd(userinfo) == "True") {
-                        owner = userinfo.username
-                        pw = userinfo.password
                         resetActive()
                         setActive(userinfo)
                         navigate("/index")
