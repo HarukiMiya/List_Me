@@ -1,4 +1,5 @@
 import csstype.*
+import csstype.Cursor.Companion.pointer
 import csstype.Font.Companion.icon
 import emotion.react.css
 import kotlinx.browser.document
@@ -55,24 +56,13 @@ val App = FC<Props> {
                 ReactHTML.ul {
                     css { height = 10.vh; marginLeft = 5.vw; }
                     ReactHTML.li {
-                        css { display = Display.inline; margin = 5.vh; }
-                        +"Home"
+                        css { display = Display.inline; margin = 5.vh; cursor = pointer;}
+                        +"Sign Out"
                         onClick = {
+                            scope.launch {
+                                resetActive()
+                            }
                             navigate("/")
-                        }
-                    }
-                    ReactHTML.li {
-                        css { display = Display.inline; margin = 5.vh; }
-                        +"LogIn"
-                        onClick = {
-                            navigate("/logIn")
-                        }
-                    }
-                    ReactHTML.li {
-                        css { display = Display.inline; margin = 5.vh; }
-                        +"Sign Up"
-                        onClick = {
-                            navigate("/signUp")
                         }
                     }
                     ReactHTML.li {
@@ -84,7 +74,6 @@ val App = FC<Props> {
                         scope.launch {
                             activeUser = findActive()
                             activeUser = activeUser.drop(1)
-                            console.log(activeUser)
                             document.getElementById("welcome-username")?.textContent = "${activeUser}"
                         }
                     }
