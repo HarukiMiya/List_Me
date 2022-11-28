@@ -32,6 +32,9 @@ data class Share(val username: String, val status: Boolean) {
     }
 }
 
+public var owner: String = ""
+public var pw: String = ""
+
 fun getCurrentDateTime(): Instant {
     // return something like 2022-11-17T11:56:34.311Z
     val currentMoment: Instant = Clock.System.now()
