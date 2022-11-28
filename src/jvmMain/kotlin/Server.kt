@@ -21,6 +21,11 @@ import org.litote.kmongo.set
 import org.litote.kmongo.setTo
 import java.util.StringJoiner
 
+//val shoppingList = mutableListOf(
+//    ShoppingListItem("Cucumbers 🥒", 1),
+//    ShoppingListItem("Tomatoes 🍅", 2),
+//    ShoppingListItem("Orange Juice 🍊", 3)
+//)
 val client = KMongo.createClient().coroutine
 val database = client.getDatabase("shoppingList")
 val userDatabase = client.getDatabase("userList")
@@ -117,10 +122,10 @@ fun main() {
                     //call.respond(userCollection.find(User::status eq true).toList())
                     val record = userCollection.findOne(User::status eq true)
                     if(record != null){
-                        call.respondText(record.username)
+                        call.respondText("/${record.username}")
                     }
                     else{
-                        call.respondText("Logged out")
+                        call.respondText("not found")
                     }
 
                 }

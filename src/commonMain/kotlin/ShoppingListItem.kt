@@ -17,16 +17,19 @@ data class ShoppingListItem(val desc: String, val priority: Int, val creationTim
 @Serializable
 data class User(val username: String, val password: String, val status: Boolean) {
     val userId: Int = username.hashCode()
+//    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
+//    val item: Collection<ShoppingListItem> = getDummyShoppingList()
     companion object {
         const val path = "/user"
     }
 }
 
+
 @Serializable
 data class Share(val username: String, val status: Boolean) {
     val userId: Int = username.hashCode()
     //    val shoppingListInfo: ShoppingListItem = getShoppingListInfo()
-    //    val item: Collection<ShoppingListItem> = getDummyShoppingList()
+//    val item: Collection<ShoppingListItem> = getDummyShoppingList()
     companion object {
         const val path = "/user"
     }
@@ -34,6 +37,7 @@ data class Share(val username: String, val status: Boolean) {
 
 public var owner: String = ""
 public var pw: String = ""
+
 
 fun getCurrentDateTime(): Instant {
     // return something like 2022-11-17T11:56:34.311Z
