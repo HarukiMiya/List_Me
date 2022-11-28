@@ -41,8 +41,9 @@ val ShareLists = FC<Props>{
                 scope.launch{
                     if(searchPartner(userInfo) == "True"){
                         owner = userInfo.username
-                        resetActive()
-                        navigate("/index")
+                        //resetActive()
+                        //navigate("/index")
+
                         console.log("Pray to god that it works")
                     }else{
                         setExist(true)
