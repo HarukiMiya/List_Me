@@ -77,11 +77,15 @@ val App = FC<Props> {
                     }
                     ReactHTML.li {
                         css { display = Display.inline; float = Float.right; margin = 2.5.vh; }
-                        +"Welcome "
+                        +"Welcome,  "
+                        p{
+                            id = "welcome-username"
+                        }
                         scope.launch {
                             activeUser = findActive()
                             activeUser = activeUser.drop(1)
-                            +activeUser
+                            console.log(activeUser)
+                            document.getElementById("welcome-username")?.textContent = "${activeUser}"
                         }
                     }
                 }
