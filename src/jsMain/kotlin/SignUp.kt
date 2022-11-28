@@ -1,9 +1,6 @@
+import csstype.*
 import csstype.AlignItems.Companion.center
-import csstype.ClassName
-import csstype.Display
 import csstype.FlexDirection.Companion.column
-import csstype.vh
-import csstype.vw
 import emotion.react.css
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -38,25 +35,22 @@ val SignUp = FC<Props> {
                 ul {
                     css { height = 10.vh; marginLeft = 5.vw; }
                     li {
-                        css { display = Display.inline; margin = 5.vh; }
+                        css { display = Display.inline; margin = 5.vh; cursor = Cursor.pointer;}
                         +"Home"
                         onClick = {
                             navigate("/")
                         }
                     }
                     li {
-                        css { display = Display.inline; margin = 5.vh; }
+                        css { display = Display.inline; margin = 5.vh; cursor = Cursor.pointer;}
                         +"LogIn"
                         onClick = {
                             navigate("/logIn")
                         }
                     }
                     li {
-                        css { display = Display.inline; margin = 5.vh; }
+                        css { display = Display.inline; margin = 5.vh; cursor = Cursor.default;}
                         +"Sign Up"
-                        onClick = {
-                            navigate("/signUp")
-                        }
                     }
                 }
             }
