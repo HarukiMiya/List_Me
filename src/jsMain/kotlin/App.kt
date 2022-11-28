@@ -43,10 +43,11 @@ val App = FC<Props> {
 
     useEffectOnce {
         scope.launch{
-            activeUser = findActive()
-            activeUser = activeUser.drop(1)
-            console.log("This is activeUser $activeUser")
-            shoppingList = getShoppingList(activeUser)
+            if(findActive() == "Logged out")
+            {
+                navigate("/")
+            }
+            shoppingList = getShoppingList(findActive())
         }
     }
     header {
@@ -72,9 +73,7 @@ val App = FC<Props> {
                             id = "welcome-username"
                         }
                         scope.launch {
-                            activeUser = findActive()
-                            activeUser = activeUser.drop(1)
-                            document.getElementById("welcome-username")?.textContent = "${activeUser}"
+                            document.getElementById("welcome-username")?.textContent = findActive()
                         }
                     }
                 }
@@ -99,11 +98,9 @@ val App = FC<Props> {
         onSubmit = { input ->
 
             scope.launch {
-                activeUser = findActive()
-                activeUser = activeUser.drop(1)
-                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(activeUser))
+                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(findActive()))
                 addShoppingListItem(cartItem)
-                shoppingList = getShoppingList(activeUser)
+                shoppingList = getShoppingList(findActive())
             }
         }
     }
@@ -127,7 +124,7 @@ val App = FC<Props> {
                                 activeUser = findActive()
                                 activeUser = activeUser.drop(1)
                                 deleteShoppingListItem(item)
-                                shoppingList = getShoppingList(activeUser)// what is the point of this
+                                shoppingList = getShoppingList(findActive())// what is the point of this
                             }
                         }
                     }
@@ -149,9 +146,7 @@ val App = FC<Props> {
                         listItem=item
                         onSubmit = { input->
                             scope.launch {
-                                activeUser = findActive()
-                                activeUser = activeUser.drop(1)
-                                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(activeUser))
+                                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(findActive()))
                                 editShoppingListItem(item,cartItem)
                                 shoppingList = getShoppingList(activeUser)
                             }
