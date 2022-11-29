@@ -137,11 +137,7 @@ fun main() {
                     val nameSearch = call.parameters["name"].toString()
                     val record = userCollection.findOne(User::username eq nameSearch)
 
-                    val isFound:String = if(record != null){
-                        "True"
-                    } else{
-                        "False"
-                    }
+                    val isFound:String = record?.username ?: "False"
                     call.respondText(isFound)
                 }
                 get("search/{name}/{password}"){
@@ -164,6 +160,21 @@ fun main() {
                 patch {
                     userCollection.updateOne(User::status eq true, set(User::status setTo false))
                     call.respond(HttpStatusCode.OK)
+                }
+                patch("/{owner}/{permissionName}") {
+                    val addedUser = call.parameters["permissionName"].toString()
+                    val givingPermission = call.parameters["owner"].toString()
+                    val recordName = userCollection.findOne(User::username eq addedUser)
+                    var permissions: List<String>? = null
+                    if(recordName?.permissions == null){
+                        permissions = listOf(givingPermission)
+                    }
+                    else{
+                        recordName.permissions + listOf(givingPermission)
+                    }
+
+                    userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
+                    call.respondText("Inside correct patch")
                 }
             }
         }

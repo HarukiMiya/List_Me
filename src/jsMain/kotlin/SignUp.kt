@@ -5,8 +5,6 @@ import emotion.react.css
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import react.*
-import react.dom.html.ReactHTML
-import react.dom.html.ReactHTML.h1
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.p
 import react.dom.html.ReactHTML.header
