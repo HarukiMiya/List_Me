@@ -94,6 +94,10 @@ val App = FC<Props> {
             +"Full-Stack Shopping List"
         }
     }
+    p{
+        id = "p-text"
+        +"Add item to list"
+    }
     inputComponent {
         onSubmit = { input ->
 
@@ -101,6 +105,29 @@ val App = FC<Props> {
                 val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(findActive()))
                 addShoppingListItem(cartItem)
                 shoppingList = getShoppingList(findActive())
+            }
+        }
+    }
+    div {
+        p {
+            id = "p-text"
+            +"Add user to access list"
+        }
+
+        inputComponent {
+            onSubmit = { input ->
+                val userinfo = User(input, "", status = false)
+                scope.launch {
+                    val addedUser = searchUser(userinfo)
+                    if (addedUser != "False") {
+                        console.log(addedUser)
+                        console.log(addPermission(findActive(), addedUser))
+                    }
+                    else{
+                        console.log("User does not exist")
+                    }
+
+                }
             }
         }
     }
