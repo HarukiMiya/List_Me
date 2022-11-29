@@ -7,6 +7,10 @@ h1{
 p {
 display: inline;
 }
+.p-text {
+    text-align: center !important;
+    display: block;
+}
 #p-text {
     text-align: center !important;
     display: block;

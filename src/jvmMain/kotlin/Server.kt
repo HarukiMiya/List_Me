@@ -146,10 +146,11 @@ fun main() {
                 }
                 get("/{name}"){
                     val nameSearch = call.parameters["name"].toString()
-                    val record = userCollection.findOne(User::username eq nameSearch)
-
-                    val isFound:String = record?.username ?: "False"
-                    call.respondText(isFound)
+                    if (nameSearch != "empty" && nameSearch != "reset") {
+                        val record = userCollection.findOne(User::username eq nameSearch)
+                        val isFound:String = record?.username ?: "False"
+                        call.respondText(isFound)
+                    }
                 }
                 get("search/{name}/{password}"){
                     val nameSearch = call.parameters["name"].toString()
@@ -179,16 +180,6 @@ fun main() {
                     val recordOwner = userCollection.findOne(User::username eq givingPermission)
 
                     var permissions: List<String>? = null
-//                    if(recordName?.permissions == null) {
-//                        permissions = listOf(givingPermission)
-//                    }
-//                    else if (recordName?.permissions?.contains(givingPermission) == false) {
-//                        permissions = recordName.permissions + listOf(givingPermission)
-//                    }
-//                    else{
-//                        recordName.permissions + listOf(givingPermission)
-//                    }
-
                     if(recordName?.permissions == null && recordOwner?.username != addedUser) {
                         permissions = listOf(givingPermission)
                         userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
@@ -197,13 +188,6 @@ fun main() {
                         permissions = recordName.permissions +listOf(givingPermission)
                         userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
                     }
-//                    else{
-//                        permissions = listOf(givingPermission)
-//                    }
-
-                    // check if there exists {owner} in {permissionName}'s permissions
-//                    userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
-//                    userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
                     call.respondText("Inside correct patch")
                 }
             }

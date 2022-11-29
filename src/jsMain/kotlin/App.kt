@@ -160,6 +160,7 @@ val App = FC<Props> {
             }
             p {
                 id = "not-found-msg"
+                className = ClassName("p-text")
             }
         }
     }
