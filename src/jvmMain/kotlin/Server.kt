@@ -176,14 +176,34 @@ fun main() {
                     val addedUser = call.parameters["permissionName"].toString()
                     val givingPermission = call.parameters["owner"].toString()
                     val recordName = userCollection.findOne(User::username eq addedUser)
-                    var permissions: List<String>? = null
-                    permissions = if(recordName?.permissions == null){
-                        listOf(givingPermission)
-                    } else{
-                        recordName.permissions + listOf(givingPermission)
-                    }
+                    val recordOwner = userCollection.findOne(User::username eq givingPermission)
 
-                    userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
+                    var permissions: List<String>? = null
+//                    if(recordName?.permissions == null) {
+//                        permissions = listOf(givingPermission)
+//                    }
+//                    else if (recordName?.permissions?.contains(givingPermission) == false) {
+//                        permissions = recordName.permissions + listOf(givingPermission)
+//                    }
+//                    else{
+//                        recordName.permissions + listOf(givingPermission)
+//                    }
+
+                    if(recordName?.permissions == null && recordOwner?.username != addedUser) {
+                        permissions = listOf(givingPermission)
+                        userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
+                    }
+                    else if (recordName?.permissions?.contains(givingPermission) == false && recordOwner?.username != addedUser) {
+                        permissions = recordName.permissions +listOf(givingPermission)
+                        userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
+                    }
+//                    else{
+//                        permissions = listOf(givingPermission)
+//                    }
+
+                    // check if there exists {owner} in {permissionName}'s permissions
+//                    userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
+//                    userCollection.updateOne(User::username eq addedUser, set(User::permissions setTo permissions))
                     call.respondText("Inside correct patch")
                 }
             }
