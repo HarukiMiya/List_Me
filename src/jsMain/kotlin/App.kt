@@ -1,31 +1,20 @@
+
 import csstype.*
 import csstype.Cursor.Companion.pointer
-import csstype.Font.Companion.icon
 import emotion.react.css
 import kotlinx.browser.document
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import react.*
-import kotlinx.coroutines.*
-import kotlinx.css.body
-import react.dom.html.ReactHTML.header
-import kotlinx.css.i
-import react.dom.html.ReactHTML.nav
+import react.dom.html.ReactHTML
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.h1
+import react.dom.html.ReactHTML.header
+import react.dom.html.ReactHTML.i
 import react.dom.html.ReactHTML.li
+import react.dom.html.ReactHTML.nav
 import react.dom.html.ReactHTML.p
 import react.dom.html.ReactHTML.ul
-import react.dom.html.HTMLAttributes
-import react.dom.html.InputType
-import react.dom.html.ReactHTML
-import react.dom.html.ReactHTML.form
-import react.dom.html.ReactHTML.input
-import org.w3c.dom.HTMLFormElement
-import org.w3c.dom.HTMLInputElement
-import react.dom.events.ChangeEventHandler
-import react.dom.events.FormEventHandler
-import react.dom.html.ReactHTML.body
-import react.dom.html.ReactHTML.i
-import react.dom.html.ReactHTML.style
 import react.router.useNavigate
 
 private val scope = MainScope()
@@ -78,6 +67,36 @@ val App = FC<Props> {
                     }
                 }
             }
+            div {
+                //id = "search"
+                p {
+                    id = "p-textsearch"
+                    +"Add user to access list"
+                }
+
+
+                addComponent{
+                    onSubmit = { input ->
+                        val userinfo = User(input, "", status = false)
+                        scope.launch {
+                            val addedUser = searchUser(userinfo)
+                            if (addedUser != "False") {
+                                console.log(addedUser)
+                                console.log(addPermission(findActive(), addedUser))
+                            }
+                            else{
+                                p {
+                                    id = "exists1"
+                                    +"Incorrect username"
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+            }
         }
     }
 
@@ -108,29 +127,7 @@ val App = FC<Props> {
             }
         }
     }
-    div {
-        p {
-            id = "p-text"
-            +"Add user to access list"
-        }
 
-        inputComponent {
-            onSubmit = { input ->
-                val userinfo = User(input, "", status = false)
-                scope.launch {
-                    val addedUser = searchUser(userinfo)
-                    if (addedUser != "False") {
-                        console.log(addedUser)
-                        console.log(addPermission(findActive(), addedUser))
-                    }
-                    else{
-                        console.log("User does not exist")
-                    }
-
-                }
-            }
-        }
-    }
     p {
         id = "p-text"
 

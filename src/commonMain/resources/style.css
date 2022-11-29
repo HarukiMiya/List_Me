@@ -10,6 +10,13 @@ display: inline;
 #p-text {
     text-align: center !important;
     display: block;
+
+}
+#p-textsearch{
+    position: relative;
+    display: block;
+    top: -80px;
+    margin-bottom: -30px;
 }
 #delete{
     text-align: center;
@@ -37,6 +44,15 @@ ul{
     text-align: center !important;
     display: flex;
     justify-content: center;
+
+}
+#input-form2{
+
+    position: relative;
+    top: -30px;
+    margin-bottom: -30px;
+
+
 }
 #edit-form{
     display: inline !important;
@@ -64,6 +80,15 @@ ul{
     font-family: 'Ubuntu', sans-serif;
     color: #8C55AA;
     text-align: center !important;
+}
+
+#exists1{
+    font-family: 'Ubuntu', sans-serif;
+    color: #8C55AA;
+    position: relative;
+    top: -20px;
+    margin-bottom: -30px;
+
 }
 input{
     margin: 1vh 0;
@@ -125,11 +150,8 @@ body {
 }
 
 #shopping{
-    width: 20%;
-    color: rgb(38, 50, 56);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 1px;
+    width: 10%;
+
     background: rgba(136, 126, 126, 0.04);
     padding: 10px 20px;
     border: none;
@@ -138,14 +160,11 @@ body {
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, 0.02);
     margin-bottom: 50px;
-
-    text-align: center;
     margin-bottom: 27px;
     font-family: 'Ubuntu', sans-serif;
 
-    text-align: center !important;
-    display: flex;
-    justify-content: center;
+
+
 }
 
 #shopping:focus, .pass:focus{
@@ -158,27 +177,19 @@ form.form1 {
 
 }
 #search{
-    width: 76%;
-    color: rgb(38, 50, 56);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 1px;
+
+    width: 10%;
+
     background: rgba(136, 126, 126, 0.04);
     padding: 10px 20px;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, 0.02);
     margin-bottom: 50px;
-    margin-left: 46px;
-    text-align: center;
     margin-bottom: 27px;
     font-family: 'Ubuntu', sans-serif;
-    text-align: center !important;
-    display: flex;
-    justify-content: center;
-    right: 20px;
 }
 
 #search:focus, .pass:focus {
@@ -259,3 +270,6 @@ a {
         border-radius: 0px;
     }
 }
+
+/*--------------------------Search Users----------------------*/
+
