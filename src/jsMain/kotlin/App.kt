@@ -36,7 +36,7 @@ val App = FC<Props> {
     var userList by useState(emptyList<User>())
     //val user:User = User("Dumb", "Dumber", false)
     //var activeUser:String = "dummy"
-    var activeUser:String = "dummy"
+    var activeUser:String by useState("")
     var selectedEditItem: ShoppingListItem?  by useState(null)
     val navigate = useNavigate()
 //    var counter=0
@@ -47,7 +47,8 @@ val App = FC<Props> {
             {
                 navigate("/")
             }
-            shoppingList = getShoppingList(findActive())
+            activeUser=findActive()
+            shoppingList = getShoppingList(activeUser)
         }
     }
     header {
@@ -104,7 +105,7 @@ val App = FC<Props> {
             scope.launch {
                 val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(findActive()))
                 addShoppingListItem(cartItem)
-                shoppingList = getShoppingList(findActive())
+                shoppingList = getShoppingList(activeUser)
             }
         }
     }
@@ -141,8 +142,9 @@ val App = FC<Props> {
             onSubmit = { input ->
                 val userinfo = User(input, "", status = false)
                 scope.launch {
-                    val addedUser = searchUser(userinfo)
+                    val addedUser:String = searchUser(userinfo)
                     if (addedUser != "False") {
+                        activeUser=addedUser
                         console.log(addedUser)
                         setActive(userinfo)
                         document.getElementById("not-found-msg")?.textContent = ""
@@ -166,17 +168,15 @@ val App = FC<Props> {
     ul {
         shoppingList.sortedByDescending(ShoppingListItem::priority).forEach { item ->
             li {
-//                counter+=1
                 if(item!=selectedEditItem) {
                     p {
-//                        +"$counter"
                         i {
                             className = ClassName("fa fa-trash")
                         }
                         onClick = {
                             scope.launch {
                                 deleteShoppingListItem(item)
-                                shoppingList = getShoppingList(findActive())// what is the point of this
+                                shoppingList = getShoppingList(activeUser)// what is the point of this
                             }
                         }
                     }
@@ -200,7 +200,7 @@ val App = FC<Props> {
                             scope.launch {
                                 val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(findActive()))
                                 editShoppingListItem(item,cartItem)
-                                shoppingList = getShoppingList(findActive())
+                                shoppingList = getShoppingList(activeUser)
                             }
                             selectedEditItem=null
                         }
