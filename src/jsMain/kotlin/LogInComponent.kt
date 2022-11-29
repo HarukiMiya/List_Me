@@ -1,18 +1,20 @@
 
 import csstype.ClassName
 import org.w3c.dom.HTMLFormElement
-import react.*
 import org.w3c.dom.HTMLInputElement
+import react.FC
+import react.Props
 import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.InputType
 import react.dom.html.ReactHTML
+import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.input
 import react.dom.html.ReactHTML.label
-import react.dom.html.ReactHTML.br
 import react.router.useNavigate
+import react.useState
 
 external interface LogInProps : Props {
     var onSubmit: (String,String) -> Unit
@@ -52,7 +54,7 @@ val logInComponent = FC<LogInProps> { props -> // this takes onsubmit which is a
             label {
                 htmlFor = "name"
                 input {
-                    id = "un"
+                    id = "users"
                     type = InputType.text
                     onChange = changeHandlerName
                     name = "name"
@@ -64,7 +66,7 @@ val logInComponent = FC<LogInProps> { props -> // this takes onsubmit which is a
             label {
                 htmlFor = "password"
                 input {
-                    id = "pass"
+                    id = "passwords"
                     type = InputType.password
                     onChange = changeHandlerPass
                     name = "password"

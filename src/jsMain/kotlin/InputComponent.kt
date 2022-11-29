@@ -1,18 +1,19 @@
+
 import csstype.ClassName
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLFormElement
-import react.*
 import org.w3c.dom.HTMLInputElement
+import react.FC
+import react.Props
 import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.ButtonType
 import react.dom.html.InputType
-import react.dom.html.ReactHTML
-import react.dom.html.ReactHTML.form
-import react.dom.html.ReactHTML.input
-import react.dom.html.ReactHTML.i
 import react.dom.html.ReactHTML.button
+import react.dom.html.ReactHTML.form
+import react.dom.html.ReactHTML.i
+import react.dom.html.ReactHTML.input
+import react.useState
 
 external interface InputProps : Props {
     var onSubmit: (String) -> Unit
@@ -40,6 +41,7 @@ val inputComponent = FC<InputProps> { props ->
         id = "input-form"
         onSubmit = submitHandler
         input {
+            id = "shopping"
             type = InputType.text
             onChange = changeHandler
             value = text

@@ -34,7 +34,9 @@ ul{
     font-size: 1.3vw;
 }
 #input-form{
-    text-align: center;
+    text-align: center !important;
+    display: flex;
+    justify-content: center;
 }
 #edit-form{
     display: inline !important;
@@ -95,7 +97,7 @@ body {
 
 }
 
-#un {
+#users {
     width: 76%;
     color: rgb(38, 50, 56);
     font-weight: 700;
@@ -120,6 +122,34 @@ body {
 
 
 
+}
+
+#shopping{
+    width: 20%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+
+    text-align: center !important;
+    display: flex;
+    justify-content: center;
+}
+
+#shopping:focus, .pass:focus{
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
 }
 
 form.form1 {
@@ -148,6 +178,7 @@ form.form1 {
     text-align: center !important;
     display: flex;
     justify-content: center;
+    right: 20px;
 }
 
 #search:focus, .pass:focus {
@@ -155,7 +186,7 @@ form.form1 {
 
 }
 
-#pass {
+#passwords {
     width: 76%;
     color: rgb(38, 50, 56);
     font-weight: 700;
@@ -176,16 +207,15 @@ form.form1 {
     text-align: center !important;
     display: flex;
     justify-content: center;
-    right: 20px;
 
 }
 
 
-#un:focus, .pass:focus {
+#users:focus, .pass:focus {
     border: 2px solid rgba(0, 0, 0, 0.18) !important;
 
 }
-#pass:focus, .pass:focus {
+#passwords:focus, .pass:focus {
     border: 2px solid rgba(0, 0, 0, 0.18) !important;
 
 }
