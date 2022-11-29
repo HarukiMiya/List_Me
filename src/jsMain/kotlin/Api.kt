@@ -86,4 +86,6 @@ suspend fun addPermission(owner:String, addedUser: String): String{
     return jsonClient.patch(endpoint + User.path + "/${owner}/${addedUser}").body()
 }
 
-
+suspend fun getPermissions(user: String): List<String>{
+    return jsonClient.options(endpoint + User.path + "/${user}").body()
+}
