@@ -24,6 +24,7 @@ import org.w3c.dom.HTMLInputElement
 import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.ReactHTML.body
+import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.i
 import react.dom.html.ReactHTML.style
 import react.router.useNavigate
@@ -32,22 +33,24 @@ private val scope = MainScope()
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
-    //var user:User by useState(User("owner", "pw", false))
-    var userList by useState(emptyList<User>())
-    //val user:User = User("Dumb", "Dumber", false)
-    //var activeUser:String = "dummy"
-    var activeUser:String = "dummy"
+    var permissionsList by useState(listOf("empty"))
+    val (activeUser, setActiveUser) = useState("")
     var selectedEditItem: ShoppingListItem?  by useState(null)
     val navigate = useNavigate()
 //    var counter=0
 
     useEffectOnce {
         scope.launch{
-            if(findActive() == "Logged out")
+            setActiveUser(findActive())
+            if(activeUser == "Logged out")
             {
                 navigate("/")
             }
+            console.log("We are inside useEffectOnce, active user = $activeUser")
             shoppingList = getShoppingList(findActive())
+            permissionsList = getPermissions(findActive())
+            //console.log("permissions: $permissionsList")
+            //console.log("shoppingList: $shoppingList")
         }
     }
     header {
@@ -74,6 +77,9 @@ val App = FC<Props> {
                         }
                         scope.launch {
                             document.getElementById("welcome-username")?.textContent = findActive()
+                            //console.log("We are inside Welcome part, active user = $activeUser")
+                            //console.log("First permissions: " + permissionsList[0])
+                            //console.log("shoppingList: $shoppingList")
                         }
                     }
                 }
@@ -81,14 +87,6 @@ val App = FC<Props> {
         }
     }
 
-    /*
-    useEffectOnce {
-        scope.launch {
-            shoppingList = getShoppingList(activeUser)
-            //shoppingList=getListForUser()
-        }
-    }
-     */
     div {
         h1 {
             +"Full-Stack Shopping List"
@@ -102,9 +100,9 @@ val App = FC<Props> {
         onSubmit = { input ->
 
             scope.launch {
-                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(findActive()))
+                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },getCurrentDateTime(),null,listOf(activeUser))
                 addShoppingListItem(cartItem)
-                shoppingList = getShoppingList(findActive())
+                shoppingList = getShoppingList(activeUser)
             }
         }
     }
@@ -131,37 +129,45 @@ val App = FC<Props> {
             }
         }
     }
+    if(permissionsList[0] != "empty") {
+        div {
+            p {
+                id = "p-text"
+                +"These users have shared their list with you: $permissionsList"
+                br{}
+                +"Add user to display their list, enter \"reset\" to see your list"
+            }
+            inputComponent {
+                onSubmit = { input ->
+                    //val userinfo = User(input, "", status = false)
+                    scope.launch {
 
-    div {
-        p {
-            id = "p-text"
-            +"Add user to display their list"
-        }
-        inputComponent {
-            onSubmit = { input ->
-                val userinfo = User(input, "", status = false)
-                scope.launch {
-                    val addedUser = searchUser(userinfo)
-                    if (addedUser != "False") {
-                        console.log(addedUser)
-                        setActive(userinfo)
-                        document.getElementById("not-found-msg")?.textContent = ""
-                    }
-                    else{
-                        document.getElementById("not-found-msg")?.textContent = "User not found. Try again."
+                        if (permissionsList.contains(input) || input == "reset") {
+                            shoppingList = if(input=="reset"){
+                                setActiveUser(findActive())
+                                getShoppingList(findActive())
+                            } else{
+                                setActiveUser(input)
+                                getShoppingList(input)
+                            }
+
+                            document.getElementById("not-found-msg")?.textContent = ""
+                        } else {
+                            document.getElementById("not-found-msg")?.textContent = "User not found. Try again."
+                        }
                     }
                 }
             }
-        }
-        p {
-            id = "not-found-msg"
+            p {
+                id = "not-found-msg"
+            }
         }
     }
 
     p {
         id = "p-text"
 
-        +"Here is your shopping list"
+        +"Here is selected shopping list"
     }
     ul {
         shoppingList.sortedByDescending(ShoppingListItem::priority).forEach { item ->
@@ -176,7 +182,7 @@ val App = FC<Props> {
                         onClick = {
                             scope.launch {
                                 deleteShoppingListItem(item)
-                                shoppingList = getShoppingList(findActive())// what is the point of this
+                                shoppingList = getShoppingList(activeUser)// what is the point of this
                             }
                         }
                     }
@@ -198,9 +204,9 @@ val App = FC<Props> {
                         listItem=item
                         onSubmit = { input->
                             scope.launch {
-                                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(findActive()))
+                                val cartItem = ShoppingListItem(input.replace("!", ""), input.count { it == '!' },item.creationTime,getCurrentDateTime(),listOf(activeUser))
                                 editShoppingListItem(item,cartItem)
-                                shoppingList = getShoppingList(findActive())
+                                shoppingList = getShoppingList(activeUser)
                             }
                             selectedEditItem=null
                         }

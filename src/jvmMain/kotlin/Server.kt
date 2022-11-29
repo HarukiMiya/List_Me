@@ -112,6 +112,17 @@ fun main() {
                get{
                     call.respond(userCollection.find().toList())
                }
+                options("/{name}"){
+                    val nameSearch = call.parameters["name"].toString()
+                    val record = userCollection.findOne(User::username eq nameSearch)
+                    var permissionList = listOf("empty")
+                    if(record!=null){
+                        if(record.permissions != null){
+                            permissionList = record.permissions
+                        }
+                    }
+                    call.respond(permissionList)
+                }
                 options{
                     //val state = call.parameters["status"].toBoolean()
                     //call.respond(userCollection.find(User::status eq true).toList())
