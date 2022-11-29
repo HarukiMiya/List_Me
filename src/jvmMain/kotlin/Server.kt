@@ -166,10 +166,9 @@ fun main() {
                     val givingPermission = call.parameters["owner"].toString()
                     val recordName = userCollection.findOne(User::username eq addedUser)
                     var permissions: List<String>? = null
-                    if(recordName?.permissions == null){
-                        permissions = listOf(givingPermission)
-                    }
-                    else{
+                    permissions = if(recordName?.permissions == null){
+                        listOf(givingPermission)
+                    } else{
                         recordName.permissions + listOf(givingPermission)
                     }
 
