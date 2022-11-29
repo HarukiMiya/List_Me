@@ -131,6 +131,33 @@ val App = FC<Props> {
             }
         }
     }
+
+    div {
+        p {
+            id = "p-text"
+            +"Add user to display their list"
+        }
+        inputComponent {
+            onSubmit = { input ->
+                val userinfo = User(input, "", status = false)
+                scope.launch {
+                    val addedUser = searchUser(userinfo)
+                    if (addedUser != "False") {
+                        console.log(addedUser)
+                        setActive(userinfo)
+                        document.getElementById("not-found-msg")?.textContent = ""
+                    }
+                    else{
+                        document.getElementById("not-found-msg")?.textContent = "User not found. Try again."
+                    }
+                }
+            }
+        }
+        p {
+            id = "not-found-msg"
+        }
+    }
+
     p {
         id = "p-text"
 
