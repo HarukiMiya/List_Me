@@ -112,6 +112,9 @@ fun main() {
                get{
                     call.respond(userCollection.find().toList())
                }
+                get("userList"){
+                    call.respond(userCollection.find().toList())
+                }
                 options("/{name}"){
                     val nameSearch = call.parameters["name"].toString()
                     val record = userCollection.findOne(User::username eq nameSearch)
