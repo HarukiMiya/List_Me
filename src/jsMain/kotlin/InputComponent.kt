@@ -9,10 +9,12 @@ import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.ButtonType
 import react.dom.html.InputType
+import react.dom.html.ReactHTML
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.form
 import react.dom.html.ReactHTML.i
 import react.dom.html.ReactHTML.input
+import react.dom.html.ReactHTML.label
 import react.useState
 
 external interface InputProps : Props {
@@ -22,6 +24,10 @@ external interface EditProps : Props {
     var onSubmit: (String) -> Unit
     var listItem:(ShoppingListItem)
 
+}
+external interface SearchProps : Props {
+    var onSubmit: (String) -> Unit
+    var listUsername: (User)
 }
 
 val inputComponent = FC<InputProps> { props ->
@@ -36,7 +42,6 @@ val inputComponent = FC<InputProps> { props ->
     val changeHandler: ChangeEventHandler<HTMLInputElement> = {
         setText(it.target.value)
     }
-
     form {
         id = "input-form"
         onSubmit = submitHandler
@@ -75,6 +80,35 @@ val editComponent = FC<EditProps> { props ->
             type = InputType.text
             onChange = changeHandler
             value = text
+        }
+    }
+}
+
+val addComponent = FC<SearchProps> { props ->
+    val (text, setText) = useState("")
+//    val (user, setUser) = useState(props.listUsername.username)
+
+    val submitHandler: FormEventHandler<HTMLFormElement> = {
+        it.preventDefault()
+        setText("")
+        props.onSubmit(text)
+    }
+
+    val changeHandler: ChangeEventHandler<HTMLInputElement> = {
+        setText(it.target.value)
+    }
+
+    form {
+        id = "input-form"
+        onSubmit = submitHandler
+        input {
+            id = "shopping"
+            type = InputType.text
+            onChange = changeHandler
+            value = text
+
+            name = "user"
+            list = "search-access"
         }
     }
 }

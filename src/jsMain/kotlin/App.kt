@@ -25,15 +25,19 @@ import react.dom.events.ChangeEventHandler
 import react.dom.events.FormEventHandler
 import react.dom.html.ReactHTML.body
 import react.dom.html.ReactHTML.br
+import react.dom.html.ReactHTML.datalist
 import react.dom.html.ReactHTML.i
+import react.dom.html.ReactHTML.option
 import react.dom.html.ReactHTML.style
 import react.router.useNavigate
+
 
 private val scope = MainScope()
 
 val App = FC<Props> {
     var shoppingList by useState(emptyList<ShoppingListItem>())
     var permissionsList by useState(listOf("empty"))
+    var userList by useState(listOf("empty"))
     val (activeUser, setActiveUser) = useState("")
     var selectedEditItem: ShoppingListItem?  by useState(null)
     val navigate = useNavigate()
@@ -42,13 +46,14 @@ val App = FC<Props> {
     useEffectOnce {
         scope.launch{
             setActiveUser(findActive())
-            if(activeUser == "Logged out")
+            if(findActive() == "Logged out")
             {
                 navigate("/")
             }
             console.log("We are inside useEffectOnce, active user = $activeUser")
             shoppingList = getShoppingList(findActive())
             permissionsList = getPermissions(findActive())
+            userList = getUserList()
             //console.log("permissions: $permissionsList")
             //console.log("shoppingList: $shoppingList")
         }
@@ -89,7 +94,7 @@ val App = FC<Props> {
 
     div {
         h1 {
-            +"Full-Stack Shopping List"
+            +"List Me"
         }
     }
     p{
@@ -120,13 +125,28 @@ val App = FC<Props> {
                     if (addedUser != "False") {
                         console.log(addedUser)
                         console.log(addPermission(findActive(), addedUser))
+                        document.getElementById("not-found-msg-access")?.textContent = ""
                     }
                     else{
-                        console.log("User does not exist")
+                        document.getElementById("not-found-msg-access")?.textContent = "User not found. Try again."
                     }
 
                 }
             }
+        }
+//        datalist {
+//            id = "search-access"
+//            userList.forEach{
+//                option {
+//                    value = it
+//                    +it
+//                }
+//            }
+//        }
+//
+        p {
+            id = "not-found-msg-access"
+            className = ClassName("p-text")
         }
     }
     if(permissionsList[0] != "empty") {
@@ -137,7 +157,7 @@ val App = FC<Props> {
                 br{}
                 +"Add user to display their list, enter \"reset\" to see your list"
             }
-            inputComponent {
+            addComponent {
                 onSubmit = { input ->
                     //val userinfo = User(input, "", status = false)
                     scope.launch {
@@ -155,6 +175,15 @@ val App = FC<Props> {
                         } else {
                             document.getElementById("not-found-msg")?.textContent = "User not found. Try again."
                         }
+                    }
+                }
+            }
+            datalist {
+                id = "search-access"
+                permissionsList.forEach{
+                    option {
+                        value = it
+                        +it
                     }
                 }
             }
