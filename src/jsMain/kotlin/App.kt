@@ -42,7 +42,7 @@ val App = FC<Props> {
     useEffectOnce {
         scope.launch{
             setActiveUser(findActive())
-            if(activeUser == "Logged out")
+            if(findActive() == "Logged out")
             {
                 navigate("/")
             }
